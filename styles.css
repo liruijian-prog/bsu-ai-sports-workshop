@@ -210,6 +210,10 @@ main {
   gap: 22px;
 }
 
+.feature-section {
+  gap: 18px;
+}
+
 .section-heading {
   max-width: 760px;
 }
@@ -228,17 +232,193 @@ main {
 }
 
 .entry-grid,
-.content-grid {
+.content-grid,
+.featured-grid {
   display: grid;
   gap: 18px;
 }
 
 .entry-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .content-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.featured-grid {
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
+}
+
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 320px;
+  padding: 28px;
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 26px;
+}
+
+.feature-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.feature-card-sports {
+  color: #f8f5ef;
+  background: linear-gradient(135deg, #183049 0%, #234664 54%, #7a573c 100%);
+  box-shadow: 0 26px 56px rgba(24, 48, 73, 0.2);
+}
+
+.feature-card-sports::before {
+  background:
+    radial-gradient(circle at 84% 16%, rgba(255, 255, 255, 0.16), transparent 18%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 44%);
+}
+
+.feature-card-marketing {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(24, 48, 73, 0.08), transparent 28%),
+    linear-gradient(180deg, #fffcf6 0%, #f1ebdf 100%);
+  box-shadow: 0 18px 36px rgba(24, 48, 73, 0.08);
+}
+
+.feature-card-marketing::before {
+  background:
+    radial-gradient(circle at 18% 90%, rgba(138, 91, 61, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.36), transparent 40%);
+}
+
+.feature-badges,
+.feature-points,
+.feature-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.feature-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f8f5ef;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.feature-chip-light {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.feature-chip-dark,
+.feature-chip-accent {
+  color: var(--navy);
+  border-color: rgba(24, 48, 73, 0.12);
+  background: rgba(24, 48, 73, 0.08);
+}
+
+.feature-chip-accent {
+  color: #6b472f;
+  border-color: rgba(138, 91, 61, 0.18);
+  background: rgba(202, 169, 141, 0.34);
+}
+
+.feature-kicker {
+  margin: 0;
+  color: inherit;
+  opacity: 0.78;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.feature-card h3 {
+  margin: 0;
+  font-family: var(--heading-font);
+  font-size: clamp(2rem, 3.4vw, 3.15rem);
+  line-height: 1.05;
+}
+
+.feature-lead {
+  margin: 0;
+  max-width: 32ch;
+  color: inherit;
+  font-size: clamp(1.08rem, 1.9vw, 1.34rem);
+  line-height: 1.65;
+}
+
+.feature-card-marketing .feature-lead {
+  color: rgba(29, 37, 48, 0.82);
+}
+
+.feature-points span {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.feature-card-marketing .feature-points span {
+  border-color: rgba(24, 48, 73, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--navy);
+}
+
+.feature-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 700;
+}
+
+.feature-card-sports .feature-button.primary {
+  color: var(--navy);
+  background: #ffffff;
+}
+
+.feature-card-marketing .feature-button.primary {
+  color: #ffffff;
+  background: var(--navy);
+}
+
+.feature-button.ghost {
+  background: transparent;
+}
+
+.feature-card-sports .feature-button.ghost {
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.feature-card-marketing .feature-button.ghost {
+  border-color: rgba(24, 48, 73, 0.14);
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.64);
 }
 
 .entry-card,
@@ -336,7 +516,8 @@ main {
 
 @media (max-width: 860px) {
   .intro,
-  .content-grid {
+  .content-grid,
+  .featured-grid {
     grid-template-columns: 1fr;
   }
 
@@ -370,12 +551,6 @@ main {
   }
 }
 
-@media (max-width: 980px) {
-  .entry-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 720px) {
   :root {
     --content-width: min(100vw - 24px, 980px);
@@ -392,5 +567,22 @@ main {
   .contact-links {
     flex-direction: column;
     gap: 14px;
+  }
+
+  .entry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .feature-actions {
+    flex-direction: column;
+  }
+
+  .feature-button {
+    width: 100%;
   }
 }
