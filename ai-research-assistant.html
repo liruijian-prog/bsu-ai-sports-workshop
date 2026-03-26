@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI研究助手 | 李睿鉴</title>
+    <meta
+      name="description"
+      content="AI研究助手体验页，围绕研究问题、文献分析、数据设计与写作推进展开。"
+    />
+    <meta name="theme-color" content="#183049" />
+    <link rel="stylesheet" href="./detail-pages.css" />
+  </head>
+  <body data-page="ai-research-assistant">
+    <div class="detail-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="返回首页">
+          <span class="brand-kicker">Li Ruijian</span>
+          <strong>李睿鉴</strong>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          菜单
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="页面导航">
+          <a href="./index.html">首页</a>
+          <a href="#overview">助手简介</a>
+          <a href="#demo">进入体验</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="detail-hero" id="overview">
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow">AI Research Assistant</p>
+            <h1>AI研究助手</h1>
+            <p class="hero-lead">围绕研究问题、文献分析、数据设计与写作推进的研究工作台。</p>
+            <p>
+              这一入口面向研究流程中的关键环节：拆解文献、扩展资料、梳理变量、推进写作。它更关注研究如何持续推进，而不是只给出一次性的回答。
+            </p>
+
+            <div class="hero-actions">
+              <a class="action-link" href="#demo">开始体验</a>
+              <a class="subtle-link" href="./research-projects.html">查看 Markdown Reader</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel" data-reveal>
+            <h2>适用场景</h2>
+            <ul class="plain-list">
+              <li>研究问题拆解与文献阅读</li>
+              <li>资料扩展与关键词链整理</li>
+              <li>数据与变量设计</li>
+              <li>论文、报告与写作提纲推进</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="capability-grid" data-reveal>
+          <article class="section-card">
+            <h3>文献拆解</h3>
+            <p>围绕研究问题、方法、发现与局限做结构化分析。</p>
+          </article>
+          <article class="section-card">
+            <h3>扩展文献</h3>
+            <p>沿关键词链继续扩展相关文献、争议点与案例来源。</p>
+          </article>
+          <article class="section-card">
+            <h3>写作推进</h3>
+            <p>把分散笔记收束成章节结构、论证链与下一步任务。</p>
+          </article>
+        </section>
+
+        <section class="section" id="demo">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">Experience</p>
+            <h2>体验页面</h2>
+            <p>选择左侧模式，查看研究助手在不同阶段的典型输出。</p>
+          </div>
+
+          <div class="demo-layout">
+            <aside class="demo-panel" data-reveal>
+              <div class="mode-list">
+                <button class="mode-button" type="button" data-mode-button="paper_review">
+                  <strong>文献拆解</strong>
+                  <small>理解问题、方法、发现与局限</small>
+                </button>
+                <button class="mode-button" type="button" data-mode-button="literature_expansion">
+                  <strong>扩展文献</strong>
+                  <small>生成关键词链与后续检索路径</small>
+                </button>
+                <button class="mode-button" type="button" data-mode-button="data_strategy">
+                  <strong>数据与变量</strong>
+                  <small>梳理研究设计中的数据结构与可行性</small>
+                </button>
+                <button class="mode-button" type="button" data-mode-button="writing_guidance">
+                  <strong>写作推进</strong>
+                  <small>把笔记转成结构与任务清单</small>
+                </button>
+              </div>
+            </aside>
+
+            <div class="demo-surface" data-reveal>
+              <div class="assistant-frame">
+                <div class="assistant-header">
+                  <h3 data-assistant-title>AI研究助手</h3>
+                  <div class="assistant-meta" data-assistant-meta></div>
+                </div>
+
+                <div class="assistant-response" data-assistant-response></div>
+
+                <div class="assistant-notes" data-assistant-notes></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="page-footer" data-reveal>
+        <p class="footer-note">李睿鉴 · AI研究助手</p>
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+    <script src="./detail-pages.js"></script>
+  </body>
+</html>

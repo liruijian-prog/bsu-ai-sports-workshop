@@ -177,6 +177,10 @@ main {
   line-height: 1.9;
 }
 
+.intro-text + .intro-text {
+  margin-top: 12px;
+}
+
 .profile-panel {
   padding: 18px 20px;
   border: 1px solid var(--line);
@@ -264,6 +268,8 @@ main {
 .entry-card,
 .content-card {
   padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
@@ -332,16 +338,13 @@ main {
 }
 
 [data-reveal] {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 420ms ease,
-    transform 420ms ease;
+  opacity: 1;
+  transform: none;
 }
 
 [data-reveal].is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -352,7 +355,6 @@ main {
   [data-reveal] {
     opacity: 1;
     transform: none;
-    transition: none;
   }
 }
 
