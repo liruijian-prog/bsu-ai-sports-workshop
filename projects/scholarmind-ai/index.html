@@ -6,7 +6,7 @@
     <title>AI研究助手 | 李睿鉴</title>
     <meta
       name="description"
-      content="ScholarMind AI 公开体验页，展示研究项目、文献、分析、证据与写作内容。"
+      content="ScholarMind AI 公开研究助手。访客可以切换项目、提问、浏览文献、证据、分析与写作内容。"
     />
     <meta name="theme-color" content="#183049" />
     <link rel="stylesheet" href="../project-shell.css" />
@@ -28,27 +28,23 @@
       </header>
 
       <main>
-        <section class="project-hero">
+        <section class="project-hero compact">
           <div class="hero-copy">
             <p class="eyebrow">ScholarMind AI</p>
             <h1>AI研究助手</h1>
-            <p class="hero-lead">面向研究流程的文献、分析、证据与写作协同工作台。</p>
+            <p class="hero-lead">面向研究流程的公开工作台，而不是静态介绍页。</p>
             <p class="hero-summary">
-              这里展示 ScholarMind AI 的公开只读体验。访客可以直接查看真实研究项目的文献列表、AI 分析结果、证据片段、研究笔记与写作内容，感受研究助手如何在完整流程中工作。
+              访客可以直接围绕一个研究项目提出问题，查看研究助手如何调用文献、分析结果、证据片段和写作内容来组织回答。
             </p>
-            <div class="hero-actions">
-              <a class="action-link" href="#experience">开始体验</a>
-              <a class="ghost-link" href="../../index.html#entries">返回全部入口</a>
-            </div>
             <div class="project-metrics" id="scholarmind-metrics"></div>
           </div>
 
           <aside class="hero-side">
-            <h2>体验方式</h2>
+            <h2>当前可体验</h2>
             <ul class="meta-list">
-              <li>切换不同研究项目查看内容</li>
-              <li>按模块浏览文献、分析、证据与写作</li>
-              <li>页面数据由 ScholarMind 本地项目同步生成</li>
+              <li>研究项目切换</li>
+              <li>围绕项目直接提问</li>
+              <li>文献、分析、证据、写作联动查看</li>
             </ul>
           </aside>
         </section>
@@ -57,7 +53,7 @@
           <aside class="list-panel">
             <div class="panel-header">
               <h2 class="panel-title">研究项目</h2>
-              <p class="panel-desc">选择一个项目，查看其公开可展示的研究过程。</p>
+              <p class="panel-desc">选择一个公开项目，进入对应研究工作台。</p>
             </div>
             <div class="item-list" id="scholarmind-projects"></div>
           </aside>
@@ -67,9 +63,27 @@
               <h2 class="viewer-title" id="scholarmind-title">加载中</h2>
               <p class="viewer-meta" id="scholarmind-meta"></p>
             </div>
+
+            <div class="panel-header" style="border-bottom: 0;">
+              <form class="query-form" id="scholarmind-query-form">
+                <label for="scholarmind-query" class="panel-desc">围绕当前项目提出问题</label>
+                <div class="search-row">
+                  <input
+                    class="search-input"
+                    id="scholarmind-query"
+                    type="search"
+                    placeholder="例如：这个项目当前最核心的研究问题是什么？"
+                  />
+                  <button class="query-submit" type="submit">提问</button>
+                </div>
+              </form>
+              <div class="prompt-grid inline" id="scholarmind-prompts"></div>
+            </div>
+
             <div class="viewer-toolbar">
               <div class="tab-row" id="scholarmind-tabs"></div>
             </div>
+
             <div class="viewer-surface">
               <div class="viewer-rich" id="scholarmind-body"></div>
             </div>
@@ -78,7 +92,7 @@
       </main>
 
       <footer class="page-footer">
-        <p>公开页内容来自 `projects/scholarmind-ai` 的数据库快照同步。</p>
+        <p>公开体验内容来自 `projects/scholarmind-ai` 的数据库快照同步。</p>
       </footer>
     </div>
 

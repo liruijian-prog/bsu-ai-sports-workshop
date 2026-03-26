@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-26T13:50:08",
+  "updatedAt": "2026-03-26T17:10:47",
   "items": [
     {
       "title": "中国青少年足球AI人才系统研究 · 21天计划 v4.0",
@@ -12,6 +12,104 @@
       "summary": "第一阶段问题诊断篇研究综述，汇总数据危机、结构密码、选材迷雾与教练困局等核心结论。",
       "href": "./stage-one-review.html",
       "updatedAt": "2026-03-17T16:16:09"
+    }
+  ],
+  "charts": [
+    {
+      "title": "D2 · 图1 · 雷达图",
+      "summary": "D2 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d2/D2_图1_雷达图.png",
+      "group": "D2",
+      "updatedAt": "2026-03-15T15:42:58",
+      "type": "image"
+    },
+    {
+      "title": "D2 · 图2 · 网络拓扑",
+      "summary": "D2 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d2/D2_图2_网络拓扑.png",
+      "group": "D2",
+      "updatedAt": "2026-03-15T15:42:58",
+      "type": "image"
+    },
+    {
+      "title": "D2 · 图3 · 层级阶梯",
+      "summary": "D2 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d2/D2_图3_层级阶梯.png",
+      "group": "D2",
+      "updatedAt": "2026-03-15T15:42:58",
+      "type": "image"
+    },
+    {
+      "title": "D2 · 图4 · 三轨断裂",
+      "summary": "D2 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d2/D2_图4_三轨断裂.png",
+      "group": "D2",
+      "updatedAt": "2026-03-15T15:42:58",
+      "type": "image"
+    },
+    {
+      "title": "D3 · 图1 · 出生季度分布",
+      "summary": "D3 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d3/D3_图1_出生季度分布.png",
+      "group": "D3",
+      "updatedAt": "2026-03-15T21:59:01",
+      "type": "image"
+    },
+    {
+      "title": "D3 · 图2 · 边际效应",
+      "summary": "D3 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d3/D3_图2_边际效应.png",
+      "group": "D3",
+      "updatedAt": "2026-03-15T21:59:01",
+      "type": "image"
+    },
+    {
+      "title": "D3 · 图3 · SNR分析",
+      "summary": "D3 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d3/D3_图3_SNR分析.png",
+      "group": "D3",
+      "updatedAt": "2026-03-15T21:59:01",
+      "type": "image"
+    },
+    {
+      "title": "D3 · 图4 · 人才浪费",
+      "summary": "D3 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d3/D3_图4_人才浪费.png",
+      "group": "D3",
+      "updatedAt": "2026-03-15T21:59:01",
+      "type": "image"
+    },
+    {
+      "title": "D4 · 图1 · NDM认知污染",
+      "summary": "D4 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d4/D4_图1_NDM认知污染.png",
+      "group": "D4",
+      "updatedAt": "2026-03-16T20:37:01",
+      "type": "image"
+    },
+    {
+      "title": "D4 · 图2 · CRI双重约束",
+      "summary": "D4 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d4/D4_图2_CRI双重约束.png",
+      "group": "D4",
+      "updatedAt": "2026-03-16T20:37:01",
+      "type": "image"
+    },
+    {
+      "title": "D4 · 图3 · 评估周期时间陷阱",
+      "summary": "D4 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d4/D4_图3_评估周期时间陷阱.png",
+      "group": "D4",
+      "updatedAt": "2026-03-16T20:37:02",
+      "type": "image"
+    },
+    {
+      "title": "D4 · 图4 · AFCA去偏路径",
+      "summary": "D4 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+      "href": "./assets/d4/D4_图4_AFCA去偏路径.png",
+      "group": "D4",
+      "updatedAt": "2026-03-16T20:37:02",
+      "type": "image"
     }
   ]
 }

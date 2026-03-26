@@ -6,7 +6,7 @@
     <title>科研项目 | Markdown Reader | 李睿鉴</title>
     <meta
       name="description"
-      content="Markdown Reader 公开体验页，展示文档阅读、AI 分析、翻译与批判阅读结果。"
+      content="Markdown Reader 公开体验页。访客可以切换文档、查看分析与翻译，并导入本地 Markdown 直接预览。"
     />
     <meta name="theme-color" content="#183049" />
     <link rel="stylesheet" href="../project-shell.css" />
@@ -28,28 +28,23 @@
       </header>
 
       <main>
-        <section class="project-hero">
+        <section class="project-hero compact">
           <div class="hero-copy">
             <p class="eyebrow">Markdown Reader</p>
             <h1>科研项目</h1>
-            <p class="hero-lead">面向研究阅读、AI 分析、翻译与批判性整理的文档工作台。</p>
+            <p class="hero-lead">一个可以直接用的公开阅读器，而不是样例介绍页。</p>
             <p class="hero-summary">
-              这一公开页基于 Markdown Reader 的真实文档与缓存输出生成。访客可以切换不同文档，直接查看原文、AI 分析、翻译结果与批判阅读标注，体验项目当前的核心工作流。
+              访客可以切换公开文档，查看原文、AI 分析、翻译、批判阅读和信息图结果；也可以上传自己的 Markdown 文件，直接体验阅读器。
             </p>
-            <div class="hero-actions">
-              <a class="action-link" href="#reader">进入体验</a>
-              <a class="ghost-link" href="../../index.html#entries">返回全部入口</a>
-            </div>
             <div class="project-metrics" id="reader-metrics"></div>
           </div>
 
           <aside class="hero-side">
-            <h2>体验模块</h2>
+            <h2>当前可体验</h2>
             <ul class="meta-list">
-              <li>原文阅读</li>
-              <li>AI 分析</li>
-              <li>自动翻译</li>
-              <li>批判阅读标注</li>
+              <li>公开样例文档阅读</li>
+              <li>分析 / 翻译 / 批判阅读切换</li>
+              <li>本地 Markdown 导入预览</li>
             </ul>
           </aside>
         </section>
@@ -58,7 +53,13 @@
           <aside class="list-panel">
             <div class="panel-header">
               <h2 class="panel-title">文档列表</h2>
-              <p class="panel-desc">选择文档后，可切换不同处理结果。</p>
+              <p class="panel-desc">选择样例文档，或在右侧导入自己的 Markdown 文件。</p>
+              <input
+                class="search-input"
+                id="reader-library-search"
+                type="search"
+                placeholder="筛选样例文档"
+              />
             </div>
             <div class="item-list" id="reader-documents"></div>
           </aside>
@@ -68,11 +69,34 @@
               <h2 class="viewer-title" id="reader-title">加载中</h2>
               <p class="viewer-meta" id="reader-meta"></p>
             </div>
+
+            <div class="panel-header" style="border-bottom: 0;">
+              <div class="inline-form">
+                <input
+                  class="search-input"
+                  id="reader-search"
+                  type="search"
+                  placeholder="在当前文档中查找主题或关键词"
+                />
+                <label class="upload-label" for="reader-upload">
+                  导入 Markdown
+                  <input id="reader-upload" type="file" accept=".md,text/markdown,text/plain" />
+                </label>
+              </div>
+            </div>
+
             <div class="viewer-toolbar">
               <div class="tab-row" id="reader-tabs"></div>
             </div>
+
             <div class="viewer-surface">
-              <div class="viewer-rich" id="reader-body"></div>
+              <div class="reader-layout">
+                <div class="viewer-rich" id="reader-body"></div>
+                <aside class="outline-panel">
+                  <h3>目录与检索</h3>
+                  <div class="outline-list" id="reader-outline"></div>
+                </aside>
+              </div>
             </div>
           </section>
         </section>

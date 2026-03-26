@@ -6,7 +6,7 @@
     <title>AI足球教练项目 | 李睿鉴</title>
     <meta
       name="description"
-      content="CoachMind AI 足球教练项目公开页，提供研究报告与项目文档的在线阅读体验。"
+      content="CoachMind AI 公开演示台。访客可以直接输入足球训练、战术和部署问题，体验基于项目报告的教练辅助工作流。"
     />
     <meta name="theme-color" content="#183049" />
     <link rel="stylesheet" href="../project-shell.css" />
@@ -22,42 +22,89 @@
 
         <nav class="project-nav" aria-label="页面导航">
           <a href="../../index.html">首页</a>
-          <a href="#documents">项目文档</a>
+          <a href="#assistant">演示台</a>
+          <a href="#reports">报告库</a>
           <a href="../../hackathon.html">AI+体育</a>
         </nav>
       </header>
 
       <main>
-        <section class="project-hero">
+        <section class="project-hero compact">
           <div class="hero-copy">
             <p class="eyebrow">CoachMind AI</p>
             <h1>AI足球教练项目</h1>
-            <p class="hero-lead">面向足球训练、战术分析与教练决策的智能辅助项目。</p>
+            <p class="hero-lead">面向训练、战术分析与教练决策的公开演示台。</p>
             <p class="hero-summary">
-              这一页面汇集 CoachMind AI 当前公开可读的研究报告与项目文档。访客可以直接在线阅读核心技术报告、项目建议书与开发手册，快速了解项目的研究逻辑与产品路线。
+              这里不是项目介绍页。访客可以直接围绕比赛复盘、训练设计、战术提问和现场部署提出问题，页面会从 CoachMind 当前公开报告中提取依据，生成一轮可浏览的演示结果。
             </p>
-            <div class="hero-actions">
-              <a class="action-link" href="#documents">开始阅读</a>
-              <a class="ghost-link" href="../../index.html#entries">返回全部入口</a>
-            </div>
-            <div class="project-metrics" id="coachmind-metrics"></div>
           </div>
 
           <aside class="hero-side">
-            <h2>页面内容</h2>
+            <h2>当前可体验</h2>
             <ul class="meta-list">
-              <li>理论研究报告在线阅读</li>
-              <li>项目建议书与开发手册查看</li>
-              <li>最新文档会随主站同步更新</li>
+              <li>基于公开报告的教练问答演示</li>
+              <li>训练、战术与部署场景切换</li>
+              <li>报告库在线阅读与交叉查看</li>
             </ul>
           </aside>
         </section>
 
-        <section class="workspace" id="documents">
+        <section class="demo-stage" id="assistant">
+          <div class="panel-shell">
+            <div class="panel-header">
+              <h2 class="panel-title">CoachMind 演示台</h2>
+              <p class="panel-desc">
+                输入一个问题，查看 CoachMind 如何从项目公开报告中组织依据并形成教练辅助建议。
+              </p>
+            </div>
+
+            <div class="assistant-layout">
+              <aside class="control-panel">
+                <div class="control-stack">
+                  <form class="query-form" id="coachmind-query-form">
+                    <label for="coachmind-query" class="panel-desc">输入训练、比赛或部署问题</label>
+                    <textarea
+                      class="query-input"
+                      id="coachmind-query"
+                      rows="4"
+                      placeholder="例如：如果一支青少年球队要先做赛后复盘，CoachMind 的演示流程应该怎么开始？"
+                    ></textarea>
+                    <button class="query-submit" type="submit">生成演示建议</button>
+                  </form>
+
+                  <div>
+                    <p class="panel-desc">快速体验</p>
+                    <div class="prompt-grid inline" id="coachmind-prompts"></div>
+                  </div>
+
+                  <div class="project-metrics" id="coachmind-metrics"></div>
+                </div>
+              </aside>
+
+              <section class="response-panel">
+                <div class="response-stack">
+                  <div>
+                    <h2 class="response-title" id="coachmind-response-title">加载中</h2>
+                    <p class="viewer-meta" id="coachmind-response-meta"></p>
+                  </div>
+
+                  <div class="response-surface" id="coachmind-response"></div>
+
+                  <div>
+                    <h3>相关依据</h3>
+                    <div class="source-grid cols-2" id="coachmind-sources"></div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="workspace library-stage" id="reports">
           <aside class="list-panel">
             <div class="panel-header">
-              <h2 class="panel-title">文档目录</h2>
-              <p class="panel-desc">按文档类型筛选并选择要阅读的内容。</p>
+              <h2 class="panel-title">公开报告库</h2>
+              <p class="panel-desc">选择报告后，可直接阅读全文并与演示结果联动查看。</p>
             </div>
             <div class="filter-row" id="coachmind-filters"></div>
             <div class="item-list" id="coachmind-list"></div>
@@ -84,7 +131,7 @@
       </main>
 
       <footer class="page-footer">
-        <p>公开页内容来自 `projects/coachmind-ai` 的同步数据与文档。</p>
+        <p>公开演示与报告内容来自 `projects/coachmind-ai` 的同步数据与文档。</p>
       </footer>
     </div>
 

@@ -133,6 +133,10 @@ def source_key_from_path(source_path: str) -> str:
     return PureWindowsPath(source_path).name
 
 
+def normalize_source_key(value: str) -> str:
+    return value.replace("\\", "/").lower()
+
+
 def sync_coachmind() -> None:
     source_docs = COACHMIND_ROOT / "website" / "public" / "docs"
     dest_root = ensure_dir(PROJECTS_ROOT / "coachmind-ai")
@@ -398,27 +402,49 @@ def sync_markdown_reader() -> None:
     dest_root = ensure_dir(PROJECTS_ROOT / "markdown-reader-cp")
     docs_root = MARKDOWN_READER_ROOT / "data" / "docs"
     outputs_root = MARKDOWN_READER_ROOT / "data" / "outputs"
+    visualization_root = outputs_root / "visualization"
+    dest_visualization_root = dest_root / "visualizations"
 
     analysis_map: dict[str, dict[str, Any]] = {}
     for file_path in sorted((outputs_root / "analysis").glob("*.json")):
         data = json.loads(read_text(file_path))
-        key = source_key_from_path(str(data.get("sourcePath") or ""))
+        key = normalize_source_key(source_key_from_path(str(data.get("sourcePath") or "")))
         if key:
             analysis_map.setdefault(key, data)
 
     translation_map: dict[str, dict[str, Any]] = {}
     for file_path in sorted((outputs_root / "translation").glob("*.json")):
         data = json.loads(read_text(file_path))
-        key = source_key_from_path(str(data.get("sourcePath") or ""))
+        key = normalize_source_key(source_key_from_path(str(data.get("sourcePath") or "")))
         if key:
             translation_map.setdefault(key, data)
 
     critical_map: dict[str, dict[str, Any]] = {}
     for file_path in sorted((outputs_root / "critical-reading").glob("*.json")):
         data = json.loads(read_text(file_path))
-        key = source_key_from_path(str(data.get("sourcePath") or ""))
+        key = normalize_source_key(source_key_from_path(str(data.get("sourcePath") or "")))
         if key:
             critical_map.setdefault(key, data)
+
+    visualization_map: dict[str, Path] = {}
+    if visualization_root.exists():
+        for dir_path in sorted(visualization_root.iterdir()):
+            if not dir_path.is_dir():
+                continue
+            manifest_path = dir_path / "manifest.json"
+            if not manifest_path.exists():
+                continue
+            try:
+                data = json.loads(read_text(manifest_path))
+            except json.JSONDecodeError:
+                continue
+            key = normalize_source_key(source_key_from_path(str(data.get("sourcePath") or "")))
+            if key:
+                visualization_map.setdefault(key, dir_path)
+
+    if dest_visualization_root.exists():
+        shutil.rmtree(dest_visualization_root)
+    ensure_dir(dest_visualization_root)
 
     selected_docs: list[Path] = []
     selected_docs.extend(sorted((docs_root / "article").rglob("*.md")))
@@ -429,10 +455,19 @@ def sync_markdown_reader() -> None:
     totals = Counter()
     for file_path in selected_docs:
         relative = file_path.relative_to(docs_root).as_posix()
+        relative_key = normalize_source_key(relative)
         content = read_text(file_path)
-        analysis_data = analysis_map.get(relative)
-        translation_data = translation_map.get(relative)
-        critical_data = critical_map.get(relative)
+        analysis_data = analysis_map.get(relative_key)
+        translation_data = translation_map.get(relative_key)
+        critical_data = critical_map.get(relative_key)
+        visualization_dir = visualization_map.get(relative_key)
+
+        visualization_href = ""
+        if visualization_dir:
+            safe_name = relative.replace("/", "__").replace(".", "-")
+            target_dir = dest_visualization_root / safe_name
+            shutil.copytree(visualization_dir, target_dir, dirs_exist_ok=True)
+            visualization_href = f"./visualizations/{safe_name}/index.html"
 
         critical_groups = []
         if critical_data:
@@ -466,10 +501,12 @@ def sync_markdown_reader() -> None:
                 "analysis": block_markdown(analysis_data.get("blocks", {})) if analysis_data else "",
                 "translation": block_markdown(translation_data.get("blocks", {})) if translation_data else "",
                 "critical": critical_groups,
+                "visualizationHref": visualization_href,
                 "availableTabs": {
                     "analysis": bool(analysis_data),
                     "translation": bool(translation_data),
                     "critical": bool(critical_groups),
+                    "visualization": bool(visualization_href),
                 },
             }
         )
@@ -479,6 +516,7 @@ def sync_markdown_reader() -> None:
                 "analysis": int(bool(analysis_data)),
                 "translation": int(bool(translation_data)),
                 "critical": int(bool(critical_groups)),
+                "visualization": int(bool(visualization_href)),
             }
         )
 
@@ -502,6 +540,10 @@ def html_title(path: Path, fallback: str) -> str:
 
 def sync_youth_research() -> None:
     dest_root = ensure_dir(PROJECTS_ROOT / "youth-football-research")
+    assets_root = dest_root / "assets"
+    if assets_root.exists():
+        shutil.rmtree(assets_root)
+    ensure_dir(assets_root)
     pages = [
         {
             "source": YOUTH_RESEARCH_ROOT / "plan" / "21day-plan.html",
@@ -527,9 +569,34 @@ def sync_youth_research() -> None:
             }
         )
 
+    charts = []
+    chart_dirs = [
+        ("D2", YOUTH_RESEARCH_ROOT / "outputs" / "day02"),
+        ("D3", YOUTH_RESEARCH_ROOT / "outputs" / "day03"),
+        ("D4", YOUTH_RESEARCH_ROOT / "outputs" / "day04"),
+    ]
+    for group, source_dir in chart_dirs:
+        if not source_dir.exists():
+            continue
+        target_dir = ensure_dir(assets_root / group.lower())
+        for image_path in sorted(source_dir.glob("*.png")):
+            target_path = target_dir / image_path.name
+            shutil.copy2(image_path, target_path)
+            charts.append(
+                {
+                    "title": image_path.stem.replace("_", " · "),
+                    "summary": f"{group} 阶段研究图表，可直接查看结构、比较关系与关键证据。",
+                    "href": f"./assets/{group.lower()}/{image_path.name}",
+                    "group": group,
+                    "updatedAt": iso_mtime(image_path),
+                    "type": "image",
+                }
+            )
+
     payload = {
         "updatedAt": datetime.now().isoformat(timespec="seconds"),
         "items": items,
+        "charts": charts,
     }
     (dest_root / "data.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2),

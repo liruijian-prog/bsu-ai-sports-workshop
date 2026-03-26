@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=0.2" name="viewport"/>
+<title>KNOWLEDGE ACTIVATION: AI Skills as the Institutional Knowledge Primitive for Agentic Software Development</title>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<link href="css/code-highlight.css" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet"/>
+<link href="css/extension.css" rel="stylesheet"/>
+<style>
+        :root {
+            --slide-width: 1280px;
+            --slide-height: 720px;
+        }
+    </style>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" rel="stylesheet"/>
+<script crossorigin="anonymous" defer="" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script crossorigin="anonymous" defer="" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" onload="renderMathInElement(document.body);" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h1>KNOWLEDGE ACTIVATION: AI Skills as the Institutional Knowledge Primitive for Agentic Software Development</h1>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Enterprise software organizations accumulate critical institutional knowledge—yet it remains trapped in formats designed for human interpretation. This paper introduces <em>Knowledge Activation</em>, a framework that specializes AI Skills into structured, governance-aware <em>Atomic Knowledge Units</em> (AKUs) for institutional knowledge delivery to autonomous agents and human engineers alike.</p>
+</div>
+</div>
+<div class="slide-number">
+<p>1</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Agentic Shift in Software Engineering</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>AI in software engineering is transforming from passive assistance to autonomous agency:</p>
+<ul>
+<li>SWE-bench demonstrated agents resolving real-world GitHub issues</li>
+<li>SWE-agent introduced agent-computer interfaces for repository interaction</li>
+<li>Platforms like OpenHands and frameworks like AutoGen and MetaGPT mature rapidly</li>
+<li>GitHub data confirms coding agents moving from prototypes to production tools</li>
+<li>Chain-of-thought, ReAct, Toolformer, and Reflexion enabled agents as autonomous actors</li>
+<li>Hassan et al. formalize this as <em>agentic software engineering</em></li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>2</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Institutional Knowledge Problem</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Open-source benchmarks diverge fundamentally from enterprise conditions:</p>
+<ul>
+<li>Open-source: codebases are self-documenting, guidelines explicit, scope bounded</li>
+<li>Enterprise: decades of architectural decisions, deployment procedures, compliance policies</li>
+<li>Much effective knowledge is <em>tacit</em>—embedded in practices, not documents (Polanyi)</li>
+<li><em>Absorptive capacity</em> (Cohen &amp; Levinthal): newcomers face structural deficits</li>
+<li><em>Knowledge stickiness</em> (Szulanski): causal ambiguity impedes internal transfer</li>
+<li>Onboarding studies confirm: the core barrier is tacit knowledge transfer, not technical setup</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>3</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Institutional Impedance Mismatch</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>A structural disconnect between what knowledge consumers bring and what organizations require:</p>
+<ul>
+<li>Agents act on generic training knowledge, not organization-specific patterns</li>
+<li>Initial attempts violate conventions → corrections → more unknown constraints → further corrections</li>
+<li>Each iteration consumes context tokens with failed attempts and error descriptions</li>
+<li>This drives <em>context rot</em>—measurable degradation as the window fills with irrelevant content</li>
+<li>The mismatch creates a failure cascade eroding effective reasoning capacity</li>
+<li>The parallel to human onboarding is structural, not metaphorical</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>4</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Inadequacy of Current Approaches</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Three broad categories, none offering a principled solution:</p>
+<ul>
+<li><strong>RAG</strong>: treats knowledge as undifferentiated text fragments; no operational relevance</li>
+<li><strong>Prompt engineering / system instructions</strong>: brittle, resist versioning, lack composability; context files can <em>reduce</em> task success rates while increasing cost</li>
+<li><strong>Tool-use frameworks (MCP, APIs)</strong>: specify <em>what tools exist</em> but not <em>when/why to use them</em> or <em>what governance applies</em></li>
+<li><strong>Task decomposition</strong>: assumes agent already possesses needed knowledge; no knowledge architecture layer</li>
+<li>The gap: not <em>whether</em> to deliver knowledge, but <em>how to architect it</em></li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>5</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Thesis and Three Contributions</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<blockquote>
+<p>The bottleneck to effective agentic software development is not model capability but knowledge architecture.</p>
+</blockquote>
+<ol>
+<li><strong>Problem formalization</strong>: Context Window Economy, Institutional Impedance Mismatch, institutional knowledge tax</li>
+<li><strong>Knowledge architecture</strong>: Knowledge Activation pipeline producing AKUs with a seven-component schema</li>
+<li><strong>Deployment &amp; governance model</strong>: Agent Knowledge Architecture (3 layers), AI-Generated Golden Paths, validators, knowledge commons</li>
+</ol>
+</div>
+</div>
+<div class="slide-number">
+<p>6</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Context Window Economy</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>LLM agents navigate from <em>within</em>—with local visibility bounded by the context window:</p>
+<ul>
+<li>Traditional workflow automation: bird's-eye view, complete state space pre-modeled</li>
+<li>LLM agents: sequential generation, each step conditioned on what preceded it</li>
+<li>Plans are resources for situated action, not deterministic programs (Suchman)</li>
+<li>The agent doesn't need a map of the entire organization—it needs <em>locally sufficient</em> artifacts</li>
+<li>Knowledge management shifts from a curation problem to an <em>allocation</em> problem</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>7</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Three Binding Constraints</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>The Context Window Economy is governed by three interacting constraints:</p>
+<ul>
+<li><strong>Token Budget</strong>: hard limit on context length; zero-sum selection problem</li>
+<li><strong>Attention Decay</strong>: "lost in the middle" effect—interior positions attended less reliably; effective capacity &lt; nominal capacity</li>
+<li><strong>Latency Cost</strong>: inference time and financial cost scale with context length; marginal tokens aggregate into significant expenditure</li>
+<li>Together they create an economic framing: maximize value per token within hard capacity</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>8</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Human vs. Agent Knowledge Consumption</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Human Developer</th>
+<th>LLM-Based Agent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access model</td>
+<td>Iterative search and browse</td>
+<td>Single-shot context injection</td>
+</tr>
+<tr>
+<td>Capacity</td>
+<td>Effectively unbounded</td>
+<td>Fixed token window</td>
+</tr>
+<tr>
+<td>Attention</td>
+<td>Selective, self-directed</td>
+<td>Positional, architecture-dependent</td>
+</tr>
+<tr>
+<td>Persistence</td>
+<td>Long-term memory across sessions</td>
+<td>Stateless by default</td>
+</tr>
+<tr>
+<td>Format tolerance</td>
+<td>Handles ambiguity</td>
+<td>Sensitive to token waste</td>
+</tr>
+<tr>
+<td>Feedback loop</td>
+<td>Can ask clarifying questions</td>
+<td>Must act on context as given</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Knowledge artifacts designed for humans are <em>systematically misaligned</em> with agent requirements.</p>
+</blockquote>
+</div>
+</div>
+<div class="slide-number">
+<p>9</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Context Rot and the Productivity Paradox</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>When agents lack institutional knowledge, a vicious cycle emerges:</p>
+<ul>
+<li>Agent guesses from training → violates convention → human corrects → agent retries → repeats</li>
+<li>Each cycle fills the context window with detritus of failed interactions</li>
+<li><em>Context rot</em>: progressive degradation of LLM performance as window fills</li>
+<li>Even planning LLMs fail at the gap between trained heuristics and organizational particularity</li>
+<li><strong>Productivity paradox</strong>: agents deployed without institutional knowledge <em>degrade</em> rather than improve productivity</li>
+<li>DORA 2025: 90% AI adoption, yet no clear link to reduced developer friction or burnout</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>10</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Institutional Knowledge Tax</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>The sociotechnical dimension amplifies organizational impact:</p>
+<ul>
+<li>Senior engineers—those with deepest expertise—must supply context in real time through corrections</li>
+<li>Atlassian 2025: developers identify finding information as a leading productivity loss <em>despite</em> AI time savings</li>
+<li>40% of developers cite "trouble finding context" as top pain point</li>
+<li>METR RCT: experienced developers ~19% slower with AI tools; fewer than half of suggestions accepted</li>
+<li>The tax affects <em>all</em> knowledge consumers: agents, new engineers, cross-team contributors</li>
+<li>When tax exceeds perceived benefit, senior engineers withdraw from agentic workflows</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>11</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Knowledge Activation: Retrieval vs. Activation</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>A fundamental paradigm shift in how knowledge reaches agents:</p>
+<ul>
+<li><strong>Retrieval (RAG)</strong>: returns <em>content for reading</em>—informational passages for interpretation</li>
+<li><strong>Activation</strong>: delivers <em>guidance for acting</em>—complete action specifications</li>
+<li>Activation includes: what to do, how, which tools, what constraints, what next</li>
+<li>Analogy: handing someone a reference manual vs. a standard operating procedure with a pre-configured workstation</li>
+<li>Even advanced agentic RAG improves <em>processing</em> but content remains informational</li>
+<li>Knowledge Activation addresses the <em>structure and governance of the artifact itself</em></li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>12</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Three-Stage Pipeline</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Knowledge Activation transforms latent knowledge through three stages:</p>
+<ol>
+<li><strong>Codification</strong>: capture from experts, runbooks, APIs, policies into structured form oriented toward machine consumption</li>
+<li><strong>Compression</strong>: distill into Atomic Knowledge Units maximizing knowledge density—structural compression, not mere summarization</li>
+<li><strong>Injection</strong>: deliver the right AKU to the right agent at the right moment with precision, timeliness, and composability</li>
+<li>Maps to Agent Skills standard's progressive disclosure: discovery → activation → execution</li>
+<li>Builds on Nonaka &amp; Takeuchi's SECI model as <em>algorithmic externalization</em></li>
+</ol>
+</div>
+</div>
+<div class="slide-number">
+<p>13</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Knowledge Density as Optimization Target</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>$$\rho(k,\tau) = \frac{v(k,\tau)}{c(k)}$$</p>
+<ul>
+<li>\(v(k,\tau)\): value of artifact \(k\) for task \(\tau\); \(c(k)\): token cost</li>
+<li>A narrative runbook (~2,000 tokens) vs. equivalent AKU (~300 tokens) → ~6–7× density gain</li>
+<li>Maximizing \(\rho\) unifies all three pipeline stages</li>
+<li>Empirical support: 206% quality improvement with codified expert domain knowledge (Ulan uulu et al.)</li>
+<li>Agent Skills standard recommends &lt;5,000 tokens per skill—compact, high-density artifacts outperform verbose documentation</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>14</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Atomic Knowledge Units (AKUs)</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Definition: <em>An AI Skill specialized for institutional knowledge delivery—the minimal self-contained bundle enabling one coherent action.</em></p>
+<p>Specializes the Agent Skills primitive along four dimensions:</p>
+<ul>
+<li><strong>Governance constraints</strong>: permission boundaries, compliance requirements</li>
+<li><strong>Continuation paths</strong>: connect isolated skills into navigable workflows</li>
+<li><strong>Validators</strong>: deterministic pre/post/invariant scripts for automated governance</li>
+<li><strong>Organizational metadata</strong>: team ownership, service tier, SLA, environment, cost center</li>
+<li><em>Atomic</em>: removing any component degrades correctness; addresses exactly one action</li>
+<li>Analogous to an instruction in a processor's ISA—invocable independently, composable</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>15</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Seven-Component Skill Schema</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intent Declaration</td>
+<td>What it accomplishes; trigger conditions for activation</td>
+</tr>
+<tr>
+<td>Procedural Knowledge</td>
+<td>Step-by-step guidance, constraints, patterns, anti-patterns</td>
+</tr>
+<tr>
+<td>Tool Bindings</td>
+<td>Which tools/APIs to invoke and how</td>
+</tr>
+<tr>
+<td>Organizational Metadata</td>
+<td>Team ownership, service catalog, environment context</td>
+</tr>
+<tr>
+<td>Governance Constraints</td>
+<td>Permission boundaries, approval workflows, blast radius</td>
+</tr>
+<tr>
+<td>Continuation Paths</td>
+<td>Success/failure/escalation links to related skills</td>
+</tr>
+<tr>
+<td>Validators</td>
+<td>Deterministic scripts for automated governance verification</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="slide-number">
+<p>16</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Design Principles for Effective Skills</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Five principles derived from Context Window Economy constraints:</p>
+<ul>
+<li><strong>Atomicity</strong>: exactly one coherent action per skill; independently testable and versionable</li>
+<li><strong>Context Efficiency</strong>: every token earns its place; maximize knowledge density \(\rho\)</li>
+<li><strong>Trigger Precision</strong>: avoid false-positive injection—wrong context = double cost</li>
+<li><strong>Organizational Grounding</strong>: carry the "where" and "who" alongside the "how"</li>
+<li><strong>Governance by Design</strong>: constraints embedded within the skill, portable and composable</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>17</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Validators: Deterministic Governance Scripts</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Validators transform governance from declarative annotation into executable guarantee:</p>
+<ul>
+<li><strong>Pre-execution</strong>: verify preconditions (change window open, permissions held, CI passed)</li>
+<li><strong>Post-execution</strong>: verify outcomes (service healthy, no policy violations, rollback ready)</li>
+<li><strong>Invariant</strong>: monitor continuously (blast radius within limits, budget respected)</li>
+<li>Implemented as code—shell scripts, Python, Open Policy Agent—version-controlled and independently testable</li>
+<li>Compose like type safety: skill chains inherit union of all constituent validators</li>
+<li>Shift governance teams from <em>governance-as-approval</em> to <em>governance-as-code</em></li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>18</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Example: Deploy Microservice Skill</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p><strong>Intent</strong>: Deploy a microservice to production K8s cluster</p>
+<p><strong>Procedure</strong> (abbreviated):
+1. Verify service catalog registration and deployment permission
+2. Confirm CI checks passed (unit, integration, security scan)
+3. Check change management calendar; abort if outside window
+4. Canary deployment to 5% traffic
+5. Monitor error rate/latency 10 min; exceed threshold → invoke Rollback skill
+6. Promote to 100% on success
+7. Notify owning team</p>
+<p><strong>Anti-patterns</strong>: No direct 100% deploy; no skipping canary
+<strong>Governance</strong>: Deployer role required; Tier-1 needs human approval; weekdays 09–16 UTC
+<strong>Validators</strong>: <code>pre:check-change-window.sh</code>, <code>post:health-check.sh</code>, <code>invariant:blast-radius-monitor.sh</code>
+<strong>Continuations</strong>: Success → Post-Deployment Verification; Failure → Rollback; Denied → escalate</p>
+</div>
+</div>
+<div class="slide-number">
+<p>19</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Agent Knowledge Architecture: Three Layers</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<div class="mermaid">graph BT
+    AP[Activation Policy&lt;br/&gt;Which skills for which agents under which conditions]
+    KT[Knowledge Topology&lt;br/&gt;Routing graph connecting skills into navigable network]
+    AR[AKU Registry&lt;br/&gt;Queryable catalog of all Atomic Knowledge Units]
+    AP --&gt; KT --&gt; AR</div>
+<ul>
+<li><strong>AKU Registry</strong>: programmatic catalog searchable by intent, domain, capability—transforms knowledge surface into a queryable knowledge API</li>
+<li><strong>Knowledge Topology</strong>: answers "given where the agent is, what comes next?"—dependencies, sequences, alternatives as graph edges; routing intelligence distributed across skills</li>
+<li><strong>Activation Policy</strong>: dynamic rules based on agent identity, environment, incident status, time of day</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>20</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>From Golden Paths to AI-Generated Golden Paths</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Deterministic workflow templates suffer four structural limitations:</p>
+<ul>
+<li>Resource-intensive to compose (combinatorial authoring burden)</li>
+<li>Brittle under change (API changes, reorgs break templates)</li>
+<li>Task-specific, not flexible (each variation demands a new template)</li>
+<li>Deterministic in a probabilistic world (no adaptation to context)</li>
+</ul>
+<p><strong>AI-Generated Golden Path</strong>: a workflow <em>dynamically composed</em> by an agent at runtime by traversing the Knowledge Topology—unique to each task, service, and moment, yet grounded in codified best practices.</p>
+<ul>
+<li><strong>Paved lanes</strong>: pre-composed skill chains for critical workflows, reducing planning burden</li>
+<li>Platform team evolves from authoring brittle templates to curating the skill library</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>21</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Governance as Intrinsic AKU Property</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Governance embedded directly into knowledge units across five dimensions:</p>
+<ul>
+<li><strong>Permission scoping</strong>: blast radius declared per skill; least privilege per invocation</li>
+<li><strong>Approval workflows</strong>: encoded as metadata—synchronous blocking, async deferral, conditional bypass</li>
+<li><strong>Audit trail integration</strong>: logging requirements travel with the skill; granularity matches risk profile</li>
+<li><strong>Compliance annotations</strong>: GDPR, SOX tags as machine-readable policy labels enforced automatically</li>
+<li><strong>Validators</strong>: deterministic governance-as-code replacing human approval bottlenecks</li>
+<li>Only 14.5% of current agent context files specify governance constraints—this gap is addressed directly</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>22</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Governance Gradient</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>A continuous spectrum from fully autonomous to fully human-controlled:</p>
+<ul>
+<li><strong>Autonomous end</strong>: low-risk skills (formatting, docs, test scaffolding)—narrow scope, reversible failures</li>
+<li><strong>Human-in-the-loop end</strong>: irreversible production changes, financial transactions, sensitive data</li>
+<li><strong>Intermediate</strong>: notification-only, business-hours autonomy, role-gated execution</li>
+<li>Position determined by: permission scope, environment, data classification, tier, execution history</li>
+<li>Skills <em>migrate</em> along the gradient as validator coverage grows and successful track records accumulate</li>
+<li>Validator coverage is the operational mechanism: complete → autonomous; partial → hybrid; none → full oversight</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>23</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Implications for Practice</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>For multiple communities of practice:</p>
+<ul>
+<li><strong>Platform engineering</strong>: new product surface—AKUs as curated, agent-executable knowledge units; evolve from template authors to topology stewards</li>
+<li><strong>Knowledge management</strong>: paradigm shift from document-centric to action-centric; introduces <em>executable knowledge</em> as a third category beyond tacit/explicit</li>
+<li><strong>AI agent design</strong>: curated governance-aware knowledge &gt; raw retrieval; reasoning burden shifts from runtime to knowledge authoring</li>
+<li><strong>Enterprise governance</strong>: governance shifts left—from runtime enforcement to knowledge-time specification</li>
+<li><strong>DevEx &amp; productivity</strong>: targets cognitive load (highest-leverage DevEx dimension); predicts compressed onboarding, reduced cross-codebase friction</li>
+<li><strong>Technology strategy</strong>: inherently LLM-agnostic; skills are durable, provider-independent assets</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>24</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Limitations</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Several limitations must be acknowledged:</p>
+<ul>
+<li><strong>Theoretical contribution</strong>: no empirical validation through controlled experiments or production deployments yet</li>
+<li><strong>Significant authoring investment</strong>: converting tacit knowledge requires effort from domain experts, platform engineers, governance specialists</li>
+<li><strong>Assumes capable tool-using agents</strong>: reliability in high-stakes enterprise scenarios remains active research</li>
+<li><strong>Validators assume codifiable governance</strong>: some decisions require human judgment that resists codification</li>
+<li><strong>Scoped to intra-organizational knowledge</strong>: cross-organizational sharing unaddressed</li>
+<li><strong>New security surface</strong>: skill registries become high-value targets if compromised</li>
+<li><strong>Knowledge staleness</strong>: technical detection of drift from practice remains an open problem</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>25</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Skill Library as Knowledge Commons</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Sustainable maintenance requires a complementary <em>social governance layer</em>:</p>
+<ul>
+<li>Technical governance (validators) ensures skills <em>execute</em> correctly</li>
+<li>Social governance (community of practice) ensures skills <em>remain accurate</em> as practices evolve</li>
+<li>Specification staleness is the primary failure mode at scale (Vasilopoulos)</li>
+<li>Skill library as a <em>knowledge commons</em> (Ostrom): non-rivalrous but subject to institutional decay</li>
+<li>InnerSource model: PR-based contributions, trusted committer review</li>
+<li>Platform team as <em>topology steward</em>, not sole author—those who discover drift are best positioned to fix it</li>
+<li>Institutional knowledge tax addressed at its source when practitioners codify their own expertise</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>26</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Conclusion</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<blockquote>
+<p>The bottleneck to effective agentic software development is not model capability but knowledge architecture.</p>
+</blockquote>
+<p>Three interconnected contributions:</p>
+<ol>
+<li><strong>Problem formalization</strong>: Context Window Economy, Institutional Impedance Mismatch, institutional knowledge tax</li>
+<li><strong>Knowledge architecture</strong>: Knowledge Activation pipeline → seven-component AKUs forming a navigable knowledge graph</li>
+<li><strong>Deployment &amp; governance</strong>: three-layer architecture, AI-Generated Golden Paths, governance-as-code, knowledge commons</li>
+</ol>
+<p>Organizations that architect institutional knowledge for the agentic era will outperform those investing solely in model capability. The integration of platform engineering, knowledge management, and developer experience is not speculative—it is an architectural necessity.</p>
+</div>
+</div>
+<div class="slide-number">
+<p>27</p>
+</div>
+</div>
+</div>
+</div>
+<script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        const colorScheme = getComputedStyle(document.documentElement).getPropertyValue('--colorscheme').trim();
+        var mermaid_theme = "default";
+        if (colorScheme === "dark") {
+            console.log("Using dark theme");
+            mermaid_theme = "dark";
+        }
+        mermaid.initialize({ startOnLoad: true, theme: mermaid_theme });
+    </script>
+<script src="js/main.js"></script>
+<script src="js/extension.js"></script>
+</body>
+</html>

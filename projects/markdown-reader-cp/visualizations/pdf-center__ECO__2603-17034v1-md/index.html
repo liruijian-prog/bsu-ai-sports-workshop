@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=0.2" name="viewport"/>
+<title>A Users' Guide to Uncovering Worker and Firm Effects: The ABC of AKM</title>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<link href="css/code-highlight.css" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet"/>
+<link href="css/extension.css" rel="stylesheet"/>
+<style>
+        :root {
+            --slide-width: 1280px;
+            --slide-height: 720px;
+        }
+    </style>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" rel="stylesheet"/>
+<script crossorigin="anonymous" defer="" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script crossorigin="anonymous" defer="" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" onload="renderMathInElement(document.body);" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h1>A Users' Guide to Uncovering Worker and Firm Effects: The ABC of AKM</h1>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>A practical introduction to the AKM methodology for decomposing wage dispersion into worker and firm components using linked employer-employee data. This guide covers the model, estimator, empirical findings, bias issues, and frontier extensions.</p>
+</div>
+</div>
+<div class="slide-number">
+<p>1</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Linked Employer-Employee Data</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li>Track the identity of workers <em>and</em> firms as workers move across employers</li>
+<li>Increasingly widely available despite initial confidentiality barriers</li>
+<li>Enable study of worker heterogeneity, firm heterogeneity, sorting, and wage dispersion</li>
+<li>Share a common structure that makes the AKM approach applicable across settings</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>2</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Core Insight of AKM</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li>Firm wage differences may reflect <em>firm pay policies</em> or <em>worker composition</em></li>
+<li>A high mean wage could mean the firm pays well (high \(\psi^j\)) or employs high-ability workers (high \(\alpha^i\))</li>
+<li>AKM uses job mobility to separately identify worker and firm components</li>
+<li>Once identified, these components quantify the roles of heterogeneity and sorting in wage dispersion</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>3</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The AKM Model: Key Components</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li><strong>Worker effect</strong> \(\alpha^i\): persistent, worker-specific determinant of earnings (e.g., ability, task speed)</li>
+<li><strong>Firm effect</strong> \(\psi^j\): firm-specific wage premium applying to <em>any</em> worker at that firm</li>
+<li>In logs, wages are <em>additively</em> separable: \(\alpha^i + \psi^j\)</li>
+<li>Holding the firm fixed, higher-\(\alpha^i\) workers earn proportionally more</li>
+<li>Holding the worker fixed, pay differences across firms equal \(\psi^1 - \psi^2\)</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>4</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>How Job Mobility Identifies the Components</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li>When a worker moves from firm 1 to firm 2, the wage change equals \(\psi^2 - \psi^1\)</li>
+<li>This differential is the <em>same for all workers</em> and <em>constant over time</em></li>
+<li>A worker moving to a lower-\(\psi^j\) firm experiences the same percentage drop as any other mover</li>
+<li>The wage gap between two workers is preserved across firms</li>
+<li>AKM leverages these patterns, extracted from linked data, to separately recover \(\alpha^i\) and \(\psi^j\)</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>5</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Econometric Model</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>$$Y_{it}(j) = X_{it}\beta + \alpha_i + \psi_j + U_{it}$$</p>
+<ul>
+<li>\(Y_{it}(j)\): potential wage of worker \(i\) at firm \(j\) in period \(t\)</li>
+<li>\(X_{it}\beta\): observed covariates (e.g., experience)</li>
+<li>\(U_{it}\): idiosyncratic shock</li>
+<li>Observed wage: \(Y_{it} = Y_{it}(j_{it})\) — only <em>one</em> firm observed per period</li>
+<li>Recovering potential wages in all firms is a formidable extrapolation problem, solved by AKM's structure</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>6</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Exogenous Mobility Assumption</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li>The model does <em>not</em> restrict how matches \((j_{it})\) relate to \(\alpha^i\) and \(\psi^j\) — sorting is allowed</li>
+<li>However, \(U_{it}\) must be <em>uncorrelated</em> with all worker–firm matches in the data</li>
+<li>Under this assumption, average wage differences of movers directly identify firm components</li>
+<li>The assumption has been debated and remains controversial</li>
+<li>Diagnostics and extensions will be discussed later</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>7</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The AKM Estimator: Scale of the Problem</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li>Typical datasets: hundreds of thousands or millions of workers <em>and</em> firms</li>
+<li>Same number of worker- and firm-specific parameters to estimate</li>
+<li>Initially challenging, but efficient algorithms are now well understood</li>
+<li>State-of-the-art package: <a href="https://tlamadon.github.io/pytwoway/">pytwoway</a></li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>8</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Connectivity and Identification</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li>Right-hand-side variables are <em>linearly dependent</em> — naive regression fails</li>
+<li><strong>Level normalization</strong>: set average \(\psi^j\) to zero (only \(\alpha^i + \psi^j\) is identified)</li>
+<li><strong>Connectivity</strong>: firm \(\psi^j\) is identified only within connected sets of the worker–firm graph</li>
+<li>A firm hiring/firing no one cannot be separated from its workers' \(\alpha^i\)</li>
+<li>Standard practice: focus on the largest connected set (most workers and moderate/large firms)</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>9</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Connected Set Algorithm</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ol>
+<li>Start by including one worker in the set</li>
+<li>Include all firms where that worker has been employed</li>
+<li>Include all workers employed at those firms</li>
+<li>Repeat until the set stops growing</li>
+<li>In many applications, the largest connected set contains most workers and firms</li>
+<li>Typically leaves out some small firms and their workers</li>
+</ol>
+</div>
+</div>
+<div class="slide-number">
+<p>10</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Zigzag Algorithm</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li>Instead of joint estimation, recover parameters <em>one at a time</em> iteratively:</li>
+<li>Given \(\psi^j\) and \(\beta\): estimate \(\alpha^i\) as worker-specific averages</li>
+<li>Given \(\alpha^i\) and \(\beta\): estimate \(\psi^j\) as firm-specific averages</li>
+<li>Given \(\alpha^i\) and \(\psi^j\): estimate \(\beta\) by standard OLS</li>
+<li>Iterate until convergence — fast and memory-efficient (Guimaraes and Portugal, 2010)</li>
+<li>Exploits sparsity: workers visit only a handful of firms</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>11</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Variance Decomposition</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>$$\operatorname{Var}(Y_{it} - X_{it}\beta) = \operatorname{Var}(\alpha_i) + \operatorname{Var}(\psi_{j_{it}}) + 2\operatorname{Cov}(\alpha_i, \psi_{j_{it}}) + \operatorname{Var}(\varepsilon_{it})$$</p>
+<ul>
+<li><strong>Worker variance</strong>: dispersion in permanent worker ability</li>
+<li><strong>Firm variance</strong>: dispersion in firm pay policies (zero if all firms pay identically)</li>
+<li><strong>Covariance</strong>: measures sorting — positive if high-\(\alpha^i\) workers match with high-\(\psi^j\) firms</li>
+<li><strong>Idiosyncratic variance</strong>: transitory shocks</li>
+<li>If workers moved randomly, covariance would be zero</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>12</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Cross-Sectional Findings: The US</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Song et al. (2019), US 2007–2013, log annual earnings:</p>
+<ul>
+<li>Between-firm variance: 39% of total variance</li>
+<li>AKM decomposition sharpens the picture:</li>
+<li>Worker variance: <strong>59%</strong></li>
+<li>Firm variance: <strong>10%</strong></li>
+<li>Covariance: <strong>13%</strong></li>
+<li>Residual: 18%</li>
+<li>Firm variance and covariance arise <em>solely</em> from between-firm dispersion</li>
+<li>Worker variance reflects both within- and between-firm dispersion</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>13</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Changes Over Time: Germany</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Card et al. (2013), German daily wages, 1985–1991 vs. 2002–2009:</p>
+<ul>
+<li>Total variance increased by <strong>11.1 percentage points</strong></li>
+<li>Decomposition of the increase:</li>
+<li>Worker variance: <strong>39%</strong></li>
+<li>Firm variance: <strong>24%</strong></li>
+<li>Covariance: <strong>34%</strong></li>
+<li>Residual: small</li>
+<li>Song et al. (2019) find a similar pattern for the US (1978–2013), with a substantial covariance increase</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>14</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Applications Beyond Labor Economics</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li><strong>Health economics</strong>: Finkelstein, Gentzkow, and Williams (2016) — patient migration across regions separates patient-specific from place-specific drivers of health care utilization; both matter, covariance is positive</li>
+<li><strong>Corporate finance</strong>: Amiti and Weinstein (2018) — separate bank-specific supply shocks from firm-specific demand shocks using matched lending data; bank shocks significantly affect aggregate investment</li>
+<li>Other domains: education, international trade, and more</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>15</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>The Bias Problem: Sources of Noise</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li>Estimates of \(\alpha^i\) and \(\psi^j\) are contaminated by <em>substantial noise</em></li>
+<li>Firm differences are identified by wages of movers — the <em>number of movers is key</em></li>
+<li>Weakly connected firms (few movers) yield especially noisy estimates</li>
+<li>Noise does <em>not</em> average out for variances and covariances → <strong>bias</strong></li>
+<li>Bias can be substantial even with millions of workers and firms</li>
+<li>Direction: firm variance <em>overstated</em>, covariance <em>understated</em></li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>16</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Diagnosing Bias: Sub-Sampling Plots</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Andrews et al. (2012) sub-sampling experiment:</p>
+<ol>
+<li>Start with large, well-connected firms</li>
+<li>Randomly remove job movers within each firm</li>
+<li>Plot the quantity of interest vs. average movers per firm</li>
+</ol>
+<p><strong>Findings (German data)</strong>:
+- In smaller, less connected samples: correlation is low or negative
+- In larger, more connected samples: correlation is positive and large
+- Clear evidence that AKM-based covariance/correlation estimates are <em>biased downward</em></p>
+</div>
+</div>
+<div class="slide-number">
+<p>17</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Bias Correction Methods</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p><strong>Fixed-effects methods</strong>:
+- Exploit linear regression algebra to construct bias estimates
+- Andrews et al. (2008): trace-based correction assuming common shock variance
+- Kline, Saggio, and Sølvsten (2020): extension allowing unrestricted variance heterogeneity</p>
+<p><strong>Correlated random-effects methods</strong>:
+- Model the distribution of \(\alpha^i\) and \(\psi^j\); estimate distribution parameters
+- Bayesian interpretation: prior → posterior (Empirical Bayes)
+- Woodcock (2015); Bonhomme et al. (2023); Cheng, Ho, and Schorfheide (2025)
+- Both available in <a href="https://tlamadon.github.io/pytwoway/">pytwoway</a></p>
+</div>
+</div>
+<div class="slide-number">
+<p>18</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Impact of Bias Correction: Cross-Country Evidence</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>Bonhomme et al. (2023), five countries, 6-year panels:</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Uncorrected AKM</th>
+<th>Bias-Corrected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Firm variance share</td>
+<td>12%–24%</td>
+<td>5%–17%</td>
+</tr>
+<tr>
+<td>Covariance share</td>
+<td>negative in 3/5 countries</td>
+<td>4%–13% (all positive)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Confirms: without correction, firm variance is <em>overstated</em>, covariance is <em>understated</em></li>
+<li>Correction can materially change conclusions about sorting and firm pay policies</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>19</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Limitations of AKM Assumptions</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<p>AKM relies on two key assumptions:</p>
+<ul>
+<li><strong>Additivity</strong>: \(\alpha^i + \psi^j\) — rules out interactions \(\alpha^i \times \psi^j\)</li>
+<li>At odds with Becker (1973) sorting theory where complementarities drive matching</li>
+<li><strong>Exogenous mobility</strong>: \(U_{it}\) unrelated to matching process</li>
+<li>Cannot account for leaving due to negative wage shocks</li>
+<li>No effect of past firms on current wage (rules out firm-specific human capital)</li>
+<li>Inconsistent with search models with wage posting (Postel-Vinay and Robin, 2002)</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>20</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Empirical Violations of AKM Assumptions</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li>Card et al. (2013) event study: additivity may be a reasonable approximation; no pre-mobility "dip" alleviates exogenous mobility concerns</li>
+<li><strong>But</strong>: different groups (men/women, racial groups) are affected by <em>different</em> firm effects (Card, Cardoso, and Kline 2016; Gerard et al. 2021)</li>
+<li>\(\psi^j\) is <em>not</em> the same for all workers — violates a core AKM assumption</li>
+<li>The static nature of AKM is difficult to reconcile with dynamic models of job mobility</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>21</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Extensions and Structural Models</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li><strong>Bonhomme, Lamadon, and Manresa (2019)</strong>: interaction effects, dynamic past-firm effects, endogenous mobility — log-additive approximates variance well, but interactions and dynamics are present</li>
+<li><strong>Abowd, McKinney, and Schmutte (2019)</strong>: endogenous mobility via past shocks influencing leave decisions</li>
+<li><strong>Structural models</strong> with two-sided heterogeneity: Hagedorn et al. (2017), Sorkin (2018), Lamadon et al. (2022), Lentz et al. (2023), Lamadon et al. (2024), Borovičková and Shimer (2024)</li>
+<li><strong>Beyond labor</strong>: spillovers/team production, manager-task complementarities (Crippa 2025)</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>22</p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-container">
+<div class="slide-content" style="">
+<h2>Key Takeaways</h2>
+<div class="content">
+<div class="auto-sizing">
+<div class="chunk chunk-paragraph">
+<ul>
+<li>AKM is a powerful, widely used tool for decomposing wage dispersion using linked employer-employee data</li>
+<li>The additive model \(\alpha^i + \psi^j\) with exogenous mobility is simple in appearance but sophisticated in implications</li>
+<li><strong>Best practices</strong>: focus on the connected set, use the zigzag algorithm, <em>always</em> check for bias via sub-sampling plots</li>
+<li><strong>Bias correction is essential</strong> for variance decompositions — uncorrected estimates overstate firm effects and understate sorting</li>
+<li>Active frontier: relaxing additivity, allowing dynamics, incorporating endogenous mobility, and extending to non-labor settings</li>
+</ul>
+</div>
+</div>
+<div class="slide-number">
+<p>23</p>
+</div>
+</div>
+</div>
+</div>
+<script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        const colorScheme = getComputedStyle(document.documentElement).getPropertyValue('--colorscheme').trim();
+        var mermaid_theme = "default";
+        if (colorScheme === "dark") {
+            console.log("Using dark theme");
+            mermaid_theme = "dark";
+        }
+        mermaid.initialize({ startOnLoad: true, theme: mermaid_theme });
+    </script>
+<script src="js/main.js"></script>
+<script src="js/extension.js"></script>
+</body>
+</html>
