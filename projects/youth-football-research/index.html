@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>青少年足球研究项目 | 李睿鉴</title>
+    <meta
+      name="description"
+      content="青少年足球研究项目公开页，展示 21 天研究计划与阶段性研究综述。"
+    />
+    <meta name="theme-color" content="#183049" />
+    <link rel="stylesheet" href="../project-shell.css" />
+  </head>
+  <body>
+    <div class="project-page">
+      <header class="project-topbar">
+        <a class="project-brand" href="../../index.html" aria-label="返回首页">
+          <span>Li Ruijian</span>
+          <strong>李睿鉴</strong>
+        </a>
+
+        <nav class="project-nav" aria-label="页面导航">
+          <a href="../../index.html">首页</a>
+          <a href="#research">研究页面</a>
+          <a href="../../hackathon.html">AI+体育</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="project-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Youth Football Research</p>
+            <h1>青少年足球研究项目</h1>
+            <p class="hero-lead">围绕中国青少年足球发展与训练体系的阶段性研究项目。</p>
+            <p class="hero-summary">
+              这里公开展示该项目当前可访问的研究页面，包括 21 天研究计划与阶段性问题诊断综述。点击即可完整阅读，并可在页面内直接预览。
+            </p>
+            <div class="hero-actions">
+              <a class="action-link" href="#research">进入研究页面</a>
+              <a class="ghost-link" href="../../index.html#entries">返回全部入口</a>
+            </div>
+            <div class="project-metrics" id="youth-metrics"></div>
+          </div>
+
+          <aside class="hero-side">
+            <h2>当前公开内容</h2>
+            <ul class="meta-list">
+              <li>21 天研究计划</li>
+              <li>第一阶段研究综述</li>
+              <li>后续成果可继续独立同步到主站</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="workspace" id="research">
+          <aside class="list-panel">
+            <div class="panel-header">
+              <h2 class="panel-title">研究页面</h2>
+              <p class="panel-desc">选择一个页面，在右侧直接预览。</p>
+            </div>
+            <div class="item-list" id="youth-items"></div>
+          </aside>
+
+          <section class="viewer-panel">
+            <div class="viewer-head">
+              <h2 class="viewer-title" id="youth-title">加载中</h2>
+              <p class="viewer-meta" id="youth-meta"></p>
+            </div>
+            <div class="viewer-toolbar">
+              <div class="viewer-actions">
+                <a class="mini-link" id="youth-open" href="#" target="_blank" rel="noreferrer">
+                  打开完整页面
+                </a>
+              </div>
+            </div>
+            <div class="viewer-surface">
+              <div class="iframe-shell">
+                <p class="panel-desc" id="youth-summary"></p>
+                <iframe class="iframe-preview" id="youth-frame" title="青少年足球研究项目预览"></iframe>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <footer class="page-footer">
+        <p>公开页内容来自 `projects/youth-football-research` 的同步成果页面。</p>
+      </footer>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

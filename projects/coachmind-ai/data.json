@@ -1,0 +1,100 @@
+{
+  "updatedAt": "2026-03-26T13:50:08",
+  "stats": {
+    "reports": 8,
+    "documents": 2,
+    "total": 10
+  },
+  "documents": [
+    {
+      "id": "01_cv_detection",
+      "title": "计算机视觉与目标检测技术选型深度分析报告",
+      "summary": "足球比赛是全球观看人数最多的体育赛事之一，同时也是计算机视觉研究中公认的\"困难场景\"。与通用目标检测任务（COCO、ImageNet）相比，足球视频的检测难度来源于以下几个结构性因素。",
+      "type": "研究报告",
+      "path": "./docs/01_cv_detection.md",
+      "updatedAt": "2026-03-16T00:55:25",
+      "wordCount": 6694
+    },
+    {
+      "id": "02_mot_tracking",
+      "title": "多目标追踪算法：ByteTrack、BoT-SORT与足球场景优化",
+      "summary": "1. 低置信度检测框是金矿 ：ByteTrack 的核心突破在于揭示了被传统方法丢弃的低置信度检测框（0.1–0.5）往往对应遮挡状态下的真实球员，将其纳入第二阶段关联可将足球场景的 IDF1 提升约 8–12 个百分点，是追踪框架中成本最低、收益最高的改进之一。",
+      "type": "研究报告",
+      "path": "./docs/02_mot_tracking.md",
+      "updatedAt": "2026-03-16T01:08:48",
+      "wordCount": 8172
+    },
+    {
+      "id": "03_llm_rag",
+      "title": "\"LLM与RAG技术在体育教练辅助中的应用\"",
+      "summary": "大语言模型（Large Language Model, LLM）为知识密集型决策任务提供了前所未有的自然语言交互能力，但将其直接应用于专业足球教练辅助场景面临幻觉、知识过时、领域深度不足等核心障碍。检索增强生成（Retrieval Augmented Generation, RAG）架构通过将专有知识库与LLM的生成能力解耦，在不进行全量微调的前提下，实现了可溯源、可更新、高精度的领域专家级输出。本报告从技术原理、工程选型、知识库建设、",
+      "type": "研究报告",
+      "path": "./docs/03_llm_rag.md",
+      "updatedAt": "2026-03-16T00:55:25",
+      "wordCount": 6789
+    },
+    {
+      "id": "04_tactical_analysis",
+      "title": "\"足球战术智能分析技术框架\"",
+      "summary": "现代足球战术分析已从主观观察进化为多维量化科学。本报告系统梳理支撑CoachMind AI战术分析引擎的核心技术框架，涵盖xG/xA/xT/VAEP/PPDA/OBV等量化指标的数学定义与工程实现，阵型识别的聚类算法，图神经网络（GNN）在球员关系建模中的应用，Voronoi空间控制分析及其改进方案，以及实时与离线分析的技术边界。本报告旨在为系统研发提供严谨的学术依据，并为后续算法迭代建立基准框架。",
+      "type": "研究报告",
+      "path": "./docs/04_tactical_analysis.md",
+      "updatedAt": "2026-03-16T00:55:25",
+      "wordCount": 6907
+    },
+    {
+      "id": "05_pose_biomechanics",
+      "title": "\"报告5：姿态估计与运动生物力学分析\"",
+      "summary": "本报告从技术演进、工程选型、生物力学建模三个维度，系统阐述姿态估计技术在足球训练场景中的应用路径。报告重点解析 RTMPose 在边缘端的工程优势、三维姿态重建的方法论选择，以及将关节运动学数据转化为可操作训练建议的完整技术链路。目标读者为具备深度学习基础的系统架构师与运动科学研究者。",
+      "type": "研究报告",
+      "path": "./docs/05_pose_biomechanics.md",
+      "updatedAt": "2026-03-16T00:55:25",
+      "wordCount": 6756
+    },
+    {
+      "id": "06_edge_computing",
+      "title": "\"报告6：边缘计算与实时AI推理系统\"",
+      "summary": "本报告从系统架构设计角度，论证足球训练场景采用边缘计算而非云端推理的必然性，深度解析 NVIDIA Jetson Orin NX 的算力特征与 TensorRT 优化技术栈，并给出 CoachMind AI 在实际部署中的完整工程方案——包括 GStreamer 视频处理 Pipeline、多路并行推理策略、局域网拓扑设计和高可用容错机制。",
+      "type": "研究报告",
+      "path": "./docs/06_edge_computing.md",
+      "updatedAt": "2026-03-16T00:55:25",
+      "wordCount": 7194
+    },
+    {
+      "id": "07_system_architecture",
+      "title": "报告七：CoachMind AI 系统架构设计与实施方案",
+      "summary": "CoachMind AI 系统需要同时处理来自多个维度的高密度数据流，这是做出架构决策的根本出发点。",
+      "type": "研究报告",
+      "path": "./docs/07_system_architecture.md",
+      "updatedAt": "2026-03-16T00:55:25",
+      "wordCount": 5415
+    },
+    {
+      "id": "08_competitive_analysis",
+      "title": "国际足球AI分析产品竞品深度分析",
+      "summary": "副标题： Hudl、Veo、Stats Perform、Catapult、Second Spectrum、SciSports六大平台全面评测",
+      "type": "研究报告",
+      "path": "./docs/08_competitive_analysis.md",
+      "updatedAt": "2026-03-16T01:08:48",
+      "wordCount": 12590
+    },
+    {
+      "id": "demo_guide",
+      "title": "Demo 开发手册 — Phase 0 一个月冲刺指南",
+      "summary": "推荐： ecs.gn7i c16g1.4xlarge （NVIDIA A10 × 1，16 vCPU，60GB内存） 系统：Ubuntu 22.04 LTS 价格：约 ¥24/小时（按量），Demo阶段预算¥2,000",
+      "type": "项目文档",
+      "path": "./docs/demo_guide.md",
+      "updatedAt": "2026-03-16T00:55:25",
+      "wordCount": 4031
+    },
+    {
+      "id": "project_proposal",
+      "title": "CoachMind AI 项目建议书（完整版）",
+      "summary": "中国足球在青训和基层教练培养上面临严峻挑战：",
+      "type": "项目文档",
+      "path": "./docs/project_proposal.md",
+      "updatedAt": "2026-03-16T00:55:25",
+      "wordCount": 3173
+    }
+  ]
+}

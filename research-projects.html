@@ -2,126 +2,26 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=./projects/markdown-reader-cp/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markdown Reader | 科研项目 | 李睿鉴</title>
+    <title>科研项目 | 李睿鉴</title>
     <meta
       name="description"
-      content="Markdown Reader 是李睿鉴当前公开的科研项目入口，面向研究文档阅读、整理与分析。"
+      content="科研项目入口页，访问后将跳转至 Markdown Reader 公开体验页。"
     />
     <meta name="theme-color" content="#183049" />
     <link rel="stylesheet" href="./detail-pages.css" />
-    <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
   </head>
-  <body data-page="research-projects">
-    <div class="detail-shell">
-      <header class="topbar">
-        <a class="brand" href="./index.html" aria-label="返回首页">
-          <span class="brand-kicker">Li Ruijian</span>
-          <strong>李睿鉴</strong>
-        </a>
-
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="site-nav"
-        >
-          菜单
-        </button>
-
-        <nav class="site-nav" id="site-nav" aria-label="页面导航">
-          <a href="./index.html">首页</a>
-          <a href="#overview">项目说明</a>
-          <a href="#demo">进入体验</a>
-        </nav>
-      </header>
-
-      <main>
-        <section class="detail-hero" id="overview">
-          <div class="hero-copy" data-reveal>
-            <p class="eyebrow">Research Project</p>
-            <h1>Markdown Reader</h1>
-            <p class="hero-lead">面向研究与写作场景的文档阅读、整理与分析工具。</p>
-            <p>
-              这个项目聚焦研究资料阅读、文档整理、批注分析与写作准备。它以 Markdown 为核心工作格式，适合处理政策文本、学术文献、项目材料与长期研究笔记。
-            </p>
-
-            <div class="hero-actions">
-              <a class="action-link" href="#demo">开始体验</a>
-              <a class="subtle-link" href="./ai-research-assistant.html">查看 AI研究助手</a>
-            </div>
-          </div>
-
-          <aside class="hero-panel" data-reveal>
-            <h2>项目特征</h2>
-            <ul class="plain-list">
-              <li>研究文档阅读与目录化整理</li>
-              <li>批判性阅读、摘要提取与知识归纳</li>
-              <li>面向写作与研究推进的长期资料工作台</li>
-            </ul>
-          </aside>
-        </section>
-
-        <section class="section-grid" data-reveal>
-          <article class="section-card">
-            <h3>阅读</h3>
-            <p>把分散的研究材料组织为稳定、可复用的阅读入口。</p>
-          </article>
-          <article class="section-card">
-            <h3>整理</h3>
-            <p>支持文档归类、提纲化阅读与研究笔记沉淀。</p>
-          </article>
-          <article class="section-card">
-            <h3>分析</h3>
-            <p>为文献理解、写作准备和后续研究助手提供基础结构。</p>
-          </article>
-        </section>
-
-        <section class="section" id="demo">
-          <div class="section-heading" data-reveal>
-            <p class="eyebrow">Experience</p>
-            <h2>体验页面</h2>
-            <p>选择左侧文档，可切换查看不同研究材料的阅读样式。</p>
-          </div>
-
-          <div class="demo-layout">
-            <aside class="demo-panel" data-reveal>
-              <div class="doc-list">
-                <button class="doc-button" type="button" data-doc-button="policy">
-                  <span>政策框架</span>
-                  <small>体育中外人文交流的研究备忘</small>
-                </button>
-                <button class="doc-button" type="button" data-doc-button="literature">
-                  <span>文献梳理</span>
-                  <small>AI 工具如何进入研究流程</small>
-                </button>
-                <button class="doc-button" type="button" data-doc-button="notes">
-                  <span>项目札记</span>
-                  <small>从阅读工具到研究工作台</small>
-                </button>
-              </div>
-            </aside>
-
-            <div class="demo-surface" data-reveal>
-              <div class="reader-frame">
-                <div class="reader-header">
-                  <h3 data-reader-title>Markdown Reader</h3>
-                  <div class="reader-meta" data-reader-meta></div>
-                </div>
-
-                <div class="reader-body" data-reader-body></div>
-
-                <div class="reader-outline" data-reader-outline></div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="page-footer" data-reveal>
-        <p class="footer-note">李睿鉴 · 科研项目 · Markdown Reader</p>
-      </footer>
-    </div>
+  <body data-page="research-projects" data-redirect-target="./projects/markdown-reader-cp/">
+    <main class="redirect-page">
+      <section class="redirect-card" data-reveal>
+        <p class="eyebrow">Markdown Reader</p>
+        <h1>科研项目</h1>
+        <p>正在跳转至公开体验页。</p>
+        <a class="action-link" href="./projects/markdown-reader-cp/">立即进入</a>
+        <a class="subtle-link" href="./index.html">返回首页</a>
+      </section>
+    </main>
 
     <script src="./app.js"></script>
     <script src="./detail-pages.js"></script>

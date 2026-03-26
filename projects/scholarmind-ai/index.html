@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI研究助手 | 李睿鉴</title>
+    <meta
+      name="description"
+      content="ScholarMind AI 公开体验页，展示研究项目、文献、分析、证据与写作内容。"
+    />
+    <meta name="theme-color" content="#183049" />
+    <link rel="stylesheet" href="../project-shell.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+  </head>
+  <body>
+    <div class="project-page">
+      <header class="project-topbar">
+        <a class="project-brand" href="../../index.html" aria-label="返回首页">
+          <span>Li Ruijian</span>
+          <strong>李睿鉴</strong>
+        </a>
+
+        <nav class="project-nav" aria-label="页面导航">
+          <a href="../../index.html">首页</a>
+          <a href="#experience">进入体验</a>
+          <a href="../../hackathon.html">AI+体育</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="project-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">ScholarMind AI</p>
+            <h1>AI研究助手</h1>
+            <p class="hero-lead">面向研究流程的文献、分析、证据与写作协同工作台。</p>
+            <p class="hero-summary">
+              这里展示 ScholarMind AI 的公开只读体验。访客可以直接查看真实研究项目的文献列表、AI 分析结果、证据片段、研究笔记与写作内容，感受研究助手如何在完整流程中工作。
+            </p>
+            <div class="hero-actions">
+              <a class="action-link" href="#experience">开始体验</a>
+              <a class="ghost-link" href="../../index.html#entries">返回全部入口</a>
+            </div>
+            <div class="project-metrics" id="scholarmind-metrics"></div>
+          </div>
+
+          <aside class="hero-side">
+            <h2>体验方式</h2>
+            <ul class="meta-list">
+              <li>切换不同研究项目查看内容</li>
+              <li>按模块浏览文献、分析、证据与写作</li>
+              <li>页面数据由 ScholarMind 本地项目同步生成</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="workspace" id="experience">
+          <aside class="list-panel">
+            <div class="panel-header">
+              <h2 class="panel-title">研究项目</h2>
+              <p class="panel-desc">选择一个项目，查看其公开可展示的研究过程。</p>
+            </div>
+            <div class="item-list" id="scholarmind-projects"></div>
+          </aside>
+
+          <section class="viewer-panel">
+            <div class="viewer-head">
+              <h2 class="viewer-title" id="scholarmind-title">加载中</h2>
+              <p class="viewer-meta" id="scholarmind-meta"></p>
+            </div>
+            <div class="viewer-toolbar">
+              <div class="tab-row" id="scholarmind-tabs"></div>
+            </div>
+            <div class="viewer-surface">
+              <div class="viewer-rich" id="scholarmind-body"></div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <footer class="page-footer">
+        <p>公开页内容来自 `projects/scholarmind-ai` 的数据库快照同步。</p>
+      </footer>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

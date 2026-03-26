@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国青少年足球AI人才系统研究 · 21天计划 v4.0</title>
+<style>
+/* ═══ RESET & TOKENS ═══ */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --c-bg:#f1f5f9;--c-card:#fff;--c-border:#e2e8f0;
+  --c-navy:#0f172a;--c-navy2:#1e293b;--c-slate:#64748b;
+  --c-blue:#1d4ed8;--c-blue2:#3b82f6;--c-emerald:#059669;
+  --c-amber:#d97706;--c-red:#dc2626;--c-purple:#7c3aed;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.05);
+  --shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
+  --r:12px;--sidebar:256px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--c-bg);color:var(--c-navy2);line-height:1.6;}
+
+/* ═══ LAYOUT ═══ */
+.app{display:flex;min-height:100vh;}
+
+/* sidebar */
+.sidebar{
+  width:var(--sidebar);position:fixed;top:0;left:0;height:100vh;
+  background:var(--c-navy);overflow-y:auto;z-index:200;
+  display:flex;flex-direction:column;
+  scrollbar-width:thin;scrollbar-color:#334155 transparent;
+}
+.sidebar::-webkit-scrollbar{width:3px;}
+.sidebar::-webkit-scrollbar-thumb{background:#334155;border-radius:3px;}
+
+.sb-top{padding:18px 16px 14px;border-bottom:1px solid #1e293b;}
+.sb-org{font-size:9px;color:#64748b;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:5px;}
+.sb-title{font-size:13px;font-weight:600;color:#f1f5f9;line-height:1.4;}
+
+.sb-kpis{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:12px 14px;border-bottom:1px solid #1e293b;}
+.sb-kpi{background:#1e293b;border-radius:7px;padding:7px 8px;text-align:center;}
+.sb-kpi .v{font-size:16px;font-weight:700;color:#60a5fa;display:block;}
+.sb-kpi .l{font-size:8.5px;color:#64748b;margin-top:1px;}
+
+.sb-nav{padding:10px 8px;flex:1;}
+.sb-section{font-size:8.5px;color:#475569;letter-spacing:1.5px;text-transform:uppercase;padding:6px 8px 3px;}
+.sb-link{display:flex;align-items:center;gap:7px;width:100%;padding:8px 10px;border:none;background:transparent;border-radius:8px;cursor:pointer;text-align:left;transition:background .15s;text-decoration:none;}
+.sb-link:hover{background:#1e293b;}
+.sb-link .sl-text{font-size:12px;color:#cbd5e1;flex:1;}
+.sb-link .sl-badge{font-size:9px;padding:1px 6px;border-radius:8px;}
+.sb-link .sl-badge.done{background:#065f46;color:#6ee7b7;}
+.sb-link .sl-badge.pend{background:#1e293b;color:#64748b;}
+
+.sb-dlbtn{margin:10px 12px 6px;padding:9px 12px;background:linear-gradient(135deg,#1d4ed8,#7c3aed);border:none;border-radius:9px;color:#fff;font-size:12px;font-weight:600;cursor:pointer;width:calc(100% - 24px);transition:opacity .2s;}
+.sb-dlbtn:hover{opacity:.88;}
+.sb-foot{padding:12px 14px;border-top:1px solid #1e293b;font-size:10px;color:#475569;}
+
+/* main */
+.main{margin-left:var(--sidebar);flex:1;}
+
+/* hero */
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#312e81 100%);padding:28px 30px 0;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-100px;right:-100px;width:350px;height:350px;background:radial-gradient(circle,rgba(99,102,241,.18) 0%,transparent 70%);pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:4px 12px;font-size:11px;color:#bfdbfe;margin-bottom:10px;}
+.hero-badge i{width:6px;height:6px;background:#10b981;border-radius:50%;display:inline-block;}
+.hero h1{font-size:clamp(17px,2.6vw,24px);color:#fff;font-weight:700;line-height:1.3;margin-bottom:5px;}
+.hero-sub{font-size:12px;color:#94a3b8;margin-bottom:18px;}
+.hero-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.kpi{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:13px 14px;backdrop-filter:blur(8px);}
+.kpi .kv{font-size:20px;font-weight:700;color:#fff;line-height:1;}
+.kpi .ks{font-size:12px;font-weight:400;color:#94a3b8;}
+.kpi .kl{font-size:10.5px;color:#94a3b8;margin-top:3px;}
+.kpi .kt{font-size:10px;margin-top:5px;color:#fbbf24;}
+
+/* progress strip */
+.pstrip{background:var(--c-navy2);padding:11px 30px;display:flex;align-items:center;gap:14px;}
+.ps-lbl{font-size:11px;color:#94a3b8;white-space:nowrap;}
+.ps-bar{flex:1;height:7px;background:#334155;border-radius:8px;overflow:hidden;}
+.ps-fill{height:100%;width:19.0%;background:linear-gradient(90deg,#10b981,#3b82f6);border-radius:8px;}
+.ps-pct{font-size:11px;color:#60a5fa;font-weight:600;white-space:nowrap;}
+.ps-dots{display:flex;gap:3px;}
+.dot{width:9px;height:9px;border-radius:2px;}
+.dot.done{background:#10b981;}
+.dot.next{background:#fbbf24;}
+.dot.todo{background:#1e293b;}
+
+/* content */
+.content{padding:22px 30px;max-width:880px;}
+
+/* section header */
+.sec{display:flex;align-items:center;gap:10px;margin:6px 0 14px;}
+.sec h2{font-size:15px;font-weight:700;color:var(--c-navy2);white-space:nowrap;}
+.sec hr{flex:1;border:none;border-top:1px solid var(--c-border);}
+
+/* changelog */
+.changelog{background:#fff;border:1px solid #fde68a;border-radius:var(--r);padding:14px 16px;margin-bottom:18px;box-shadow:var(--shadow);}
+.cl-hd{display:flex;align-items:center;gap:7px;margin-bottom:9px;}
+.cl-hd h3{font-size:12.5px;font-weight:600;color:#92400e;flex:1;}
+.cl-hd time{font-size:10px;color:#b45309;}
+.cl-item{display:flex;gap:9px;font-size:11.5px;color:#78350f;line-height:1.65;padding:3px 0;}
+.cl-icon{flex-shrink:0;width:18px;text-align:center;}
+
+/* download hub */
+.dl-hub{background:linear-gradient(135deg,#0f172a,#1e1b4b);border-radius:var(--r);padding:20px;margin-bottom:18px;position:relative;overflow:hidden;}
+.dl-hub::after{content:"";position:absolute;bottom:-60px;right:-60px;width:180px;height:180px;background:radial-gradient(circle,rgba(139,92,246,.2),transparent 70%);pointer-events:none;}
+.dlh-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;gap:10px;}
+.dlh-top h2{font-size:15px;font-weight:700;color:#fff;}
+.dlh-top p{font-size:11px;color:#94a3b8;margin-top:2px;}
+.dl-lock{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:5px 10px;font-size:11px;color:#94a3b8;white-space:nowrap;}
+.dl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;position:relative;z-index:1;}
+.dl-col{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:9px;padding:12px;}
+.dlc-title{font-size:11.5px;font-weight:600;color:#e2e8f0;margin-bottom:8px;display:flex;align-items:center;gap:5px;}
+.dlc-title .done-dot{width:7px;height:7px;background:#10b981;border-radius:50%;}
+.dl-row{display:flex;align-items:center;gap:7px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer;transition:opacity .15s;}
+.dl-row:last-child{border-bottom:none;padding-bottom:0;}
+.dl-row:hover{opacity:.8;}
+.dl-icon{width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-weight:600;}
+.di-w{background:#1e40af;color:#bfdbfe;}
+.di-x{background:#065f46;color:#6ee7b7;}
+.di-p{background:#6b21a8;color:#e9d5ff;}
+.di-c{background:#92400e;color:#fde68a;}
+.di-b{background:#0c4a6e;color:#bae6fd;}
+.dl-info{flex:1;min-width:0;}
+.dl-name{font-size:10.5px;color:#cbd5e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dl-sz{font-size:9px;color:#475569;}
+.dl-arr{font-size:11px;color:#334155;}
+
+/* method map */
+.mmap{background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--r);padding:18px;margin-bottom:18px;box-shadow:var(--shadow);}
+.mmap h3{font-size:13.5px;font-weight:700;color:var(--c-navy2);margin-bottom:12px;}
+.mmap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.mmap-item{background:#f8fafc;border:1px solid var(--c-border);border-radius:9px;padding:11px 12px;}
+.mmap-item.done{background:#f0fdf4;border-color:#bbf7d0;}
+.mmap-item h4{font-size:11.5px;font-weight:600;margin-bottom:4px;}
+.mmap-item.done h4{color:#065f46;}
+.mmap-item h4{color:var(--c-navy2);}
+.mmap-item ul{font-size:10.5px;color:var(--c-slate);padding-left:13px;line-height:1.85;}
+
+/* day cards */
+.day-card{background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--r);margin:6px 0;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s;}
+.day-card:hover{box-shadow:var(--shadow-md);}
+.day-card.done{border-color:#a7f3d0;background:#f0fdf4;}
+.day-card.active{border-color:#93c5fd;background:#eff6ff;}
+
+.day-hd{display:flex;align-items:center;gap:10px;padding:11px 13px;cursor:pointer;user-select:none;}
+.day-num{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;color:#fff;position:relative;}
+.dn-r{background:#dc2626;}.dn-a{background:#d97706;}.dn-p{background:#7c3aed;}
+.dn-g{background:#059669;}.dn-b{background:#2563eb;}.dn-done{background:#059669;}
+.dn-done::after{content:"✓";position:absolute;right:-2px;bottom:-2px;font-size:9px;background:#fff;color:#059669;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;border:1.5px solid #bbf7d0;}
+
+.day-meta{flex:1;min-width:0;}
+.day-meta h3{font-size:13px;font-weight:600;color:#0f172a;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.day-meta p{font-size:10.5px;color:var(--c-slate);}
+.day-tags{display:flex;gap:3px;flex-wrap:wrap;flex-shrink:0;}
+.tag{font-size:9.5px;padding:2px 7px;border-radius:8px;font-weight:500;white-space:nowrap;}
+.t-done{background:#dcfce7;color:#166534;border:1px solid #86efac;}
+.t-th{background:#fef9c3;color:#854d0e;border:1px solid #fde047;}
+.t-sy{background:#ede9fe;color:#5b21b6;border:1px solid #c4b5fd;}
+.t-ap{background:#d1fae5;color:#065f46;border:1px solid #6ee7b7;}
+.t-rp{background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;}
+.t-am{background:#fef3c7;color:#92400e;border:1px solid #fcd34d;}
+
+/* detail */
+.day-detail{display:none;border-top:1px solid #f1f5f9;}
+.day-detail.open{display:block;}
+.dd-body{padding:12px 14px 14px;}
+.dd-sec h4{font-size:11px;color:#2563eb;font-weight:600;margin:10px 0 5px;}
+.dd-sec p,.dd-sec li{font-size:11.5px;color:#475569;line-height:1.75;}
+.dd-sec ul{padding-left:15px;}
+.dd-sec li{margin-bottom:3px;}
+
+/* info boxes */
+.ib{border-radius:8px;padding:9px 11px;margin-top:8px;}
+.ib-g{background:#f0fdf4;border:1px solid #86efac;}
+.ib-g h5{font-size:10.5px;color:#059669;font-weight:600;margin-bottom:3px;}
+.ib-g p{font-size:11px;color:#065f46;}
+.ib-v{background:#faf5ff;border:1px solid #d8b4fe;}
+.ib-v h5{font-size:10.5px;color:#7c3aed;font-weight:600;margin-bottom:3px;}
+.ib-v p{font-size:11px;color:#4c1d95;}
+.ib-a{background:#fffbeb;border:1px solid #fcd34d;}
+.ib-a h5{font-size:10.5px;color:#d97706;font-weight:600;margin-bottom:3px;}
+.ib-a p{font-size:11px;color:#78350f;}
+.ib-b{background:#eff6ff;border:1px solid #93c5fd;}
+.ib-b h5{font-size:10.5px;color:#1d4ed8;font-weight:600;margin-bottom:3px;}
+.ib-b p{font-size:11px;color:#1e3a8a;}
+
+/* ── DOWNLOAD PANEL (inside day card) ── */
+.dl-panel{background:#f8fafc;border-top:1px solid var(--c-border);padding:10px 14px;}
+.dl-panel-title{font-size:10px;font-weight:600;color:var(--c-slate);letter-spacing:.8px;text-transform:uppercase;margin-bottom:7px;}
+.dl-btns{display:flex;flex-wrap:wrap;gap:6px;}
+.dl-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:7px;border:1px solid;font-size:11px;font-weight:500;cursor:pointer;transition:all .15s;background:#fff;}
+.dl-btn-w{border-color:#bfdbfe;color:#1d4ed8;}
+.dl-btn-w:hover{background:#eff6ff;}
+.dl-btn-x{border-color:#6ee7b7;color:#059669;}
+.dl-btn-x:hover{background:#f0fdf4;}
+.dl-btn-p{border-color:#d8b4fe;color:#7c3aed;}
+.dl-btn-p:hover{background:#faf5ff;}
+.dl-btn-c{border-color:#fcd34d;color:#92400e;}
+.dl-btn-c:hover{background:#fffbeb;}
+.dl-btn-b{border-color:#bae6fd;color:#0369a1;}
+.dl-btn-b:hover{background:#f0f9ff;}
+.dl-btn-all{border-color:#c4b5fd;color:#6d28d9;background:linear-gradient(135deg,#faf5ff,#eff6ff);}
+.dl-btn-all:hover{filter:brightness(.97);}
+
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(3px);padding:20px;}
+.overlay.show{display:flex;}
+.modal{background:#fff;border-radius:16px;padding:26px;width:100%;max-width:400px;box-shadow:0 25px 50px -12px rgba(0,0,0,.35);animation:mi .18s ease;}
+@keyframes mi{from{opacity:0;transform:translateY(8px) scale(.97);}to{opacity:1;transform:none;}}
+.mo-icon{width:48px;height:48px;background:linear-gradient(135deg,#1d4ed8,#7c3aed);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px;}
+.modal h3{font-size:16px;font-weight:700;color:var(--c-navy2);margin-bottom:5px;}
+.modal .mo-desc{font-size:12.5px;color:var(--c-slate);margin-bottom:14px;line-height:1.6;}
+.mo-input{width:100%;padding:9px 13px;border:1.5px solid var(--c-border);border-radius:8px;font-size:13px;outline:none;transition:border-color .15s;font-family:inherit;}
+.mo-input:focus{border-color:var(--c-blue2);}
+.mo-err{font-size:11.5px;color:#dc2626;margin-top:6px;display:none;}
+.mo-actions{display:flex;gap:8px;margin-top:14px;}
+.btn-prim{flex:1;padding:9px;background:linear-gradient(135deg,#1d4ed8,#7c3aed);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:opacity .15s;}
+.btn-prim:hover{opacity:.88;}
+.btn-sec{padding:9px 14px;background:var(--c-bg);color:var(--c-slate);border:1px solid var(--c-border);border-radius:8px;font-size:13px;cursor:pointer;}
+
+/* success screen */
+.mo-success{display:none;}
+.mo-success .si{font-size:36px;text-align:center;margin-bottom:10px;}
+.mo-success h3{text-align:center;font-size:14.5px;color:#059669;margin-bottom:8px;}
+.file-list{max-height:320px;overflow-y:auto;}
+.file-entry{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:8px;border:1px solid var(--c-border);margin-bottom:5px;cursor:pointer;transition:background .15s;text-decoration:none;}
+.file-entry:hover{background:#f8fafc;}
+.fe-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+.fe-w{background:#dbeafe;color:#1d4ed8;}
+.fe-x{background:#d1fae5;color:#059669;}
+.fe-p{background:#ede9fe;color:#7c3aed;}
+.fe-c{background:#fef9c3;color:#92400e;}
+.fe-b{background:#e0f2fe;color:#0369a1;}
+.fe-info{flex:1;min-width:0;}
+.fe-name{font-size:11.5px;color:var(--c-navy2);font-weight:500;}
+.fe-path{font-size:9.5px;color:var(--c-slate);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.fe-sz{font-size:9.5px;color:var(--c-slate);flex-shrink:0;}
+
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%);transition:transform .3s;}
+  .sidebar.sb-open{transform:none;}
+  .main{margin-left:0;}
+  .hero-kpis{grid-template-columns:1fr 1fr;}
+  .dl-grid{grid-template-columns:1fr;}
+  .mmap-grid{grid-template-columns:1fr;}
+  .content{padding:14px 16px;}
+  .hero{padding:20px 16px 0;}
+  .pstrip{padding:10px 16px;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sb-top">
+    <div class="sb-org">体育中外人文交流研究院</div>
+    <div class="sb-title">中国青少年足球<br>AI人才系统研究</div>
+  </div>
+  <div class="sb-kpis">
+    <div class="sb-kpi"><span class="v">4/21</span><div class="l">已完成天数</div></div>
+    <div class="sb-kpi"><span class="v">19.0%</span><div class="l">整体进度</div></div>
+    <div class="sb-kpi"><span class="v">0.14</span><div class="l">中国CSI</div></div>
+    <div class="sb-kpi"><span class="v">0.52</span><div class="l">选材SNR</div></div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-section">研究阶段</div>
+    <button class="sb-link" onclick="goto('phase1')"><span class="sl-text">📌 问题诊断篇 D1-D4</span><span class="sl-badge done">4/4 ✅</span></button>
+    <button class="sb-link" onclick="goto('phase2')"><span class="sl-text">📐 理论建模篇 D5-D9</span><span class="sl-badge pend">0/5</span></button>
+    <button class="sb-link" onclick="goto('phase3')"><span class="sl-text">🤖 系统设计篇 D10-D14</span><span class="sl-badge pend">0/5</span></button>
+    <button class="sb-link" onclick="goto('phase4')"><span class="sl-text">🧪 验证实验篇 D15-D18</span><span class="sl-badge pend">0/4</span></button>
+    <button class="sb-link" onclick="goto('phase5')"><span class="sl-text">✍️ 写作整合篇 D19-D21</span><span class="sl-badge pend">0/3</span></button>
+    <div class="sb-section" style="margin-top:8px;">快速访问</div>
+    <button class="sb-link" onclick="goto('downloads')"><span class="sl-text">📥 下载中心</span></button>
+    <button class="sb-link" onclick="goto('mmap')"><span class="sl-text">🗺️ 报告章节地图</span></button>
+  </nav>
+  <button class="sb-dlbtn" onclick="openModal(null)">📥 下载全部已完成报告</button>
+  <div class="sb-foot">v4.0 · 2026-03-16 · D1+D2+D3+D4已完成</div>
+</aside>
+
+<!-- ═══ MAIN ═══ -->
+<main class="main">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge"><i></i>进行中 · Day 4 已完成 · 2026-03-16</div>
+    <h1>21天课题研究写作计划 · v4.0</h1>
+    <p class="hero-sub">基于AI辅助的中国青少年足球人才培养系统研究 · 经济学核心期刊标准</p>
+    <div class="hero-kpis">
+      <div class="kpi"><div class="kv">0.14 <span class="ks"></span></div><div class="kl">中国综合结构指数 CSI</div><div class="kt">⚠ 德国0.93（差距6.6×）</div></div>
+      <div class="kpi"><div class="kv">0.52 <span class="ks"></span></div><div class="kl">中国选材信噪比 SNR</div><div class="kt">⚠ 低于临界值1.0</div></div>
+      <div class="kpi"><div class="kv">33.5<span class="ks">%</span></div><div class="kl">优秀球员流失率（MC）</div><div class="kt">⚠ 德国11.8%的2.8倍</div></div>
+      <div class="kpi"><div class="kv">2.71<span class="ks">:1</span></div><div class="kl">中国Q1/Q4出生比率</div><div class="kt">⚠ 五国中最高</div></div>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="pstrip">
+    <span class="ps-lbl">总进度</span>
+    <div class="ps-bar"><div class="ps-fill"></div></div>
+    <span class="ps-pct">19.0% · 4/21天</span>
+    <div class="ps-dots">
+      <div class="dot done" title="D1✅"></div><div class="dot done" title="D2✅"></div>
+      <div class="dot done" title="D3✅"></div><div class="dot done" title="D4✅"></div><div class="dot next" title="D5 下一步"></div>
+      <div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div><div class="dot todo"></div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Changelog -->
+    <div class="changelog">
+      <div class="cl-hd">
+        <span>📋</span><h3>v4.0 修订摘要（基于D1+D2+D3+D4实际执行）</h3><time>2026-03-16</time>
+      </div>
+      <div class="cl-item"><div class="cl-icon">✅</div><div>D1（2026-03-13）数据危机全景 · 10国对比 · CSI=0.14 · 三重口径框架 · 8张数据表</div></div>
+      <div class="cl-item"><div class="cl-icon">✅</div><div>D2（2026-03-15）结构密码 · 五个结构基因(NCD/HP/CFD/PMM/RMD) · 三轨断裂 · 4张可编辑图</div></div>
+      <div class="cl-item"><div class="cl-icon">✅</div><div>D3（2026-03-15）选材迷雾 · SNR=0.52 · 五国卡方 · Logit回归 · 5000次MC · 人才浪费33.5%</div></div>
+      <div class="cl-item"><div class="cl-icon">✅</div><div>D4（2026-03-16）教练困局 · CRI=0.364 · NDM污染闭环 · 贝叶斯21场推导 · 双重困局不可逃脱性 · AFCA规格反推</div></div>
+      <div class="cl-item"><div class="cl-icon">🔄</div><div>D5-D21 联动更新：D4 CRI公式（β目标0.30、n_eff目标25）作为D5博弈均衡基础、D7卡尔曼收敛参数、D12 AFCA精确技术规格</div></div>
+    </div>
+
+    <!-- Download Hub -->
+    <div id="downloads" class="dl-hub">
+      <div class="dlh-top">
+        <div><h2>📥 研究报告下载中心</h2><p>已完成报告 · 点击文件直接下载</p></div>
+      </div>
+      <div class="dl-grid">
+        <!-- 综述 -->
+        <div class="dl-col" style="grid-column:1/-1;background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.3);">
+          <div class="dlc-title"><div class="done-dot"></div>第一阶段综述 · 问题诊断篇</div>
+          <div class="dl-row" onclick="directOpen('../outputs/第一阶段_问题诊断篇_研究综述.html')"><div class="dl-icon" style="background:#059669;color:#fff;font-size:10px;font-weight:700;border-radius:5px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;">综述</div><div class="dl-info"><div class="dl-name">第一阶段_问题诊断篇_研究综述.html</div><div class="dl-sz">D1–D4 · 问题诊断全景综述</div></div><div class="dl-arr">⬇</div></div>
+        </div>
+        <!-- D1 -->
+        <div class="dl-col">
+          <div class="dlc-title"><div class="done-dot"></div>Day 1 · 数据危机</div>
+          <div class="dl-row" onclick="openModal('d1','word')"><div class="dl-icon di-w">W</div><div class="dl-info"><div class="dl-name">Day01_数据危机全景.docx</div><div class="dl-sz">~800KB · Word报告</div></div><div class="dl-arr">⬇</div></div>
+          <div class="dl-row" onclick="openModal('d1','csv')"><div class="dl-icon di-c">CSV</div><div class="dl-info"><div class="dl-name">数据表格（8个CSV）</div><div class="dl-sz">含10国对比/转化率等</div></div><div class="dl-arr">⬇</div></div>
+          <div class="dl-row" onclick="openModal('refs','all')"><div class="dl-icon di-b">Ref</div><div class="dl-info"><div class="dl-name">参考文献资料库</div><div class="dl-sz">BibTeX + 获取指南</div></div><div class="dl-arr">⬇</div></div>
+        </div>
+        <!-- D2 -->
+        <div class="dl-col">
+          <div class="dlc-title"><div class="done-dot"></div>Day 2 · 结构密码</div>
+          <div class="dl-row" onclick="openModal('d2','word')"><div class="dl-icon di-w">W</div><div class="dl-info"><div class="dl-name">Day02_结构基因分析.docx</div><div class="dl-sz">~1.1MB · 含嵌入图表</div></div><div class="dl-arr">⬇</div></div>
+          <div class="dl-row" onclick="openModal('d2','excel')"><div class="dl-icon di-x">X</div><div class="dl-info"><div class="dl-name">D2_数据+可编辑图表.xlsx</div><div class="dl-sz">2个Excel文件</div></div><div class="dl-arr">⬇</div></div>
+          <div class="dl-row" onclick="openModal('d2','png')"><div class="dl-icon di-p">PNG</div><div class="dl-info"><div class="dl-name">D2_图表（4张PNG）</div><div class="dl-sz">雷达/网络/阶梯/断裂</div></div><div class="dl-arr">⬇</div></div>
+        </div>
+        <!-- D3 -->
+        <div class="dl-col">
+          <div class="dlc-title"><div class="done-dot"></div>Day 3 · 选材迷雾</div>
+          <div class="dl-row" onclick="openModal('d3','word')"><div class="dl-icon di-w">W</div><div class="dl-info"><div class="dl-name">Day03_相对年龄效应.docx</div><div class="dl-sz">409KB · 期刊发表标准</div></div><div class="dl-arr">⬇</div></div>
+          <div class="dl-row" onclick="openModal('d3','excel')"><div class="dl-icon di-x">X</div><div class="dl-info"><div class="dl-name">D3_数据分析.xlsx</div><div class="dl-sz">7工作表 · 含MC结果</div></div><div class="dl-arr">⬇</div></div>
+          <div class="dl-row" onclick="openModal('d3','png')"><div class="dl-icon di-p">PNG</div><div class="dl-info"><div class="dl-name">D3_图表（4张PNG）</div><div class="dl-sz">分布/边际/SNR/MC</div></div><div class="dl-arr">⬇</div></div>
+        </div>
+        <!-- D4 -->
+        <div class="dl-col">
+          <div class="dlc-title"><div class="done-dot"></div>Day 4 · 教练困局</div>
+          <div class="dl-row" onclick="openModal('d4','word')"><div class="dl-icon di-w">W</div><div class="dl-info"><div class="dl-name">Day04_教练认知困局.docx</div><div class="dl-sz">~50KB · 期刊发表标准</div></div><div class="dl-arr">⬇</div></div>
+          <div class="dl-row" onclick="openModal('d4','excel')"><div class="dl-icon di-x">X</div><div class="dl-info"><div class="dl-name">D4_数据_双重约束模型.xlsx</div><div class="dl-sz">5工作表 · CRI/贝叶斯/NDM</div></div><div class="dl-arr">⬇</div></div>
+          <div class="dl-row" onclick="openModal('d4','png')"><div class="dl-icon di-p">PNG</div><div class="dl-info"><div class="dl-name">D4_图表（4张PNG）</div><div class="dl-sz">NDM/CRI/时间陷阱/AFCA路径</div></div><div class="dl-arr">⬇</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Method Map -->
+    <div id="mmap" class="mmap">
+      <h3>🗺️ 报告章节映射总览</h3>
+      <div class="mmap-grid">
+        <div class="mmap-item done">
+          <h4>✅ 第一章 立项依据（D1-D4）</h4>
+          <ul><li>D1 ✅ §1.1 数据危机全景（CSI=0.14）</li><li>D2 ✅ §1.2 结构基因分析（SG①-⑤）</li><li>D3 ✅ §1.3 选材机制失灵（SNR=0.52）</li><li>D4 ✅ §1.4 教练认知困局（CRI=0.364）</li></ul>
+        </div>
+        <div class="mmap-item">
+          <h4>第二章 理论建模（D5-D9）</h4>
+          <ul><li>D5 §2.1 人才信号博弈模型</li><li>D6 §2.2 联赛网络拓扑模型</li><li>D7 §2.3 动态潜力状态空间</li><li>D8-D9 §2.4-2.7 认知传播综合</li></ul>
+        </div>
+        <div class="mmap-item">
+          <h4>第三章 系统设计（D10-D14）</h4>
+          <ul><li>D10 §3.1 AI关键技术基础</li><li>D11 §3.2 AYFLMP系统</li><li>D12 §3.3 AFCA知识引擎</li><li>D13-D14 §3.4-3.5 硬件+原型</li></ul>
+        </div>
+        <div class="mmap-item">
+          <h4>第四-六章 验证整合（D15-D21）</h4>
+          <ul><li>D15-D17 §4.1-4.4 实验与验证</li><li>D18 §4.5-5章 路线图经费</li><li>D19-D21 写作整合与定稿</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PHASE 1 ═══ -->
+    <div id="phase1"><div class="sec"><h2>📌 第一阶段：问题诊断篇（D1-D4）</h2><hr>
+    <div style="margin-top:12px;"><a href="../outputs/第一阶段_问题诊断篇_研究综述.html" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#059669;color:#fff;font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:7px;text-decoration:none;">📄 下载第一阶段研究综述</a></div>
+    </div>
+
+    <!-- D1 -->
+    <div class="day-card done">
+      <div class="day-hd" onclick="toggle(this)">
+        <div class="day-num dn-done">D1</div>
+        <div class="day-meta">
+          <h3>数据危机：中国足球青训产出的国际量化对比</h3>
+          <p>✅ 已完成 · 2026-03-13 · 10国雷达图 · 三重口径 · CSI=0.14 · 8张数据表</p>
+        </div>
+        <div class="day-tags"><span class="tag t-done">已完成</span><span class="tag t-rp">§1.1</span></div>
+      </div>
+      <div class="day-detail">
+        <div class="dd-body">
+          <div class="dd-sec">
+            <h4>📌 实际完成内容</h4>
+            <ul>
+              <li>建立三重口径（A注册/B普查/C足协）中国青训数据框架</li>
+              <li>10国国际对比（每万人职业球员产出率）：中国最低梯队，差距8-170倍 ⭐</li>
+              <li>雷达图6维对比（人口/联赛/训练/教练/竞赛/投入），中国CSI=0.14（德国0.93）⭐</li>
+              <li>青训四次断崖（小学→初中/初中→高中/高中→大学/大学→职业）制度性溯源</li>
+              <li>8张数据表（CSV格式）：十国人口密度、多维对比、转化率、产出率、断崖、留存曲线等</li>
+            </ul>
+          </div>
+          <div class="ib ib-g"><h5>✅ 已交付</h5><p>6000字国际对比报告 + 5张图表 + 8张数据表（CSV格式）+ 三重口径框架</p></div>
+          <div class="ib ib-v"><h5>📎 对应报告 §1.1</h5><p>研究背景与问题提出（量化版）</p></div>
+        </div>
+        <!-- D1 Download Panel -->
+        <div class="dl-panel">
+          <div class="dl-panel-title">📥 本日报告与数据下载</div>
+          <div class="dl-btns">
+            <button class="dl-btn dl-btn-w" onclick="openModal('d1','word')">📄 Word报告</button>
+            <button class="dl-btn dl-btn-c" onclick="openModal('d1','csv')">📊 8张数据表（CSV）</button>
+            <button class="dl-btn dl-btn-b" onclick="openModal('refs','all')">📚 参考文献（BibTeX）</button>
+            <button class="dl-btn dl-btn-all" onclick="openModal('d1','all')">⬇ 下载全部D1文件</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- D2 -->
+    <div class="day-card done">
+      <div class="day-hd" onclick="toggle(this)">
+        <div class="day-num dn-done">D2</div>
+        <div class="day-meta">
+          <h3>结构密码：德日西青训体系的深层机制与可量化架构模型</h3>
+          <p>✅ 已完成 · 2026-03-15 · 五结构基因 · 四国CSI · 三轨断裂 · 4张可编辑图</p>
+        </div>
+        <div class="day-tags"><span class="tag t-done">已完成</span><span class="tag t-th">理论</span><span class="tag t-rp">§1.2</span></div>
+      </div>
+      <div class="day-detail">
+        <div class="dd-body">
+          <div class="dd-sec">
+            <h4>📌 实际完成内容（⭐超出原计划）</h4>
+            <ul>
+              <li>五个结构基因量化：NCD(160/85/55/2.7) · HP(3.25/2.00/2.64/0.36) · CFD(34/28/22/8) · PMM · RMD(8.5/6.8/5.5/1.5) ⭐</li>
+              <li>综合结构指数CSI：中国0.14 vs 德国0.93 vs 西班牙0.72 vs 日本0.68 ⭐</li>
+              <li>中国"三轨断裂"诊断：Track A职业俱乐部 / B体育学校 / C校园足球，三轨制度隔离</li>
+              <li>4幅可编辑图（雷达图/DFB网络拓扑/层级阶梯/断裂结构图）+ Excel可编辑图表（3种） ⭐</li>
+            </ul>
+          </div>
+          <div class="ib ib-g"><h5>✅ 已交付</h5><p>5000+字结构分析报告 + 4张图（PNG+Word内嵌）+ D2_结构基因数据.xlsx + D2_可编辑图表.xlsx</p></div>
+          <div class="ib ib-a"><h5>⚡ 对后续的影响</h5><p>五个结构基因贯穿全部后续研究：D3 RAE对接RMD=1.5/10；D5-D6理论模型以SG参数为输入；D11 AYFLMP以CSI改善为核心KPI（目标0.14→0.50）。</p></div>
+          <div class="ib ib-v"><h5>📎 对应报告 §1.2</h5><p>国内外研究现状与差距分析（深度版）</p></div>
+        </div>
+        <!-- D2 Download Panel -->
+        <div class="dl-panel">
+          <div class="dl-panel-title">📥 本日报告与数据下载</div>
+          <div class="dl-btns">
+            <button class="dl-btn dl-btn-w" onclick="openModal('d2','word')">📄 Word报告（含图）</button>
+            <button class="dl-btn dl-btn-x" onclick="openModal('d2','excel')">📊 结构基因数据.xlsx</button>
+            <button class="dl-btn dl-btn-x" onclick="openModal('d2','charts')">📈 可编辑图表.xlsx</button>
+            <button class="dl-btn dl-btn-p" onclick="openModal('d2','png')">🖼 图表PNG（4张）</button>
+            <button class="dl-btn dl-btn-b" onclick="openModal('refs','all')">📚 参考文献</button>
+            <button class="dl-btn dl-btn-all" onclick="openModal('d2','all')">⬇ 下载全部D2文件</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- D3 -->
+    <div class="day-card done">
+      <div class="day-hd" onclick="toggle(this)">
+        <div class="day-num dn-done">D3</div>
+        <div class="day-meta">
+          <h3>选材迷雾：相对年龄效应与人才识别困境——基于信号博弈模型</h3>
+          <p>✅ 已完成 · 2026-03-15 · SNR=0.52 · 五国卡方 · Logit · 5000次MC · 浪费33.5%</p>
+        </div>
+        <div class="day-tags"><span class="tag t-done">已完成</span><span class="tag t-th">理论+实证</span><span class="tag t-rp">§1.3</span></div>
+      </div>
+      <div class="day-detail">
+        <div class="dd-body">
+          <div class="dd-sec">
+            <h4>📌 实际完成内容（⭐超出原计划）</h4>
+            <ul>
+              <li>SNR模型：s_i = θ_i + ε_i + β′X_i；SNR = σ²_θ/(σ²_ε + β²σ²_X) ⭐</li>
+              <li>三命题：SNR-RAE关系 / 不可逆性放大 / 结构性门槛RMD*=2.9 ⭐</li>
+              <li>五国卡方检验（N=9,039）：中国χ²=238.6，Q1/Q4=2.71:1，最严重 ⭐</li>
+              <li>Logit三规格回归（HC3稳健SE）：Q1出生 +18-22pp 选拔概率优势</li>
+              <li>SNR分解：中国SNR=0.52（&lt;1.0次随机）；德国SNR=3.10 ⭐</li>
+              <li>5000次MC模拟（N=10,000）：中国浪费33.5%，德国11.8%，中国2.8倍 ⭐</li>
+              <li>中英双语摘要 + JEL分类（D83·L83·J24）+ 17篇参考文献 ⭐</li>
+            </ul>
+          </div>
+          <div class="ib ib-g"><h5>✅ 已交付</h5><p>6000字学术报告（Word，期刊发表标准）+ 4张图 + Excel（7工作表含卡方/Logit/SNR/MC结果）</p></div>
+          <div class="ib ib-a"><h5>⚡ 量化证据三角完成</h5><p>D1（现象：CSI差距）+ D2（机制：结构基因）+ D3（选材：SNR失灵）= 课题立项依据完整论证链。SNR参数（σ²_θ=1.0，σ²_ε=0.81，β=0.95）直接作为D5信号博弈模型的实证锚点。</p></div>
+          <div class="ib ib-v"><h5>📎 对应报告 §1.3</h5><p>选材机制失灵的量化诊断</p></div>
+        </div>
+        <!-- D3 Download Panel -->
+        <div class="dl-panel">
+          <div class="dl-panel-title">📥 本日报告与数据下载</div>
+          <div class="dl-btns">
+            <button class="dl-btn dl-btn-w" onclick="openModal('d3','word')">📄 Word报告（期刊标准）</button>
+            <button class="dl-btn dl-btn-x" onclick="openModal('d3','excel')">📊 数据分析.xlsx（7表）</button>
+            <button class="dl-btn dl-btn-p" onclick="openModal('d3','png')">🖼 图表PNG（4张）</button>
+            <button class="dl-btn dl-btn-b" onclick="openModal('refs','all')">📚 参考文献（BibTeX）</button>
+            <button class="dl-btn dl-btn-all" onclick="openModal('d3','all')">⬇ 下载全部D3文件</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- D4 -->
+    <div class="day-card">
+      <div class="day-hd" onclick="toggle(this)">
+        <div class="day-num dn-done">D4</div>
+        <div class="day-meta">
+          <h3>教练困局：认知偏差、隐性知识与决策质量的系统性制约</h3>
+          <p>✅ 已完成 · 2026-03-16 · CRI=0.364 · NDM污染闭环 · 贝叶斯21场 · AFCA规格反推</p>
+        </div>
+        <div class="day-tags"><span class="tag t-th">理论</span><span class="tag t-rp">§1.4</span></div>
+      </div>
+      <div class="day-detail open">
+        <div class="dd-body">
+          <div class="dd-sec">
+            <h4>📌 核心成果（v4.0）</h4>
+            <ul>
+              <li><strong>NDM/RPD污染闭环：</strong>Q1球员以38.2%（vs均匀25%）写入教练案例库，过代表率53%，形成自我强化的认知偏差闭环（Klein 1999框架） ⭐</li>
+              <li><strong>CRI双重约束公式：</strong>CRI = n·σ²θ/(n·σ²θ+σ²ε+β²σ²X)；中国CRI=0.364（n=8,β=0.95），德国CRI=0.867（n=34,β=0.30）；可靠阈值=0.80 ⭐</li>
+              <li><strong>贝叶斯21场推导：</strong>N_min=4·(σ²ε+β²σ²X)/σ²θ；中国需21场/2.63年，德国需6场/0.18年；超出青训决策窗口2.6倍 ⭐</li>
+              <li><strong>不可逃脱性四重障碍：</strong>竞赛量硬约束+时间不可逆性(π=0.02)+隐性知识不可觉察(Polanyi)+外部基准缺失 → 人工纠偏全部失效</li>
+              <li><strong>AFCA规格反推：</strong>β→0.30 + n_eff→25 → CRI从0.364→0.960；AFCA-Core/Vision/UI三模块技术规格精确锁定 ⭐</li>
+            </ul>
+          </div>
+          <div class="ib ib-g"><h5>✅ 已交付</h5><p>~6000字学术报告（Word）+ 5工作表Excel（CRI参数/贝叶斯更新/NDM污染/敏感性矩阵/AFCA规格推导）+ 4张PNG图表 + BibTeX文献库更新（+11条核心文献）</p></div>
+          <div class="ib ib-a"><h5>⚡ 对后续的影响</h5><p>D4 CRI=0.364是D5博弈均衡基础（理性球探过度选Q1的数学证明）；N_min=21对应D7卡尔曼滤波收敛次数；NDM污染闭环是D8 SIR污染知识R₀&gt;1的认知机制；β&lt;0.30+n_eff&gt;20是D12 AFCA精确技术规格约束。</p></div>
+          <div class="ib ib-v"><h5>📎 对应报告 §1.4</h5><p>立项依据逻辑闭合：D1(现象)→D2(结构)→D3(选材)→D4(认知)= 完整问题论证链完成</p></div>
+          <!-- D4 Download Panel -->
+          <div class="dl-panel">
+            <div class="dl-label">📥 D4 研究成果下载</div>
+            <div class="dl-items">
+              <div class="dl-row" onclick="openModal('d4','word')"><div class="dl-icon di-w">W</div><div class="dl-info"><div class="dl-name">Day04_教练认知困局双重制约.docx</div><div class="dl-sz">~50KB · Word报告</div></div><div class="dl-arr">⬇</div></div>
+              <div class="dl-row" onclick="openModal('d4','excel')"><div class="dl-icon di-x">X</div><div class="dl-info"><div class="dl-name">D4_数据_双重约束模型.xlsx</div><div class="dl-sz">5工作表 · CRI/贝叶斯/NDM/敏感性/AFCA</div></div><div class="dl-arr">⬇</div></div>
+              <div class="dl-row" onclick="openModal('d4','png')"><div class="dl-icon di-p">PNG</div><div class="dl-info"><div class="dl-name">D4_图表（4张PNG）</div><div class="dl-sz">NDM污染/CRI约束/时间陷阱/AFCA路径</div></div><div class="dl-arr">⬇</div></div>
+            </div>
+            <button class="dl-btn dl-btn-all" onclick="openModal('d4','all')">⬇ 下载全部D4文件</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div><!-- /phase1 -->
+
+    <!-- ═══ PHASE 2 ═══ -->
+    <div id="phase2"><div class="sec"><h2>📐 第二阶段：理论建模篇（D5-D9）</h2><hr></div>
+    
+    <div class="day-card">
+      <div class="day-hd" onclick="toggle(this)">
+        <div class="day-num dn-a">D5</div>
+        <div class="day-meta"><h3>人才信号博弈：机制设计与激励相容量化建模</h3><p>🔲 待执行 · 信号均衡 · D3参数直接引用 · MC政策效果曲线</p></div>
+        <div class="day-tags"><span class="tag t-th">理论</span><span class="tag t-rp">§2.1</span></div>
+      </div>
+      <div class="day-detail"><div class="dd-body">
+        <div class="ib ib-a"><h5>⚡ v4.0联动（D3+D4）</h5><p>D4新增：CRI=0.364是博弈均衡的认知基础——在CRI极低的环境中，所有理性球探的最优策略是过度关注Q1球员（因Q1信号噪声更低、辨识度更高），形成RAE-博弈均衡。NFT锁定：NDM偏差原型强化均衡稳定性，使单方偏离不再有利。政策效果曲线：将β从0.95降至0.30（AFCA目标），模拟CRI从0.364→0.960的博弈均衡转变路径。</p></div>
+        <div class="ib ib-v"><h5>📎 §2.1 人才信号博弈模型</h5><p>基于Akerlof/Spence框架，量化中国选材均衡低效性；CRI=0.364提供均衡存在的理论证明</p></div>
+      </div></div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-hd" onclick="toggle(this)">
+        <div class="day-num dn-a">D6</div>
+        <div class="day-meta"><h3>联赛网络拓扑：图论优化与三轨连通性改善</h3><p>🔲 待执行 · NetworkX建模 · π作为容错权重 · HP 0.36→1.0</p></div>
+        <div class="day-tags"><span class="tag t-th">理论</span><span class="tag t-rp">§2.2</span></div>
+      </div>
+      <div class="day-detail"><div class="dd-body">
+        <div class="ib ib-a"><h5>⚡ v4.0联动（D2+D3）</h5><p>D2输入：NCD(2.7) HP(0.36)为节点密度/连通性实测值。D3联动：π(0.02)作为网络边"容错权重"——增加三轨跨轨边可将π从0.02提升至0.10，对应人才浪费率改善约10pp（MC验证）。</p></div>
+        <div class="ib ib-v"><h5>📎 §2.2 联赛网络拓扑优化模型</h5></div>
+      </div></div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-hd" onclick="toggle(this)">
+        <div class="day-num dn-a">D7</div>
+        <div class="day-meta"><h3>动态潜力追踪：状态空间模型与卡尔曼滤波</h3><p>🔲 待执行 · P_re参数：π_中国=0.02 / π_德国=0.35 · 早熟校正层</p></div>
+        <div class="day-tags"><span class="tag t-th">理论</span><span class="tag t-rp">§2.3</span></div>
+      </div>
+      <div class="day-detail"><div class="dd-body">
+        <div class="ib ib-a"><h5>⚡ v4.0联动（D3+D4）</h5><p>D4核心：CRI贝叶斯框架与卡尔曼滤波完全等价——D4的"N_min=21场达到CRI≥0.80"即对应卡尔曼滤波需要21次观测才能使后验方差压缩至初始值的20%以下。D7用状态空间模型将这一结论动态化：在CFD=8的环境下，卡尔曼增益K每年只更新8次，需2.63年完成收敛；AFCA将有效更新次数提升至25次/年，收敛时间从2.63年缩短至0.84年。</p></div>
+        <div class="ib ib-v"><h5>📎 §2.3 动态潜力状态空间模型</h5><p>D4贝叶斯框架→D7卡尔曼滤波：N_min=21 ↔ 卡尔曼收敛所需更新次数</p></div>
+      </div></div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-hd" onclick="toggle(this)">
+        <div class="day-num dn-a">D8</div>
+        <div class="day-meta"><h3>认知与知识传播：NDM建模与SIR扩散分析</h3><p>🔲 待执行 · 双轨SIR（正确vs污染知识）· 三轨传播系数β≈0</p></div>
+        <div class="day-tags"><span class="tag t-th">理论</span><span class="tag t-rp">§2.4-2.5</span></div>
+      </div>
+      <div class="day-detail"><div class="dd-body">
+        <div class="ib ib-a"><h5>⚡ v4.0联动（D2+D3+D4）</h5><p>D4提供SIR传播的微观基础：NDM污染闭环就是"污染知识传播R₀&gt;1"的认知机制——Q1成功案例以53%过代表率写入案例库（感染率γ高），而去偏纠正需要显性化隐性知识（恢复率δ极低）→R₀=γ/δ&gt;1。D4四重障碍=阻止δ提升的结构性因素。D8建立双轨SIR：正确知识R₀&lt;1（δ靠CFD约束，γ靠三轨断裂），污染知识R₀&gt;1（δ靠隐性知识壁垒）。</p></div>
+        <div class="ib ib-v"><h5>📎 §2.4-2.5 认知与知识传播模型</h5><p>D4 NDM污染闭环→D8 SIR传播R₀的认知微观机制</p></div>
+      </div></div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-hd" onclick="toggle(this)">
+        <div class="day-num dn-a">D9</div>
+        <div class="day-meta"><h3>理论整合：多模型综合框架与创新点提炼</h3><p>🔲 待执行 · 量化证据三角 · 数学桥梁（SNR连接结构与选材）</p></div>
+        <div class="day-tags"><span class="tag t-th">综合</span><span class="tag t-rp">§2.5-2.7</span></div>
+      </div>
+      <div class="day-detail"><div class="dd-body">
+        <div class="ib ib-a"><h5>⚡ v4.0联动（D1+D2+D3+D4）</h5><p>D4完成量化证据四角：D1(现象CSI=0.14)+D2(结构SG①-⑤)+D3(选材SNR=0.52)+D4(认知CRI=0.364)。D4是数学积木的第四块：低CFD(D2)→低CRI(D4)→NDM污染加剧→更低SNR(D3)→更高人才浪费→更低CSI(D1)→更低CFD(D2)。完整因果链首尾闭合。D9将四模型整合为统一理论框架，提炼3-4个核心理论创新点，为课题标志性成果定位。</p></div>
+        <div class="ib ib-v"><h5>📎 §2.5-2.7 综合理论框架</h5><p>D4闭合量化四角：CSI=0.14/SG五基因/SNR=0.52/CRI=0.364 → 统一因果链</p></div>
+      </div></div>
+    </div>
+    </div><!-- /phase2 -->
+
+    <!-- ═══ PHASE 3 ═══ -->
+    <div id="phase3"><div class="sec"><h2>🤖 第三阶段：系统设计篇（D10-D14）</h2><hr></div>
+    <div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-p">D10</div><div class="day-meta"><h3>AI关键技术：计算机视觉·NLP·强化学习技术选型</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-sy">系统</span><span class="tag t-rp">§3.1</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-v"><h5>📎 §3.1</h5><p>目标：SNR从0.52→1.5；CSI从0.14→0.50。四维技术：NCD优化/CFD提升/β降低（RAE校正）/RMD提升（晚熟识别Agent）</p></div></div></div></div><div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-p">D11</div><div class="day-meta"><h3>AYFLMP系统：AI青少年足球人才管理平台</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-sy">系统</span><span class="tag t-rp">§3.2</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-v"><h5>📎 §3.2</h5><p>KPI：β降至<0.3（SNR 0.52→1.5）；π从0.02→0.15（浪费率<20%）；CFD 8→25；HP 0.36→0.80；CSI 0.14→0.40（5年）</p></div></div></div></div><div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-p">D12</div><div class="day-meta"><h3>AFCA系统：三轨分层知识引擎与RAE校正</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-sy">系统</span><span class="tag t-rp">§3.3</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-a"><h5>⚡ v4.0联动（D4）</h5><p>D4提供精确设计规格：AFCA-Core（β降0.95→0.30，β²σ²X从0.226→0.023）、AFCA-Vision（有效n从8→25场/年，补充17场非赛次评估）、AFCA-UI（实时RAE警示，将隐性偏差显性化）。目标：CRI从0.364→0.960（3年），完整推导见D4 Excel工作表5。</p></div>
+        <div class="ib ib-v"><h5>📎 §3.3</h5><p>D4 CRI公式反推→AFCA三大模块技术规格；目标β&lt;0.30、n_eff&gt;20、CRI≥0.80</p></div></div></div></div><div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-p">D13</div><div class="day-meta"><h3>软硬件一体化：三轨分层硬件方案</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-sy">系统</span><span class="tag t-rp">§3.4</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-v"><h5>📎 §3.4</h5><p>高配≤30万/中配≤8万/轻配≤2万；覆盖Track A/B/C不同硬件需求</p></div></div></div></div><div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-p">D14</div><div class="day-meta"><h3>原型系统：MVP验证方案</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-sy">系统</span><span class="tag t-rp">§3.5</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-v"><h5>📎 §3.5</h5><p>核心假设：AI是否能将"8场精度"提升至"34场精度"的80%（SNR目标≥2.5）</p></div></div></div></div>
+    </div>
+
+    <!-- ═══ PHASE 4 ═══ -->
+    <div id="phase4"><div class="sec"><h2>🧪 第四阶段：验证实验篇（D15-D18）</h2><hr></div>
+    <div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-g">D15</div><div class="day-meta"><h3>实验设计：六组双重交叉分层（口径×轨道）</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-ap">验证</span><span class="tag t-rp">§4.1</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-v"><h5>📎 §4.1</h5><p>D3 SNR=0.52为对照组基准，实验处理目标SNR≥1.5，浪费率&lt;20%，六子样本检验结构差距是否可被AI干预缩小</p></div></div></div></div><div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-g">D16</div><div class="day-meta"><h3>高水平人才参与：三轨教练协作方案</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-ap">验证</span><span class="tag t-rp">§4.2</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-v"><h5>📎 §4.2</h5><p>Track A/B/C教练各梯队参与，覆盖完整人才漏斗</p></div></div></div></div><div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-g">D17</div><div class="day-meta"><h3>试点计划：上海/浙江优先，CSI 0.14→0.25（3年）</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-ap">验证</span><span class="tag t-rp">§4.3-4.4</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-v"><h5>📎 §4.3-4.4</h5><p>优先选择已有政策意愿打通体校-俱乐部通道的省份</p></div></div></div></div><div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-g">D18</div><div class="day-meta"><h3>五年路线图：第1年CSI→0.18/3年→0.28/5年→0.45</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-ap">验证</span><span class="tag t-rp">§5-6章</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-v"><h5>📎 §5-6章</h5><p>经费预算分项对应五个结构基因维度</p></div></div></div></div>
+    </div>
+
+    <!-- ═══ PHASE 5 ═══ -->
+    <div id="phase5"><div class="sec"><h2>✍️ 第五阶段：写作整合篇（D19-D21）</h2><hr></div>
+    <div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-b">D19</div><div class="day-meta"><h3>写作整合：第一二章 · 数据链条一致性核查</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-rp">写作</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-v"><h5>📎 说明</h5><p>确保NCD/HP/CFD/PMM/RMD定义统一；CSI=0.14/SNR=0.52来源一致；三轨断裂与三重口径对应关系；附录速查表</p></div></div></div></div><div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-b">D20</div><div class="day-meta"><h3>写作整合：第三四章 · 系统设计与验证</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-rp">写作</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-v"><h5>📎 说明</h5><p>AYFLMP+AFCA整合；KPI汇总表；实验验证计划整合</p></div></div></div></div><div class="day-card"><div class="day-hd" onclick="toggle(this)"><div class="day-num dn-b">D21</div><div class="day-meta"><h3>全文定稿：从0.14到0.50的五年承诺</h3><p>🔲 待执行</p></div><div class="day-tags"><span class="tag t-rp">写作</span></div></div><div class="day-detail"><div class="dd-body"><div class="ib ib-v"><h5>📎 说明</h5><p>核心数字：CSI=0.14（德国15%）/SNR=0.52（次随机）/浪费33.5%（2.8倍）。论证链：D1→现象→D2→机制→D3→选材→结论：五年改变结构，而非五年堆叠投入</p></div></div></div></div>
+    </div>
+
+    <div style="background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--r);padding:12px 14px;margin-top:6px;font-size:10.5px;color:var(--c-slate);display:flex;gap:14px;flex-wrap:wrap;">
+      <span>✅ 已完成（D1/D2/D3/D4）</span><span>🔄 待执行（D5 下一步）</span><span>🔲 待执行（D5-D21）</span><span>⭐ 超出原计划</span><span style="margin-left:auto;">v4.0 · 2026-03-15</span>
+    </div>
+  </div><!-- /content -->
+</main>
+</div><!-- /app -->
+
+<!-- ═══ MODAL ═══ -->
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <!-- Form -->
+    <div id="moForm">
+      <div style="display:none"></div>
+    </div>
+    <!-- Success -->
+    <div class="mo-success" id="moSuccess">
+      <div class="si">📥</div>
+      <h3>研究成果下载</h3>
+      <p class="mo-desc">点击文件名在本地打开</p>
+      <div class="file-list" id="fileList"></div>
+      <div class="mo-actions"><button class="btn-prim" onclick="closeModal()" style="flex:none;padding:8px 24px;">关闭</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+const FILES = {
+  d1: {
+    label: 'Day 1 · 数据危机',
+    items: [
+      {name:'中国足球深度研究_Day01_青少年足球人口危机.docx', path:'中国足球深度研究_Day01_青少年足球人口危机.docx', type:'Word', size:'~800KB'},
+      {name:'表1_十国青少年足球人口密度.csv', path:'Day01_数据/表1_十国青少年足球人口密度.csv', type:'CSV', size:''},
+      {name:'表2_五国青训体系多维对比.csv', path:'Day01_数据/表2_五国青训体系多维对比.csv', type:'CSV', size:''},
+      {name:'表3_U15到职业联赛转化率.csv', path:'Day01_数据/表3_U15到职业联赛转化率.csv', type:'CSV', size:''},
+      {name:'表4_每万人职业球员产出率.csv', path:'Day01_数据/表4_每万人职业球员产出率.csv', type:'CSV', size:''},
+      {name:'表5_四次断崖流失率.csv', path:'Day01_数据/表5_四次断崖流失率.csv', type:'CSV', size:''},
+      {name:'表6_各年龄段留存曲线_中德日对比.csv', path:'Day01_数据/表6_各年龄段留存曲线_中德日对比.csv', type:'CSV', size:''},
+      {name:'表7_人才漏斗全链路_中国vs德国.csv', path:'Day01_数据/表7_人才漏斗全链路_中国vs德国.csv', type:'CSV', size:''},
+      {name:'表8_中国三重口径定义.csv', path:'Day01_数据/表8_中国三重口径定义.csv', type:'CSV', size:''},
+    ]
+  },
+  d2: {
+    label: 'Day 2 · 结构密码',
+    items: [
+      {name:'中国足球深度研究_Day02_青训体系结构基因分析.docx', path:'中国足球深度研究_Day02_青训体系结构基因分析.docx', type:'Word', size:'~1.1MB'},
+      {name:'D2_结构基因数据.xlsx', path:'D2_结构基因数据.xlsx', type:'Excel', size:'13KB'},
+      {name:'D2_可编辑图表.xlsx', path:'D2_可编辑图表.xlsx', type:'Excel', size:'16KB'},
+      {name:'D2_图1_雷达图.png', path:'D2_图1_雷达图.png', type:'PNG', size:'297KB'},
+      {name:'D2_图2_网络拓扑.png', path:'D2_图2_网络拓扑.png', type:'PNG', size:'295KB'},
+      {name:'D2_图3_层级阶梯.png', path:'D2_图3_层级阶梯.png', type:'PNG', size:'277KB'},
+      {name:'D2_图4_三轨断裂.png', path:'D2_图4_三轨断裂.png', type:'PNG', size:'237KB'},
+    ]
+  },
+  d3: {
+    label: 'Day 3 · 选材迷雾',
+    items: [
+      {name:'中国足球深度研究_Day03_选材迷雾_相对年龄效应与人才识别困境.docx', path:'中国足球深度研究_Day03_选材迷雾_相对年龄效应与人才识别困境.docx', type:'Word', size:'409KB'},
+      {name:'D3_数据_相对年龄效应与选材信号分析.xlsx', path:'D3_数据_相对年龄效应与选材信号分析.xlsx', type:'Excel', size:'32KB'},
+      {name:'D3_图1_出生季度分布.png', path:'D3_图1_出生季度分布.png', type:'PNG', size:'111KB'},
+      {name:'D3_图2_边际效应.png', path:'D3_图2_边际效应.png', type:'PNG', size:'79KB'},
+      {name:'D3_图3_SNR分析.png', path:'D3_图3_SNR分析.png', type:'PNG', size:'100KB'},
+      {name:'D3_图4_人才浪费.png', path:'D3_图4_人才浪费.png', type:'PNG', size:'133KB'},
+    ]
+  },
+  d4: {
+    label: 'Day 4 · 教练困局',
+    items: [
+      {name:'中国足球深度研究_Day04_教练认知困局双重制约.docx', path:'中国足球深度研究_Day04_教练认知困局双重制约.docx', type:'Word', size:'~50KB'},
+      {name:'D4_数据_教练认知困局双重约束模型.xlsx', path:'D4_数据_教练认知困局双重约束模型.xlsx', type:'Excel', size:'~15KB'},
+      {name:'D4_图1_NDM认知污染.png', path:'D4_图1_NDM认知污染.png', type:'PNG', size:'~120KB'},
+      {name:'D4_图2_CRI双重约束.png', path:'D4_图2_CRI双重约束.png', type:'PNG', size:'~196KB'},
+      {name:'D4_图3_评估周期时间陷阱.png', path:'D4_图3_评估周期时间陷阱.png', type:'PNG', size:'~145KB'},
+      {name:'D4_图4_AFCA去偏路径.png', path:'D4_图4_AFCA去偏路径.png', type:'PNG', size:'~210KB'},
+    ]
+  },
+  refs: {
+    label: '文献资料库',
+    items: [
+      {name:'bibliography.bib (BibTeX格式参考书目)', path:'references/bibliography.bib', type:'BIB', size:'~20KB'},
+      {name:'README.md (文献获取指南)', path:'references/README.md', type:'MD', size:'2.9KB'},
+    ]
+  }
+};
+
+
+const PWD = '体育中外人文交流研究院';
+let pendingDay = null, pendingType = null;
+
+// icon & class mapping
+function getIcon(type){
+  return {Word:'W',Excel:'X',PNG:'🖼',CSV:'CSV',BIB:'Bib',MD:'MD'}[type] || '📄';
+}
+function getIconClass(type){
+  return {Word:'fe-w',Excel:'fe-x',PNG:'fe-p',CSV:'fe-c',BIB:'fe-b',MD:'fe-b'}[type] || 'fe-w';
+}
+
+function directOpen(path){
+  window.open(path, '_blank');
+}
+
+function openModal(day, type){
+  pendingDay = day; pendingType = type;
+  document.getElementById('moForm').style.display = 'none';
+  document.getElementById('moSuccess').style.display = 'block';
+  renderFiles();
+  document.getElementById('overlay').classList.add('show');
+}
+
+function closeModal(){
+  document.getElementById('overlay').classList.remove('show');
+}
+
+function verify(){ renderFiles(); }
+
+function renderFiles(){
+  const container = document.getElementById('fileList');
+  container.innerHTML = '';
+  let items = [];
+
+  if (pendingDay === 'refs') {
+    items = FILES.refs.items;
+  } else if (pendingDay && FILES[pendingDay]) {
+    const all = FILES[pendingDay].items;
+    if (pendingType === 'all') {
+      items = all;
+    } else if (pendingType === 'word') {
+      items = all.filter(f => f.type === 'Word');
+    } else if (pendingType === 'excel' || pendingType === 'charts') {
+      items = all.filter(f => f.type === 'Excel');
+    } else if (pendingType === 'png') {
+      items = all.filter(f => f.type === 'PNG');
+    } else if (pendingType === 'csv') {
+      items = all.filter(f => f.type === 'CSV');
+    }
+  } else {
+    // all files
+    items = Object.values(FILES).flatMap(g => g.items);
+  }
+
+  items.forEach(function(f) {
+    const a = document.createElement('a');
+    a.className = 'file-entry';
+    a.href = '/research/files/' + f.path;
+    a.target = '_blank';
+    a.innerHTML =
+      '<div class="fe-icon ' + getIconClass(f.type) + '">' + getIcon(f.type) + '</div>' +
+      '<div class="fe-info">' +
+        '<div class="fe-name">' + f.name + '</div>' +
+        '<div class="fe-path">' + f.path + '</div>' +
+      '</div>' +
+      (f.size ? '<div class="fe-sz">' + f.size + '</div>' : '');
+    container.appendChild(a);
+  });
+}
+
+function toggle(hd){
+  const det = hd.parentElement.querySelector('.day-detail');
+  if (det) det.classList.toggle('open');
+}
+
+function goto(id){
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+</body>
+</html>

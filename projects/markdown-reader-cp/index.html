@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>科研项目 | Markdown Reader | 李睿鉴</title>
+    <meta
+      name="description"
+      content="Markdown Reader 公开体验页，展示文档阅读、AI 分析、翻译与批判阅读结果。"
+    />
+    <meta name="theme-color" content="#183049" />
+    <link rel="stylesheet" href="../project-shell.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+  </head>
+  <body>
+    <div class="project-page">
+      <header class="project-topbar">
+        <a class="project-brand" href="../../index.html" aria-label="返回首页">
+          <span>Li Ruijian</span>
+          <strong>李睿鉴</strong>
+        </a>
+
+        <nav class="project-nav" aria-label="页面导航">
+          <a href="../../index.html">首页</a>
+          <a href="#reader">进入项目</a>
+          <a href="../../hackathon.html">AI+体育</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="project-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Markdown Reader</p>
+            <h1>科研项目</h1>
+            <p class="hero-lead">面向研究阅读、AI 分析、翻译与批判性整理的文档工作台。</p>
+            <p class="hero-summary">
+              这一公开页基于 Markdown Reader 的真实文档与缓存输出生成。访客可以切换不同文档，直接查看原文、AI 分析、翻译结果与批判阅读标注，体验项目当前的核心工作流。
+            </p>
+            <div class="hero-actions">
+              <a class="action-link" href="#reader">进入体验</a>
+              <a class="ghost-link" href="../../index.html#entries">返回全部入口</a>
+            </div>
+            <div class="project-metrics" id="reader-metrics"></div>
+          </div>
+
+          <aside class="hero-side">
+            <h2>体验模块</h2>
+            <ul class="meta-list">
+              <li>原文阅读</li>
+              <li>AI 分析</li>
+              <li>自动翻译</li>
+              <li>批判阅读标注</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="workspace" id="reader">
+          <aside class="list-panel">
+            <div class="panel-header">
+              <h2 class="panel-title">文档列表</h2>
+              <p class="panel-desc">选择文档后，可切换不同处理结果。</p>
+            </div>
+            <div class="item-list" id="reader-documents"></div>
+          </aside>
+
+          <section class="viewer-panel">
+            <div class="viewer-head">
+              <h2 class="viewer-title" id="reader-title">加载中</h2>
+              <p class="viewer-meta" id="reader-meta"></p>
+            </div>
+            <div class="viewer-toolbar">
+              <div class="tab-row" id="reader-tabs"></div>
+            </div>
+            <div class="viewer-surface">
+              <div class="viewer-rich" id="reader-body"></div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <footer class="page-footer">
+        <p>公开页内容来自 `projects/markdown-reader-cp` 的文档与输出同步。</p>
+      </footer>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

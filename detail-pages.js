@@ -303,6 +303,6 @@ if (body?.dataset.page === 'ai-research-assistant') {
   renderResearchAssistantDemo()
 }
 
-if (body?.dataset.page === 'ai-marketing-assistant') {
+if (body?.dataset.redirectTarget) {
   setupRedirectPage()
 }

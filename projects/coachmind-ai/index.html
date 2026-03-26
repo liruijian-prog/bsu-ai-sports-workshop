@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI足球教练项目 | 李睿鉴</title>
+    <meta
+      name="description"
+      content="CoachMind AI 足球教练项目公开页，提供研究报告与项目文档的在线阅读体验。"
+    />
+    <meta name="theme-color" content="#183049" />
+    <link rel="stylesheet" href="../project-shell.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+  </head>
+  <body>
+    <div class="project-page">
+      <header class="project-topbar">
+        <a class="project-brand" href="../../index.html" aria-label="返回首页">
+          <span>Li Ruijian</span>
+          <strong>李睿鉴</strong>
+        </a>
+
+        <nav class="project-nav" aria-label="页面导航">
+          <a href="../../index.html">首页</a>
+          <a href="#documents">项目文档</a>
+          <a href="../../hackathon.html">AI+体育</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="project-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">CoachMind AI</p>
+            <h1>AI足球教练项目</h1>
+            <p class="hero-lead">面向足球训练、战术分析与教练决策的智能辅助项目。</p>
+            <p class="hero-summary">
+              这一页面汇集 CoachMind AI 当前公开可读的研究报告与项目文档。访客可以直接在线阅读核心技术报告、项目建议书与开发手册，快速了解项目的研究逻辑与产品路线。
+            </p>
+            <div class="hero-actions">
+              <a class="action-link" href="#documents">开始阅读</a>
+              <a class="ghost-link" href="../../index.html#entries">返回全部入口</a>
+            </div>
+            <div class="project-metrics" id="coachmind-metrics"></div>
+          </div>
+
+          <aside class="hero-side">
+            <h2>页面内容</h2>
+            <ul class="meta-list">
+              <li>理论研究报告在线阅读</li>
+              <li>项目建议书与开发手册查看</li>
+              <li>最新文档会随主站同步更新</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="workspace" id="documents">
+          <aside class="list-panel">
+            <div class="panel-header">
+              <h2 class="panel-title">文档目录</h2>
+              <p class="panel-desc">按文档类型筛选并选择要阅读的内容。</p>
+            </div>
+            <div class="filter-row" id="coachmind-filters"></div>
+            <div class="item-list" id="coachmind-list"></div>
+          </aside>
+
+          <section class="viewer-panel">
+            <div class="viewer-head">
+              <h2 class="viewer-title" id="coachmind-title">加载中</h2>
+              <p class="viewer-meta" id="coachmind-meta"></p>
+            </div>
+            <div class="viewer-toolbar">
+              <div class="badge-row" id="coachmind-badges"></div>
+              <div class="viewer-actions">
+                <a class="mini-link" id="coachmind-download" href="#" target="_blank" rel="noreferrer">
+                  打开原文
+                </a>
+              </div>
+            </div>
+            <div class="viewer-surface">
+              <article class="viewer-markdown" id="coachmind-body"></article>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <footer class="page-footer">
+        <p>公开页内容来自 `projects/coachmind-ai` 的同步数据与文档。</p>
+      </footer>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
