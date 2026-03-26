@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI+体育培训项目 | 李睿鉴</title>
+    <meta
+      name="description"
+      content="AI+体育培训项目公开页。面向体育院校师生、教练员与行业团队，帮助更多体育人真正领会到 AI 带来的能力飞跃。"
+    />
+    <meta name="theme-color" content="#0f1d2d" />
+    <link rel="stylesheet" href="./hackathon.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="#hero" aria-label="返回页面顶部">
+          <span class="brand-kicker">培训项目</span>
+          <strong>AI+体育能力跃迁培训</strong>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          导航
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="页面导航">
+          <a href="#overview">项目定位</a>
+          <a href="#benefits">培训目标</a>
+          <a href="#studio">学习路径</a>
+          <a href="#agenda">培训安排</a>
+          <a href="#scenarios">场景案例</a>
+          <a href="#delivery">合作方式</a>
+          <a href="#pricing">报名咨询</a>
+          <a href="#faq">常见问题</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" id="hero">
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow">面向体育院校师生、教练员与行业团队 | 独立培训项目</p>
+            <h1>AI+体育能力跃迁培训</h1>
+            <p class="hero-tagline">让更多体育人真正领会到 AI 带来的能力飞跃</p>
+            <p class="hero-summary">
+              这是一个独立的培训项目，不是黑客松的前置环节，也不是为了把大家立刻送进比赛。它的目标是让体育教师、教练员、学生、赛事运营者和行业实践者第一次系统地理解：
+              AI 不只是写几段文案，而是能把工作流、分析、沟通、原型搭建和内容生产整体抬升一个量级。
+            </p>
+
+            <div class="badge-row" aria-label="项目标签">
+              <span class="badge">2天集中训练</span>
+              <span class="badge">零基础可入门</span>
+              <span class="badge">真实体育场景</span>
+              <span class="badge">现场带练</span>
+              <span class="badge">案例与模板包</span>
+            </div>
+
+            <div class="hero-actions">
+              <a class="button primary" href="#agenda">查看培训安排</a>
+              <a class="button secondary" href="#pricing">查看报名合作</a>
+            </div>
+
+            <ul class="hero-notes">
+              <li>培训的核心目标是能力跃迁，不是把学员在结营当天立刻推入竞赛。</li>
+              <li>所有内容都围绕训练、教学、赛事、管理和传播的真实体育任务展开。</li>
+              <li>培训结束后可以进入院系试点、团队内训或后续项目孵化，但黑客松将另行组织。</li>
+            </ul>
+          </div>
+
+          <aside class="hero-panel" data-reveal>
+            <p class="panel-eyebrow">项目速览</p>
+            <div class="stat-grid">
+              <article class="stat-card">
+                <span class="stat-value">2</span>
+                <span class="stat-label">天集中训练</span>
+              </article>
+              <article class="stat-card">
+                <span class="stat-value">12</span>
+                <span class="stat-label">个核心案例</span>
+              </article>
+              <article class="stat-card">
+                <span class="stat-value">1</span>
+                <span class="stat-label">套 AI 工作流</span>
+              </article>
+              <article class="stat-card">
+                <span class="stat-value">多</span>
+                <span class="stat-label">角色共同参与</span>
+              </article>
+            </div>
+
+            <div class="hero-brief">
+              <h2>一套为体育人设计的 AI 上手体系</h2>
+              <p>
+                它解决的不是“听过 AI 概念”，而是让人真正感到原本做得慢、做不稳、做不出来的事情，现在可以被重做一遍。
+              </p>
+            </div>
+
+            <div class="logistics-card">
+              <p class="panel-eyebrow">项目边界</p>
+              <ul class="plain-list">
+                <li>
+                  <span>核心形式</span>
+                  <strong>2 天培训 / 可配线上预备</strong>
+                </li>
+                <li>
+                  <span>主要对象</span>
+                  <strong>体育院校、教练组、行业团队</strong>
+                </li>
+                <li>
+                  <span>培训重点</span>
+                  <strong>工作流、场景拆解、原型搭建</strong>
+                </li>
+                <li>
+                  <span>预期产出</span>
+                  <strong>个人方法、案例原型、落地清单</strong>
+                </li>
+                <li>
+                  <span>与黑客松关系</span>
+                  <strong>独立项目，不绑定档期</strong>
+                </li>
+              </ul>
+            </div>
+          </aside>
+        </section>
+
+        <section class="section" id="overview">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow dark">项目定位</p>
+            <h2>培训项目的目标，不是把大家立刻送进比赛</h2>
+            <p>
+              这里首先解决的是认知和能力问题。很多体育人并不缺场景，也不缺判断力，真正缺的是把专业经验翻译成 AI 可执行工作流的能力。一旦这一步打通，体育工作会出现明显的效率和表达跃迁。
+            </p>
+          </div>
+
+          <div class="value-grid">
+            <article class="value-card" data-reveal>
+              <p class="card-index">01</p>
+              <h3>先让体育人看见 AI 的真实能力</h3>
+              <p>不是停留在概念和焦虑，而是让人第一次亲手体验 AI 在分析、整理、搭建和表达上的倍增效应。</p>
+            </article>
+            <article class="value-card" data-reveal>
+              <p class="card-index">02</p>
+              <h3>把抽象概念变成可操作工作流</h3>
+              <p>让“我大概知道 AI 很厉害”变成“我知道怎么让 AI 帮我完成具体任务”。</p>
+            </article>
+            <article class="value-card" data-reveal>
+              <p class="card-index">03</p>
+              <h3>从会提需求走到会组织 AI 协作</h3>
+              <p>体育专业判断依然是核心，但学员会学会如何调用模型、结构化信息、组合工具与验证结果。</p>
+            </article>
+            <article class="value-card" data-reveal>
+              <p class="card-index">04</p>
+              <h3>把培训结果沉淀成岗位资产</h3>
+              <p>培训结束后留下的不是课堂截图，而是一套可以继续在岗位上复用的方法、模板和原型。</p>
+            </article>
+          </div>
+
+          <div class="overview-panels">
+            <article class="panel-card" data-reveal>
+              <p class="panel-eyebrow dark">适合对象</p>
+              <h3>适合真的有体育场景、但还没系统进入 AI 工作流的人</h3>
+              <ul class="bullet-list">
+                <li>体育院校教师、辅导员、科研人员与课程负责人</li>
+                <li>校队教练员、训练负责人、康复与体能相关人员</li>
+                <li>体育院校本科生、研究生、博士生与创新团队</li>
+                <li>赛事、场馆、俱乐部与体育企业的运营和项目人员</li>
+              </ul>
+            </article>
+
+            <article class="panel-card emphasis-card" data-reveal>
+              <p class="panel-eyebrow">培训后带走</p>
+              <h3>不是“听懂了”，而是“知道怎么自己做下去”</h3>
+              <ul class="bullet-list">
+                <li>一套适合体育场景的 AI 提示结构和任务拆解方法</li>
+                <li>至少 1 个个人或小组完成的场景原型</li>
+                <li>一批能直接复用到岗位中的模板、案例与表达结构</li>
+                <li>一份课后落地清单，明确接下来在部门或团队中怎么继续用</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="utility-strip" data-reveal>
+            <div>
+              <strong>认知跃迁</strong>
+              <span>从知道 AI 到理解 AI 怎么进入体育工作</span>
+            </div>
+            <div>
+              <strong>方法跃迁</strong>
+              <span>从提想法到会组织模型、数据和工具协同</span>
+            </div>
+            <div>
+              <strong>成果跃迁</strong>
+              <span>从课堂学习到岗位中可继续复用的工作资产</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="benefits">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow dark">培训目标</p>
+            <h2>培训之后，体育人的哪些能力会出现明显跃迁</h2>
+            <p>
+              这不是纯技术课，而是围绕体育专业角色重新组织工作方式。不同岗位的人会在不同环节感受到 AI 的能力增量，但核心都是把原本分散、低效、不可视的工作重新组织起来。
+            </p>
+          </div>
+
+          <div class="value-grid">
+            <article class="value-card" data-reveal>
+              <p class="card-index">A</p>
+              <h3>训练与执教</h3>
+              <p>训练计划、战术表达、复盘总结、队伍周报和恢复建议会变得更快、更清晰、更可追踪。</p>
+            </article>
+            <article class="value-card" data-reveal>
+              <p class="card-index">B</p>
+              <h3>教学与科研</h3>
+              <p>教案生成、体测反馈、规则讲解、选题梳理和综述搭建都可以建立更稳定的工作流。</p>
+            </article>
+            <article class="value-card" data-reveal>
+              <p class="card-index">C</p>
+              <h3>赛事与运营</h3>
+              <p>报名审核、赛程编排、通知发布、志愿者调度和资料归档可以从人工堆时间转成系统化处理。</p>
+            </article>
+            <article class="value-card" data-reveal>
+              <p class="card-index">D</p>
+              <h3>传播与管理</h3>
+              <p>招生页、新闻稿、活动策划、咨询应答和项目说明能够更快形成统一口径和可复用资产。</p>
+            </article>
+          </div>
+
+          <div class="overview-panels">
+            <article class="panel-card" data-reveal>
+              <p class="panel-eyebrow dark">培训前</p>
+              <h3>很多体育人卡在“知道重要，但不知道怎么上手”</h3>
+              <ul class="bullet-list">
+                <li>知道 AI 很热，但不知道不同工具怎么分工</li>
+                <li>脑子里有很多场景，但表达不成可执行任务</li>
+                <li>担心自己不会编程，觉得只能做旁观者</li>
+                <li>即使试过工具，也很难把它放进真实工作流程里</li>
+              </ul>
+            </article>
+
+            <article class="panel-card warning-card" data-reveal>
+              <p class="panel-eyebrow">培训后</p>
+              <h3>我们希望你至少进入“能组织 AI 工作”的状态</h3>
+              <ul class="bullet-list">
+                <li>知道如何把体育问题拆成用户、流程、输入、输出和验证</li>
+                <li>知道不同模型和工具在写作、搜索、搭站、分析中的分工</li>
+                <li>可以做出一个小型原型或页面，不再停留在空想阶段</li>
+                <li>知道课后怎么把这套能力继续放进课程、队伍或部门中</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="studio">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow dark">学习路径</p>
+            <h2>四段学习路径：从理解 AI 到做出场景原型</h2>
+            <p>
+              整个培训不是堆工具清单，而是按体育人最容易建立迁移能力的方式来组织。先校准认知，再拆解问题，再学会组织工具，最后做出可展示的小成果。
+            </p>
+          </div>
+
+          <div class="overview-panels">
+            <article class="panel-card emphasis-card" data-reveal>
+              <p class="panel-eyebrow">核心方法</p>
+              <h3>用真实体育任务带着学，而不是用抽象技术词汇压着学</h3>
+              <ul class="bullet-list">
+                <li>所有模块都回到训练、教学、赛事、管理与传播场景</li>
+                <li>每一步都强调输入、输出、约束和验证，而不是只看“生成效果”</li>
+                <li>让学员亲手做、亲手改、亲手复盘，避免只停在演示观看</li>
+              </ul>
+            </article>
+
+            <article class="panel-card" data-reveal>
+              <p class="panel-eyebrow dark">项目边界</p>
+              <h3>培训结束之后可以继续做项目，但不会默认立刻接黑客松</h3>
+              <ul class="bullet-list">
+                <li>课后可以先回到岗位里跑一轮真实应用</li>
+                <li>也可以作为院系、俱乐部或机构的后续试点项目</li>
+                <li>黑客松是后续另一个独立项目，会在合适窗口期另行组织</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="value-grid">
+            <article class="value-card" data-reveal>
+              <p class="card-index">01</p>
+              <h3>认知校准</h3>
+              <p>先弄清楚 AI 在体育工作中真正擅长什么、不擅长什么，以及为什么它会带来能力跃迁。</p>
+            </article>
+            <article class="value-card" data-reveal>
+              <p class="card-index">02</p>
+              <h3>问题拆解</h3>
+              <p>把模糊场景拆成目标用户、核心任务、输入材料、输出标准和验证方法。</p>
+            </article>
+            <article class="value-card" data-reveal>
+              <p class="card-index">03</p>
+              <h3>工具协作</h3>
+              <p>理解不同模型在分析、写作、搭站、搜索、流程设计和多模态处理上的角色分工。</p>
+            </article>
+            <article class="value-card" data-reveal>
+              <p class="card-index">04</p>
+              <h3>原型产出</h3>
+              <p>把一个真实体育问题做成页面、助手、表单或演示流程，让成果可以被同事和团队看见。</p>
+            </article>
+          </div>
+
+          <div class="status-banner" data-reveal>
+            <strong>原则说明：</strong>
+            <span>
+              培训项目看重的是能力迁移和场景落地，不用黑客松节奏来要求每个人在结营后立刻进入竞赛状态。
+            </span>
+          </div>
+        </section>
+
+        <section class="section" id="agenda">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow dark">培训安排</p>
+            <h2>两天培训怎么上，才能真的让人产生能力飞跃</h2>
+            <p>
+              Day 1 解决“看懂”和“拆得开”的问题，Day 2 解决“做得出”和“讲得清”的问题。培训不是一味堆信息，而是尽量把每一个模块都落到体育场景可操作的动作上。
+            </p>
+          </div>
+
+          <div class="agenda-grid">
+            <article class="day-card" data-reveal>
+              <div class="day-header">
+                <p class="day-label">Day 1</p>
+                <h3>建立共同认知，理解方法，跑通第一批案例</h3>
+              </div>
+              <ol class="agenda-list">
+                <li class="agenda-item">
+                  <span class="agenda-time">09:00-09:40</span>
+                  <div>
+                    <h4>签到与 AI 工作台准备</h4>
+                    <p>完成账号、浏览器、工具环境和模板包检查，确保所有人进入同一节奏。</p>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time">09:40-10:40</span>
+                  <div>
+                    <h4>为什么体育场景会因为 AI 发生能力跃迁</h4>
+                    <p>把训练、教学、赛事、传播与管理中的高频任务重新拆开，看哪些会被明显重构。</p>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time">10:50-12:00</span>
+                  <div>
+                    <h4>不同模型怎么分工</h4>
+                    <p>理解分析、写作、搜索、搭站、改代码和多模态处理分别适合什么工具。</p>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time">14:00-15:30</span>
+                  <div>
+                    <h4>把体育问题拆成 AI 可执行任务</h4>
+                    <p>从岗位真实需求出发，拆出目标用户、流程、输入、输出和验证标准。</p>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time">15:40-17:30</span>
+                  <div>
+                    <h4>训练、教学、赛事三类基础案例带练</h4>
+                    <p>围绕最常见的体育工作流完成第一轮页面、问答结构、表单与内容面板。</p>
+                  </div>
+                </li>
+              </ol>
+              <div class="day-outcome">
+                <strong>当天产出：</strong>
+                <span>统一工作环境、任务拆解方法、第一批场景案例和个人方向判断。</span>
+              </div>
+            </article>
+
+            <article class="day-card highlight-day" data-reveal>
+              <div class="day-header">
+                <p class="day-label">Day 2</p>
+                <h3>做出场景原型，形成个人方法，并规划课后落地</h3>
+              </div>
+              <ol class="agenda-list">
+                <li class="agenda-item">
+                  <span class="agenda-time">09:00-10:20</span>
+                  <div>
+                    <h4>场景原型搭建</h4>
+                    <p>把前一天拆好的任务串成可以展示的完整流程，而不是停留在零散提示词。</p>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time">10:30-12:00</span>
+                  <div>
+                    <h4>页面、表单、知识库和自动化示例</h4>
+                    <p>学习如何让一个想法具备基本交互，而不只是文档里的一段说明。</p>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time">14:00-15:20</span>
+                  <div>
+                    <h4>围绕本人岗位做一个小型落地方案</h4>
+                    <p>每位学员或每组都要把体育专业经验转成一个更完整的小成果。</p>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time">15:30-16:40</span>
+                  <div>
+                    <h4>成果演示与同行反馈</h4>
+                    <p>通过现场走查，让学员能清楚地讲出自己的问题、方法、结果和下一步。</p>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time">16:40-17:30</span>
+                  <div>
+                    <h4>课后应用清单与协同建议</h4>
+                    <p>明确接下来如何在院系、队伍、机构或个人项目里继续跑下去。</p>
+                  </div>
+                </li>
+              </ol>
+              <div class="day-outcome">
+                <strong>当天产出：</strong>
+                <span>场景原型、个人方法清单、岗位应用方向和课后 30 天推进建议。</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="overview-panels">
+            <article class="panel-card" data-reveal>
+              <p class="panel-eyebrow dark">课后延展</p>
+              <h3>培训结束后，优先回到真实场景中继续应用</h3>
+              <ul class="bullet-list">
+                <li>可安排一次线上答疑或复盘，帮助收口第一轮落地问题</li>
+                <li>鼓励学员把课上成果转成部门工具、课程材料或队伍工作流</li>
+                <li>适合进一步发展的项目，可进入院系试点或机构内部项目</li>
+              </ul>
+            </article>
+
+            <article class="panel-card warning-card" data-reveal>
+              <p class="panel-eyebrow">特别说明</p>
+              <h3>培训项目并不默认在结营后马上切入黑客松</h3>
+              <ul class="bullet-list">
+                <li>黑客松是另一个项目，目标与参与者结构都不同</li>
+                <li>培训看重能力建立，黑客松看重创业者识别与项目协作</li>
+                <li>两者可以互相支持，但不应该被写成一个连续动作</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="utility-strip" data-reveal>
+            <div>
+              <strong>2 天</strong>
+              <span>集中理解并上手 AI 工作流</span>
+            </div>
+            <div>
+              <strong>1 次</strong>
+              <span>课后复盘或答疑支持</span>
+            </div>
+            <div>
+              <strong>1 套</strong>
+              <span>可继续在岗位中复用的应用清单</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="scenarios">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow dark">场景案例</p>
+            <h2>培训案例不追求炫技，而追求体育系统真的会用</h2>
+            <p>
+              案例设计的标准不是“看起来像 AI”，而是“体育工作者拿回去之后真的愿意继续用”。培训阶段用这些场景来帮助学员把 AI 的能力和自己的专业经验接起来。
+            </p>
+          </div>
+
+          <div class="scenario-groups">
+            <article class="scenario-group" data-reveal>
+              <div class="group-header">
+                <p class="eyebrow dark">训练与执教</p>
+                <h3>让训练计划、战术表达与复盘沟通更高效</h3>
+              </div>
+              <div class="scenario-list">
+                <article class="scenario-card">
+                  <span class="scenario-index">01</span>
+                  <div>
+                    <h4>AI 训练计划与动态调整助手</h4>
+                    <p>根据专项、周期、伤病、场地和器材条件快速生成并迭代训练安排。</p>
+                  </div>
+                </article>
+                <article class="scenario-card">
+                  <span class="scenario-index">02</span>
+                  <div>
+                    <h4>AI 战术讲解与教学板</h4>
+                    <p>把战术意图转成更容易理解的口令、图示说明和课堂讲解结构。</p>
+                  </div>
+                </article>
+                <article class="scenario-card">
+                  <span class="scenario-index">03</span>
+                  <div>
+                    <h4>AI 动作纠错与教练点评助手</h4>
+                    <p>结合视频观察、动作描述和训练记录，生成有层次的技术反馈。</p>
+                  </div>
+                </article>
+              </div>
+            </article>
+
+            <article class="scenario-group" data-reveal>
+              <div class="group-header">
+                <p class="eyebrow dark">教学与科研</p>
+                <h3>把教案、反馈和研究支持做成可复用工具</h3>
+              </div>
+              <div class="scenario-list">
+                <article class="scenario-card">
+                  <span class="scenario-index">04</span>
+                  <div>
+                    <h4>AI 体育课程教案助手</h4>
+                    <p>快速生成课程目标、课堂流程、互动设计、作业和课后延展建议。</p>
+                  </div>
+                </article>
+                <article class="scenario-card">
+                  <span class="scenario-index">05</span>
+                  <div>
+                    <h4>AI 体测报告解读与反馈系统</h4>
+                    <p>让教师、学生和家长都能更容易看懂测试结果及后续建议。</p>
+                  </div>
+                </article>
+                <article class="scenario-card">
+                  <span class="scenario-index">06</span>
+                  <div>
+                    <h4>AI 科研选题与综述 Co-pilot</h4>
+                    <p>辅助生成关键词、研究问题、文献脉络、方法方案和综述结构。</p>
+                  </div>
+                </article>
+              </div>
+            </article>
+
+            <article class="scenario-group" data-reveal>
+              <div class="group-header">
+                <p class="eyebrow dark">赛事与运营</p>
+                <h3>把报名、编排、通知和协同流程重新组织起来</h3>
+              </div>
+              <div class="scenario-list">
+                <article class="scenario-card">
+                  <span class="scenario-index">07</span>
+                  <div>
+                    <h4>AI 赛事报名审核与资格校验</h4>
+                    <p>自动识别报名材料、字段缺失与资格问题，减少人工重复筛查。</p>
+                  </div>
+                </article>
+                <article class="scenario-card">
+                  <span class="scenario-index">08</span>
+                  <div>
+                    <h4>AI 赛程编排与秩序册生成器</h4>
+                    <p>根据时间、场地和组别要求生成更容易调整和复核的赛务草案。</p>
+                  </div>
+                </article>
+                <article class="scenario-card">
+                  <span class="scenario-index">09</span>
+                  <div>
+                    <h4>AI 场馆排期与器材调度台</h4>
+                    <p>把场地、器材、借还和冲突信息转成更清晰的排程视图。</p>
+                  </div>
+                </article>
+              </div>
+            </article>
+
+            <article class="scenario-group" data-reveal>
+              <div class="group-header">
+                <p class="eyebrow dark">传播与服务</p>
+                <h3>让招生、咨询、说明和复盘更有组织</h3>
+              </div>
+              <div class="scenario-list">
+                <article class="scenario-card">
+                  <span class="scenario-index">10</span>
+                  <div>
+                    <h4>AI 项目官网与招生页生成器</h4>
+                    <p>从项目简介到报名引导，快速搭建面向外部的统一展示入口。</p>
+                  </div>
+                </article>
+                <article class="scenario-card">
+                  <span class="scenario-index">11</span>
+                  <div>
+                    <h4>AI 公告、主持词与新闻稿流水线</h4>
+                    <p>把赛事、课程和活动中的重复表达工作做成稳定的内容工作流。</p>
+                  </div>
+                </article>
+                <article class="scenario-card">
+                  <span class="scenario-index">12</span>
+                  <div>
+                    <h4>AI 俱乐部咨询与会员服务助手</h4>
+                    <p>围绕课程、权益、活动和常见问题搭建更高效的咨询承接界面。</p>
+                  </div>
+                </article>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="delivery">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow dark">合作方式</p>
+            <h2>把培训办成一个真正有结果的项目，而不是一次普通讲座</h2>
+            <p>
+              要让培训真的有效，关键不只是现场讲得好，而是课前需求、案例适配、环境准备、现场带练和课后跟进能不能连成一套。下面是一种更稳妥的组织方式。
+            </p>
+          </div>
+
+          <div class="delivery-grid">
+            <article class="delivery-card" data-reveal>
+              <p class="roadmap-stage">T-21 到 T-14</p>
+              <h3>需求访谈与对象确认</h3>
+              <ul class="bullet-list">
+                <li>确认培训对象结构、岗位角色和基础差异。</li>
+                <li>筛出最值得现场带练的真实体育任务。</li>
+                <li>确定组织方式、人数规模和课后期待成果。</li>
+              </ul>
+            </article>
+            <article class="delivery-card" data-reveal>
+              <p class="roadmap-stage">T-13 到 T-7</p>
+              <h3>案例与材料定制</h3>
+              <ul class="bullet-list">
+                <li>把通用案例调整为更适合院校或机构的版本。</li>
+                <li>准备模板包、材料包和演示数据。</li>
+                <li>明确培训边界和课后可继续推进的方向。</li>
+              </ul>
+            </article>
+            <article class="delivery-card" data-reveal>
+              <p class="roadmap-stage">T-6 到 T-1</p>
+              <h3>环境与名单准备</h3>
+              <ul class="bullet-list">
+                <li>检查账号、网络、浏览器和现场设备。</li>
+                <li>完成报名信息、分组意向和助教排班。</li>
+                <li>降低现场因为环境问题导致的时间损耗。</li>
+              </ul>
+            </article>
+            <article class="delivery-card" data-reveal>
+              <p class="roadmap-stage">Day 1 / Day 2</p>
+              <h3>现场带练与成果产出</h3>
+              <ul class="bullet-list">
+                <li>先统一工作台，再进入案例和项目带练。</li>
+                <li>关键节点配导师示范与助教巡场。</li>
+                <li>确保每位学员都能带着实际成果离场。</li>
+              </ul>
+            </article>
+            <article class="delivery-card" data-reveal>
+              <p class="roadmap-stage">T+7 到 T+30</p>
+              <h3>课后复盘与落地跟进</h3>
+              <ul class="bullet-list">
+                <li>通过线上答疑或回访解决第一轮应用问题。</li>
+                <li>筛选适合继续推进的原型和场景。</li>
+                <li>把培训结果沉淀为院系或机构内部案例库。</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="overview-panels">
+            <article class="panel-card" data-reveal>
+              <p class="panel-eyebrow dark">适合合作方</p>
+              <h3>适合以培训方式快速建立 AI 共识和能力底座的组织</h3>
+              <ul class="bullet-list">
+                <li>希望做课程改革或教师赋能的体育院校与学院</li>
+                <li>希望提升教练组工作流效率的训练团队</li>
+                <li>希望提升赛务、传播和管理效率的体育机构</li>
+                <li>希望把 AI 训练转成组织能力的企业或项目组</li>
+              </ul>
+            </article>
+
+            <article class="panel-card warning-card" data-reveal>
+              <p class="panel-eyebrow">底层保障</p>
+              <h3>真正决定培训质量的，往往是这三件基础工作</h3>
+              <ul class="bullet-list">
+                <li>工作台环境是否统一，学员能否在现场顺利跑起来</li>
+                <li>案例是否真的贴近本机构的体育工作，而不是泛泛演示</li>
+                <li>课后有没有复盘与落地动作，避免培训热度快速消退</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="status-banner" data-reveal>
+            <strong>交付原则：</strong>
+            <span>
+              培训项目的成功标准是让更多体育人真正获得能力跃迁，而不是在结营时制造一场仓促的竞赛气氛。
+            </span>
+          </div>
+        </section>
+
+        <section class="section" id="pricing">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow dark">报名咨询</p>
+            <h2>公开报名、院校专场与机构内训都可以独立组织</h2>
+            <p>
+              当前更适合用三种方式推进：公开班、院校专场、机构内训。具体档期、人数、线下地点和费用按实际合作场景沟通确定，不与黑客松项目打包销售。
+            </p>
+          </div>
+
+          <div class="pricing-grid">
+            <article class="price-card featured-price" data-reveal>
+              <p class="price-tag">公开班</p>
+              <h3>个人报名</h3>
+              <p class="price-number">公开招募</p>
+              <p class="price-note">
+                适合教师、学生、教练员和行业实践者个人参加，以统一主题和混合角色组织培训。
+              </p>
+            </article>
+
+            <article class="price-card" data-reveal>
+              <p class="price-tag">定制班</p>
+              <h3>院校 / 机构专场</h3>
+              <p class="price-number">按需定制</p>
+              <p class="price-note">
+                适合围绕课程改革、教练赋能、赛务升级或部门协同来定制内容与案例。
+              </p>
+            </article>
+
+            <article class="pricing-support" data-reveal>
+              <p class="panel-eyebrow dark">合作信息</p>
+              <h3>当前更适合这样沟通</h3>
+              <ul class="plain-list plain-list-compact">
+                <li>
+                  <span>合作方式</span>
+                  <strong>公开班 / 院校专场 / 机构内训</strong>
+                </li>
+                <li>
+                  <span>组织重点</span>
+                  <strong>按真实体育场景定制案例</strong>
+                </li>
+                <li>
+                  <span>时间关系</span>
+                  <strong>培训与黑客松分别排期</strong>
+                </li>
+                <li>
+                  <span>信息更新</span>
+                  <strong>以最新发布档期为准</strong>
+                </li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="support-grid">
+            <article class="panel-card" data-reveal>
+              <p class="panel-eyebrow dark">培训包含</p>
+              <h3>核心交付不是一堆概念，而是一套可继续使用的方法</h3>
+              <ul class="bullet-list">
+                <li>统一工作环境与案例演示路径</li>
+                <li>场景拆解方法、模板包和带练案例</li>
+                <li>现场成果演示与课后落地建议</li>
+              </ul>
+            </article>
+
+            <article class="panel-card warning-card" data-reveal>
+              <p class="panel-eyebrow">重要说明</p>
+              <h3>请用培训逻辑组织培训项目，不要混用黑客松逻辑</h3>
+              <ul class="bullet-list">
+                <li>培训看重的是理解、上手和能力迁移</li>
+                <li>黑客松看重的是创业者筛选、组队和后续孵化</li>
+                <li>两者互相支持，但不应该在页面上写成一个打包项目</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section faq-section" id="faq">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow dark">常见问题</p>
+            <h2>把最容易混淆的事情提前讲清楚</h2>
+          </div>
+
+          <div class="faq-grid">
+            <details class="faq-card" data-reveal open>
+              <summary>没有编程基础，能不能参加这个培训？</summary>
+              <p>
+                可以。培训本来就是为有体育场景、但没有系统编程背景的人设计的。基础电脑操作能力即可，重点在于学会组织 AI 工作流，而不是先学会传统软件开发。
+              </p>
+            </details>
+
+            <details class="faq-card" data-reveal>
+              <summary>培训结束后会马上接着办黑客松吗？</summary>
+              <p>
+                不会默认这样安排。黑客松是另一个独立项目，会在不同窗口期、按不同目标和不同人群另行组织，不与培训结营日强绑定。
+              </p>
+            </details>
+
+            <details class="faq-card" data-reveal>
+              <summary>培训更适合个人报名，还是团队一起参加？</summary>
+              <p>
+                两种都可以。个人报名适合先建立方法和视野，团队报名更适合围绕本单位真实场景直接做出内部可用成果。
+              </p>
+            </details>
+
+            <details class="faq-card" data-reveal>
+              <summary>培训结束后，学员应该带走什么？</summary>
+              <p>
+                至少应该带走一套可复用的 AI 工作方法、一个真实场景的小原型，以及一份能够在岗位上继续推进的落地清单。
+              </p>
+            </details>
+
+            <details class="faq-card" data-reveal>
+              <summary>可以用国产模型或其他 AI 工具吗？</summary>
+              <p>
+                可以。培训重点是体育问题拆解与工作流设计，不绑定单一模型。国际模型和国产模型都可以纳入方案，只要组织方式清楚、结果可验证。
+              </p>
+            </details>
+
+            <details class="faq-card" data-reveal>
+              <summary>培训之后如果有人想继续做更大的项目怎么办？</summary>
+              <p>
+                可以进入院系试点、机构内部项目、二期进阶训练，或者在后续合适窗口期申请参加独立组织的 AI+体育创新黑客松。
+              </p>
+            </details>
+          </div>
+        </section>
+      </main>
+
+      <footer class="page-footer" data-reveal>
+        <p class="footer-title">让更多体育人真正领会到 AI 带来的能力飞跃。</p>
+        <p class="footer-note">
+          培训项目、档期与合作信息将以本页持续更新为准。
+        </p>
+      </footer>
+    </div>
+
+    <script src="./hackathon.js"></script>
+  </body>
+</html>

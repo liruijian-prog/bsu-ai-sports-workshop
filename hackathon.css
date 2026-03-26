@@ -368,7 +368,7 @@ main > .section {
 }
 
 .hero-panel::before {
-  content: "Workshop Dossier";
+  content: "Project Dossier";
   display: block;
   margin-bottom: 12px;
   color: rgba(51, 76, 112, 0.52);
