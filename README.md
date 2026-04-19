@@ -5,11 +5,14 @@
 ## 当前结构
 
 - `index.html`：个人站首页 V1
+- `ai+sports/index.html`：AI+体育训练营主页面，对外正式入口
+- `training.html`：兼容旧链接的跳转页，统一导向 `/ai+sports/`
 - `styles.css`：个人站首页样式
 - `app.js`：导航交互与滚动动效
 - `hackathon.html`：原黑客松项目详情页归档入口
 - `hackathon.css`：黑客松项目页样式
 - `hackathon.js`：黑客松项目页交互
+- `training-form.js`：训练营报名与问卷交互
 - `DESIGN.md`：站点定位、信息架构与视觉方向说明
 
 ## 这次改动的核心
@@ -45,11 +48,23 @@ http://127.0.0.1:4323/hackathon.html
 https://liruijian.com/ai+sports/
 ```
 
+训练营旧地址兼容跳转：
+
+```text
+https://liruijian.com/training.html
+```
+
 ## 发布方式
 
 - 当前站点使用 GitHub Pages 托管。
 - 自定义域名为 `liruijian.com`，`www.liruijian.com` 会自动跳转到主域名。
 - Pages 已切换为 GitHub Actions 发布；只要把改动 push 到 `main`，站点会自动更新。
+
+## 维护约定
+
+- 训练营页面以后只维护 `ai+sports/index.html` 这一份。
+- `training.html` 只作为旧链接兼容页，不再放正式内容。
+- 公共样式和脚本继续放在站点根目录，供不同页面复用。
 
 ## 下一步最值得做的事情
 
