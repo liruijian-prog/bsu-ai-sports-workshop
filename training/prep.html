@@ -1,0 +1,2049 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>体育+AI一日训练营内部执行手册</title>
+    <meta
+      name="description"
+      content="体育中外人文交流研究院组织北体大师生免费线下一日训练营的内部执行手册，包含课程安排、样板应用、分工、SOP、物料、风控与转化动作。"
+    />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#0e1628" />
+    <style>
+      :root {
+        --bg: #f4efe4;
+        --paper: rgba(255, 252, 247, 0.9);
+        --panel: rgba(18, 24, 39, 0.92);
+        --panel-soft: rgba(25, 32, 53, 0.82);
+        --ink: #17202f;
+        --ink-soft: #495366;
+        --line: rgba(19, 31, 53, 0.12);
+        --gold: #a56a1e;
+        --gold-soft: rgba(165, 106, 30, 0.12);
+        --red: #8b2f2b;
+        --green: #2c6b59;
+        --blue: #315f93;
+        --shadow: 0 24px 70px rgba(15, 21, 34, 0.14);
+        --radius-xl: 28px;
+        --radius-lg: 20px;
+        --radius-md: 14px;
+        --radius-sm: 10px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        line-height: 1.7;
+        background:
+          radial-gradient(circle at top left, rgba(165, 106, 30, 0.16), transparent 28%),
+          radial-gradient(circle at 85% 18%, rgba(49, 95, 147, 0.18), transparent 24%),
+          linear-gradient(180deg, #f0eadb 0%, #f7f2e8 42%, #f3eee3 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.24) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.24) 1px, transparent 1px);
+        background-size: 40px 40px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 80%);
+        opacity: 0.35;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        position: relative;
+        z-index: 1;
+        max-width: 1560px;
+        margin: 0 auto;
+        padding: 28px;
+        display: grid;
+        grid-template-columns: 320px minmax(0, 1fr);
+        gap: 28px;
+      }
+
+      .rail {
+        position: sticky;
+        top: 18px;
+        align-self: start;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .brand-panel,
+      .toc-panel,
+      .notice-panel,
+      .card,
+      .hero-panel,
+      .footer-panel {
+        background: var(--paper);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      .brand-panel {
+        padding: 22px;
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .brand-panel::after {
+        content: "";
+        position: absolute;
+        inset: auto -60px -80px auto;
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(165, 106, 30, 0.22), transparent 70%);
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 700;
+      }
+
+      .brand-panel h1 {
+        margin: 0;
+        font-family: "Songti SC", "Noto Serif SC", serif;
+        font-size: 34px;
+        line-height: 1.18;
+      }
+
+      .brand-panel .subtitle {
+        margin: 12px 0 0;
+        color: var(--ink-soft);
+        font-size: 15px;
+      }
+
+      .meta-stack {
+        margin: 20px 0 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .meta-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.58);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        font-size: 14px;
+      }
+
+      .meta-item strong {
+        font-weight: 700;
+      }
+
+      .action-row {
+        margin-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .button,
+      .ghost-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 16px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      }
+
+      .button {
+        background: linear-gradient(135deg, #17304f 0%, #2e5e90 100%);
+        color: #fff;
+        box-shadow: 0 12px 26px rgba(25, 52, 88, 0.24);
+      }
+
+      .ghost-button {
+        background: rgba(255, 255, 255, 0.7);
+        border-color: var(--line);
+        color: var(--ink);
+      }
+
+      .button:hover,
+      .ghost-button:hover,
+      .toc-panel a:hover,
+      .quick-link:hover {
+        transform: translateY(-1px);
+      }
+
+      .toc-panel {
+        border-radius: var(--radius-lg);
+        padding: 18px;
+      }
+
+      .toc-panel h2 {
+        margin: 0 0 14px;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      .toc-panel nav {
+        display: grid;
+        gap: 8px;
+      }
+
+      .toc-panel a {
+        padding: 11px 12px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.52);
+        border: 1px solid transparent;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+
+      .toc-panel a:hover {
+        border-color: rgba(49, 95, 147, 0.2);
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.86);
+      }
+
+      .notice-panel {
+        border-radius: var(--radius-lg);
+        padding: 18px;
+        background: linear-gradient(160deg, rgba(139, 47, 43, 0.12), rgba(255, 252, 247, 0.84));
+      }
+
+      .notice-panel p {
+        margin: 0;
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .hero-panel {
+        border-radius: 36px;
+        padding: 34px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at top right, rgba(49, 95, 147, 0.18), transparent 26%),
+          radial-gradient(circle at bottom left, rgba(165, 106, 30, 0.18), transparent 24%);
+        pointer-events: none;
+      }
+
+      .hero-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+        gap: 24px;
+      }
+
+      .hero-panel h2 {
+        margin: 0 0 14px;
+        font-family: "Songti SC", "Noto Serif SC", serif;
+        font-size: clamp(34px, 5vw, 58px);
+        line-height: 1.08;
+        max-width: 14ch;
+      }
+
+      .hero-panel .summary {
+        margin: 0;
+        max-width: 72ch;
+        font-size: 17px;
+        color: var(--ink-soft);
+      }
+
+      .pill-row {
+        margin-top: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(49, 95, 147, 0.12);
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+
+      .hero-side {
+        background: rgba(17, 24, 39, 0.94);
+        color: rgba(255, 255, 255, 0.86);
+        border-radius: 26px;
+        padding: 22px;
+      }
+
+      .hero-side h3 {
+        margin: 0 0 14px;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.52);
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .stat {
+        padding: 14px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 23px;
+        line-height: 1;
+        margin-bottom: 6px;
+        color: #fff;
+      }
+
+      .stat span {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .hero-note {
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .section {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .section-heading {
+        display: grid;
+        grid-template-columns: 88px minmax(0, 1fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      .section-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 88px;
+        height: 88px;
+        border-radius: 30px;
+        background: var(--panel);
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 22px;
+        font-weight: 800;
+        box-shadow: var(--shadow);
+      }
+
+      .section-heading h3 {
+        margin: 0;
+        font-family: "Songti SC", "Noto Serif SC", serif;
+        font-size: clamp(24px, 2.8vw, 40px);
+        line-height: 1.18;
+      }
+
+      .section-heading p {
+        margin: 10px 0 0;
+        color: var(--ink-soft);
+        font-size: 16px;
+        max-width: 78ch;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .grid.cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid.cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid.auto {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      .card {
+        border-radius: var(--radius-xl);
+        padding: 22px;
+      }
+
+      .card h4,
+      .card h5 {
+        margin: 0 0 10px;
+        font-size: 20px;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--ink-soft);
+      }
+
+      .card + .card {
+        position: relative;
+      }
+
+      .card .mini-title {
+        margin: 0 0 8px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--gold);
+        font-weight: 700;
+      }
+
+      .decision-card {
+        border-top: 4px solid var(--gold);
+      }
+
+      .decision-card strong,
+      .scenario-card strong,
+      .check-card strong {
+        display: inline-block;
+        margin: 10px 0 8px;
+        color: var(--ink);
+      }
+
+      .chip-list,
+      .list,
+      .compact-list {
+        list-style: none;
+        padding: 0;
+        margin: 14px 0 0;
+      }
+
+      .chip-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip-list li {
+        padding: 7px 11px;
+        border-radius: 999px;
+        font-size: 12px;
+        background: rgba(49, 95, 147, 0.08);
+        color: var(--blue);
+      }
+
+      .list li,
+      .compact-list li {
+        position: relative;
+        padding-left: 18px;
+        color: var(--ink-soft);
+      }
+
+      .list li + li,
+      .compact-list li + li {
+        margin-top: 9px;
+      }
+
+      .list li::before,
+      .compact-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.82em;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+
+      .statement {
+        border-left: 4px solid var(--gold);
+        background: linear-gradient(90deg, rgba(165, 106, 30, 0.1), rgba(255, 252, 247, 0.82));
+      }
+
+      .scenario-card {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 100%;
+      }
+
+      .scenario-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .scenario-top h4 {
+        margin: 0;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 82px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(17, 24, 39, 0.08);
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .badge.green {
+        background: rgba(44, 107, 89, 0.12);
+        color: var(--green);
+      }
+
+      .badge.red {
+        background: rgba(139, 47, 43, 0.12);
+        color: var(--red);
+      }
+
+      .badge.blue {
+        background: rgba(49, 95, 147, 0.12);
+        color: var(--blue);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .table-wrap {
+        overflow: auto;
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .table-card {
+        padding: 0;
+      }
+
+      .table-card table {
+        min-width: 860px;
+        background: rgba(255, 252, 247, 0.88);
+      }
+
+      .table-card thead th {
+        position: sticky;
+        top: 0;
+        background: var(--panel);
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 13px;
+        text-align: left;
+        padding: 16px 18px;
+        letter-spacing: 0.04em;
+      }
+
+      .table-card tbody td {
+        padding: 16px 18px;
+        border-top: 1px solid rgba(19, 31, 53, 0.08);
+        vertical-align: top;
+        font-size: 14px;
+      }
+
+      .table-card tbody tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .owner {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        background: rgba(49, 95, 147, 0.1);
+        color: var(--blue);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 14px;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 140px minmax(0, 1fr);
+        gap: 16px;
+        padding: 18px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.64);
+        border: 1px solid var(--line);
+      }
+
+      .timeline-point {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--panel);
+      }
+
+      .timeline-point span {
+        display: block;
+        margin-top: 6px;
+        font-size: 12px;
+        color: var(--ink-soft);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .timeline-item h4 {
+        margin: 0 0 6px;
+        font-size: 20px;
+      }
+
+      .dual-panel {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .role-card {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .role-card .role {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .role-card .role strong {
+        font-size: 20px;
+      }
+
+      .ribbon {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--gold-soft);
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .script-block {
+        display: grid;
+        gap: 12px;
+      }
+
+      .script-line {
+        padding: 16px 18px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.62);
+      }
+
+      .script-line strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 15px;
+        color: var(--ink);
+      }
+
+      .layout-plan {
+        min-height: 340px;
+        padding: 24px;
+        border-radius: 26px;
+        background:
+          linear-gradient(180deg, rgba(255, 252, 247, 0.96), rgba(246, 241, 233, 0.92)),
+          repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.03) 0, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 80px),
+          repeating-linear-gradient(rgba(0, 0, 0, 0.03) 0, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 80px);
+        border: 1px solid var(--line);
+        display: grid;
+        gap: 16px;
+      }
+
+      .layout-zone {
+        border-radius: 18px;
+        padding: 16px;
+        border: 1px dashed rgba(19, 31, 53, 0.16);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .layout-zone strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .three-up {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .mini-card {
+        padding: 14px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.64);
+        border: 1px solid var(--line);
+      }
+
+      .mini-card h5 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+
+      .score-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+      }
+
+      .score-box {
+        padding: 16px;
+        border-radius: 18px;
+        background: rgba(17, 24, 39, 0.92);
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      .score-box strong {
+        display: block;
+        font-size: 28px;
+        color: #fff;
+      }
+
+      .check-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .check-card {
+        padding: 20px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .check-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 14px 0 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .check-card li {
+        position: relative;
+        padding-left: 28px;
+        color: var(--ink-soft);
+      }
+
+      .check-card li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: rgba(44, 107, 89, 0.12);
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .footer-panel {
+        border-radius: 28px;
+        padding: 24px;
+        background: linear-gradient(135deg, rgba(18, 24, 39, 0.96), rgba(35, 45, 72, 0.94));
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .footer-panel h4 {
+        margin: 0 0 12px;
+        font-size: 26px;
+        font-family: "Songti SC", "Noto Serif SC", serif;
+        color: #fff;
+      }
+
+      .footer-panel p {
+        margin: 0;
+      }
+
+      .quick-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 14px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .muted {
+        color: var(--ink-soft);
+      }
+
+      @media (max-width: 1260px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .rail {
+          position: static;
+        }
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .grid.cols-2,
+        .grid.cols-3,
+        .dual-panel,
+        .check-grid,
+        .three-up {
+          grid-template-columns: 1fr;
+        }
+
+        .section-heading,
+        .timeline-item {
+          grid-template-columns: 1fr;
+        }
+
+        .section-number {
+          width: 64px;
+          height: 64px;
+          border-radius: 20px;
+        }
+
+        .hero-panel,
+        .brand-panel,
+        .card {
+          padding: 20px;
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        body::before,
+        .action-row,
+        .toc-panel,
+        .notice-panel {
+          display: none;
+        }
+
+        .page {
+          max-width: none;
+          padding: 0;
+          display: block;
+        }
+
+        .hero-panel,
+        .brand-panel,
+        .card,
+        .footer-panel {
+          box-shadow: none;
+          border: 1px solid #ddd;
+          background: #fff;
+          backdrop-filter: none;
+        }
+
+        .section,
+        .hero-panel,
+        .brand-panel {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        .table-wrap {
+          overflow: visible;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <aside class="rail">
+        <section class="brand-panel">
+          <p class="eyebrow">Internal Playbook</p>
+          <h1>体育+AI一日训练营<br />内部执行手册</h1>
+          <p class="subtitle">
+            体育中外人文交流研究院组织样板营<br />
+            面向北体大师生 10 人免费线下训练
+          </p>
+          <div class="meta-stack">
+            <div class="meta-item"><span>版本</span><strong>v1.0</strong></div>
+            <div class="meta-item"><span>手册日期</span><strong>2026-04-19</strong></div>
+            <div class="meta-item"><span>默认营期</span><strong>2026-04-26 周日</strong></div>
+            <div class="meta-item"><span>组织目标</span><strong>验证样板 + 转化合作</strong></div>
+            <div class="meta-item"><span>营期规模</span><strong>教师 3-4 人 + 学生 6-7 人</strong></div>
+            <div class="meta-item"><span>场地支持</span><strong>电脑、茶点、投屏、助教</strong></div>
+          </div>
+          <div class="action-row">
+            <a class="button" href="#agenda">直接看日程</a>
+            <button class="ghost-button" type="button" onclick="window.print()">
+              打印 / 导出 PDF
+            </button>
+          </div>
+        </section>
+
+        <section class="toc-panel">
+          <h2>页面导航</h2>
+          <nav aria-label="目录">
+            <a href="#positioning">01 项目定位与北极星</a>
+            <a href="#decisions">02 今天必须拍板的事项</a>
+            <a href="#scenarios">03 首期场景与样板应用</a>
+            <a href="#agenda">04 一天课程与节奏设计</a>
+            <a href="#roles">05 组织架构与分工</a>
+            <a href="#prework">06 会前准备与时间线</a>
+            <a href="#sop">07 现场执行 SOP</a>
+            <a href="#scripts">08 主持词与转场话术</a>
+            <a href="#ops">09 物料、场地与设备</a>
+            <a href="#evaluation">10 成果评估与转化</a>
+            <a href="#risk">11 风险预案</a>
+            <a href="#checklist">12 全量清单</a>
+          </nav>
+        </section>
+
+        <section class="notice-panel">
+          <p>
+            本页已设置 <strong>noindex</strong>，适合作为内部链接流转。但只要挂在
+            `liruijian.com/training/prep.html`，它仍然是公开网页，不具备访问权限控制。
+          </p>
+        </section>
+      </aside>
+
+      <main class="content">
+        <section class="hero-panel">
+          <div class="hero-grid">
+            <div>
+              <p class="eyebrow">One-Day Intensive Camp</p>
+              <h2>这不是一场泛 AI 讲座，而是一场可复制的样板验证营</h2>
+              <p class="summary">
+                目标不是“让大家觉得 AI 很厉害”，而是让北体大的老师和学生在一天内
+                真的看见、真的上手、真的做出一个体育场景原型，并借此判断后续收费培训与项目合作的真实潜力。
+              </p>
+              <div class="pill-row">
+                <span class="pill">10 人小班</span>
+                <span class="pill">免费线下专场</span>
+                <span class="pill">电脑与茶点由主办方提供</span>
+                <span class="pill">上午演示 + 下午带练</span>
+                <span class="pill">3 个主场景</span>
+                <span class="pill">3 个预制样板应用</span>
+              </div>
+            </div>
+            <aside class="hero-side">
+              <h3>北极星指标</h3>
+              <div class="hero-stats">
+                <div class="stat">
+                  <strong>8/10</strong>
+                  <span>至少 8 人完成可展示原型</span>
+                </div>
+                <div class="stat">
+                  <strong>6+</strong>
+                  <span>至少 6 人愿意继续参与下一步</span>
+                </div>
+                <div class="stat">
+                  <strong>2-3</strong>
+                  <span>至少 2-3 位老师提出明确合作需求</span>
+                </div>
+                <div class="stat">
+                  <strong>1-2</strong>
+                  <span>沉淀 1-2 个试点方向</span>
+                </div>
+              </div>
+              <p class="hero-note">
+                一句话定义：<strong>先把它搞起来，但第一期必须收敛成少而精、强互动、可复制的体育+AI样板营。</strong>
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section" id="positioning">
+          <div class="section-heading">
+            <div class="section-number">01</div>
+            <div>
+              <h3>项目定位与北极星</h3>
+              <p>
+                这场营不是为了一次性热闹，而是为研究院建立一条“公益体验营
+                → 进阶收费培训 → 项目共创”的转化链路。第一期最重要的是验证方向、形成样板、获取真实反馈。
+              </p>
+            </div>
+          </div>
+
+          <div class="grid cols-2">
+            <article class="card">
+              <p class="mini-title">对外定位</p>
+              <h4>北体大师生体育+AI公益体验训练营</h4>
+              <p>
+                由体育中外人文交流研究院组织，免费提供设备和茶点，面向北体大师生开放
+                10 个名额。主题是“理解 AI 在体育场景中的可用边界，并亲手完成一个应用原型”。
+              </p>
+              <ul class="list">
+                <li>强调小规模、强互动、真上手。</li>
+                <li>不做泛 AI 科普，直接围绕体育真实问题展开。</li>
+                <li>当天必须有作品、有展示、有点评。</li>
+              </ul>
+            </article>
+
+            <article class="card statement">
+              <p class="mini-title">对内北极星</p>
+              <h4>三件事必须同时达成</h4>
+              <ul class="list">
+                <li><strong>让大家会做：</strong> 至少掌握“从场景到应用”的基本框架。</li>
+                <li><strong>让大家想继续：</strong> 现场建立成就感和“这对我有用”的判断。</li>
+                <li><strong>让研究院能转化：</strong> 收集明确需求，导向后续收费培训和项目合作。</li>
+              </ul>
+            </article>
+          </div>
+
+          <article class="card">
+            <p class="mini-title">核心原则</p>
+            <div class="grid auto">
+              <div>
+                <strong>少而精</strong>
+                <p>第一期只做 3 个主场景，不开放无限发散，不碰高难高风险方向。</p>
+              </div>
+              <div>
+                <strong>先样板，后共创</strong>
+                <p>必须先做出 3 个预制样板应用，现场基于样板改造，而不是让学员从零乱试。</p>
+              </div>
+              <div>
+                <strong>把老师和学生混编</strong>
+                <p>老师提供真实问题与价值判断，学生负责执行和测试，两者组合最容易出成果。</p>
+              </div>
+              <div>
+                <strong>把活动当成产品试运行</strong>
+                <p>每个环节都为后续产品化铺路，包括场景、模板、评价表和转化话术。</p>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" id="decisions">
+          <div class="section-heading">
+            <div class="section-number">02</div>
+            <div>
+              <h3>今天必须拍板的事项</h3>
+              <p>
+                如果今天只讨论方向、不锁定执行项，到活动当天一定会失控。下面 5 件事必须当场确定，并形成明确责任人。
+              </p>
+            </div>
+          </div>
+
+          <div class="grid auto">
+            <article class="card decision-card">
+              <p class="mini-title">拍板事项 A</p>
+              <h4>首期只做 3 个主赛道</h4>
+              <p>教学科研、训练管理、赛事传播与中外交流。其他想法先进入候选池，不进首期现场实操。</p>
+            </article>
+
+            <article class="card decision-card">
+              <p class="mini-title">拍板事项 B</p>
+              <h4>提前做出 3 个样板应用</h4>
+              <p>每个赛道都要有一个能跑通的样板，现场只做拆解、微调和改造。</p>
+            </article>
+
+            <article class="card decision-card">
+              <p class="mini-title">拍板事项 C</p>
+              <h4>锁定人员结构与分组</h4>
+              <p>建议 3-4 位老师，6-7 位学生，分为 3 个混合小组，避免单一身份扎堆。</p>
+            </article>
+
+            <article class="card decision-card">
+              <p class="mini-title">拍板事项 D</p>
+              <h4>现场支持最少 4 人</h4>
+              <p>1 位总协调/主持，1 位主讲，2 位助教。最好再配 1 位后勤兼摄影。</p>
+            </article>
+
+            <article class="card decision-card">
+              <p class="mini-title">拍板事项 E</p>
+              <h4>活动不以“结束”收尾</h4>
+              <p>结营必须接意向表、需求表、后续约谈，不然只是一次免费体验，不会形成后续业务。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="scenarios">
+          <div class="section-heading">
+            <div class="section-number">03</div>
+            <div>
+              <h3>首期场景与样板应用</h3>
+              <p>
+                第一期开场一定不要做复杂动作识别、伤病判断、医学诊断、精细视频算法这类高门槛赛道。
+                最稳妥的切入点是“信息处理 + 内容生成 + 流程辅助 + 方案草拟 + 双语传播”。
+              </p>
+            </div>
+          </div>
+
+          <div class="grid cols-3">
+            <article class="card scenario-card">
+              <div class="scenario-top">
+                <div>
+                  <p class="mini-title">场景 1</p>
+                  <h4>体育教学与科研助手</h4>
+                </div>
+                <span class="badge blue">打动老师</span>
+              </div>
+              <p>
+                最适合教师、研究生、本科生。价值在于把课程准备、文献整理、双语摘要和讨论问题生成变成高频可复用工作流。
+              </p>
+              <strong>当天演示的样板应用</strong>
+              <ul class="compact-list">
+                <li>输入课程主题或论文摘要，输出课程提纲、文献脉络、双语摘要、课堂讨论问题。</li>
+                <li>支持“体育+国际交流”“体育产业”“训练科学”等不同主题的快速切换。</li>
+              </ul>
+              <strong>为什么适合首期</strong>
+              <ul class="compact-list">
+                <li>场景成熟，老师最容易判断价值。</li>
+                <li>不依赖复杂数据和硬件。</li>
+                <li>当天产出质量通常最稳定。</li>
+              </ul>
+            </article>
+
+            <article class="card scenario-card">
+              <div class="scenario-top">
+                <div>
+                  <p class="mini-title">场景 2</p>
+                  <h4>训练计划与训练管理助手</h4>
+                </div>
+                <span class="badge green">体育属性最强</span>
+              </div>
+              <p>
+                最适合学生、教练、训练管理者。价值在于把训练目标、时间条件和限制条件结构化，快速输出阶段计划和跟踪表。
+              </p>
+              <strong>当天演示的样板应用</strong>
+              <ul class="compact-list">
+                <li>输入项目、训练周期、对象水平、器材和场地条件，输出 1 周训练计划与记录模板。</li>
+                <li>附带风险提醒、负荷观察点和课后复盘框架。</li>
+              </ul>
+              <strong>为什么适合首期</strong>
+              <ul class="compact-list">
+                <li>和体育专业结合最紧，学生感知最直接。</li>
+                <li>容易做出“看起来就有用”的产物。</li>
+                <li>有机会导向后续课程、队伍、训练项目合作。</li>
+              </ul>
+            </article>
+
+            <article class="card scenario-card">
+              <div class="scenario-top">
+                <div>
+                  <p class="mini-title">场景 3</p>
+                  <h4>赛事运营与中外交流传播助手</h4>
+                </div>
+                <span class="badge red">最贴研究院定位</span>
+              </div>
+              <p>
+                最适合活动组织者、宣传人员、学生志愿者和国际交流场景。价值在于把赛事执行、传播文案、双语沟通和志愿者支持串起来。
+              </p>
+              <strong>当天演示的样板应用</strong>
+              <ul class="compact-list">
+                <li>输入活动信息，输出执行清单、主持词、英文邀请函、社媒文案、FAQ 和志愿者话术。</li>
+                <li>适配体育论坛、友谊赛、国际交流周、短训班等场景。</li>
+              </ul>
+              <strong>为什么适合首期</strong>
+              <ul class="compact-list">
+                <li>直接贴合研究院“中外人文交流”的品牌身份。</li>
+                <li>好展示、好传播、好做出视觉成果。</li>
+                <li>容易延伸到会务、赛事、国际项目合作。</li>
+              </ul>
+            </article>
+          </div>
+
+          <article class="card table-card">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>赛道</th>
+                    <th>核心用户</th>
+                    <th>预制样板最低配置</th>
+                    <th>现场演示时长</th>
+                    <th>现场产出要求</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>教学科研助手</td>
+                    <td>教师、研究生、本科生</td>
+                    <td>场景说明、输入模板、2-5 份示例材料、输出模板、2 个测试样例</td>
+                    <td>10-12 分钟</td>
+                    <td>课程提纲或研究助手原型 1 个</td>
+                  </tr>
+                  <tr>
+                    <td>训练管理助手</td>
+                    <td>学生、教练、训练管理员</td>
+                    <td>项目参数表、周期模板、记录表、风险提醒清单、测试案例</td>
+                    <td>10-12 分钟</td>
+                    <td>训练计划与复盘模板原型 1 个</td>
+                  </tr>
+                  <tr>
+                    <td>赛事传播与中外交流助手</td>
+                    <td>项目负责人、宣传同学、志愿者</td>
+                    <td>活动信息表、传播模板、双语模板、执行清单、测试案例</td>
+                    <td>10-12 分钟</td>
+                    <td>赛事/活动执行与传播助手原型 1 个</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" id="agenda">
+          <div class="section-heading">
+            <div class="section-number">04</div>
+            <div>
+              <h3>一天课程与节奏设计</h3>
+              <p>
+                整体比例建议为 <strong>20% 认知、30% 演示拆解、50% 跟练实操</strong>。
+                节奏上要避免上午讲太满、下午留空，必须在午饭前就让参与者完成一次低门槛小练习，建立“我能做”的感觉。
+              </p>
+            </div>
+          </div>
+
+          <article class="card table-card">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>时间</th>
+                    <th>环节</th>
+                    <th>组织目标</th>
+                    <th>负责人</th>
+                    <th>当场产出</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>09:00-09:30</td>
+                    <td>签到、设备就位、前测问卷</td>
+                    <td>确保所有电脑、网络、账号、投屏都跑通，同时摸清参与者基础和兴趣方向</td>
+                    <td><span class="owner">总协调 + 技术支持</span></td>
+                    <td>签到表、前测问卷、分组预判</td>
+                  </tr>
+                  <tr>
+                    <td>09:30-09:50</td>
+                    <td>开场与目标说明</td>
+                    <td>明确这不是普通讲座，而是“当天做出原型”的样板营</td>
+                    <td><span class="owner">主持人</span></td>
+                    <td>统一预期、任务感建立</td>
+                  </tr>
+                  <tr>
+                    <td>09:50-10:30</td>
+                    <td>模块 1：体育+AI 能做什么、不能承诺什么</td>
+                    <td>建立边界认知，避免把 AI 神化，也避免走偏到高风险场景</td>
+                    <td><span class="owner">主讲</span></td>
+                    <td>共同认知</td>
+                  </tr>
+                  <tr>
+                    <td>10:30-11:15</td>
+                    <td>模块 2：3 个样板应用演示</td>
+                    <td>直接展示 AI 在体育场景里的可用性，帮助大家选择下午方向</td>
+                    <td><span class="owner">主讲 + 技术支持</span></td>
+                    <td>每人明确偏好赛道</td>
+                  </tr>
+                  <tr>
+                    <td>11:15-11:30</td>
+                    <td>茶歇与交流</td>
+                    <td>轻度需求摸底，观察谁最有兴趣、谁最可能转化</td>
+                    <td><span class="owner">总协调 + 助教</span></td>
+                    <td>非正式访谈记录</td>
+                  </tr>
+                  <tr>
+                    <td>11:30-12:15</td>
+                    <td>模块 3：从“一个问题”变成“一个应用”</td>
+                    <td>教会大家用户、问题、输入、知识、输出、评估的拆解框架</td>
+                    <td><span class="owner">主讲</span></td>
+                    <td>场景画布框架</td>
+                  </tr>
+                  <tr>
+                    <td>12:15-12:40</td>
+                    <td>模块 4：小练习</td>
+                    <td>午饭前完成第一次低门槛跟练，建立信心</td>
+                    <td><span class="owner">主讲 + 助教</span></td>
+                    <td>每人 1 张场景设计卡</td>
+                  </tr>
+                  <tr>
+                    <td>12:40-13:40</td>
+                    <td>午间交流</td>
+                    <td>让老师和学生自然交流需求，便于下午混编落位</td>
+                    <td><span class="owner">全体支持人员</span></td>
+                    <td>真实问题池</td>
+                  </tr>
+                  <tr>
+                    <td>13:40-14:00</td>
+                    <td>分组与任务发布</td>
+                    <td>锁定 3 组题目、角色和输出要求，避免下午跑偏</td>
+                    <td><span class="owner">总协调</span></td>
+                    <td>任务卡、分组表</td>
+                  </tr>
+                  <tr>
+                    <td>14:00-15:20</td>
+                    <td>Sprint 1：搭建第一版原型</td>
+                    <td>每组先跑通一个可用版本，不追求精致，先求可用</td>
+                    <td><span class="owner">各组 + 助教</span></td>
+                    <td>每组原型 V1</td>
+                  </tr>
+                  <tr>
+                    <td>15:20-15:35</td>
+                    <td>茶歇</td>
+                    <td>缓冲疲劳，也让支持人员快速复盘问题</td>
+                    <td><span class="owner">后勤</span></td>
+                    <td>第二轮优化清单</td>
+                  </tr>
+                  <tr>
+                    <td>15:35-16:30</td>
+                    <td>Sprint 2：优化与测试</td>
+                    <td>补知识、补结构、补展示逻辑，让路演能打动人</td>
+                    <td><span class="owner">各组 + 助教</span></td>
+                    <td>每组原型 V2 + 路演稿</td>
+                  </tr>
+                  <tr>
+                    <td>16:30-17:15</td>
+                    <td>路演与点评</td>
+                    <td>制造成就感，同时判断哪些方向值得继续投入</td>
+                    <td><span class="owner">主持人 + 主讲</span></td>
+                    <td>3 个路演成果 + 反馈表</td>
+                  </tr>
+                  <tr>
+                    <td>17:15-17:40</td>
+                    <td>需求收集与后续合作讨论</td>
+                    <td>把兴趣转成线索，把线索转成后续行动</td>
+                    <td><span class="owner">总协调 + 主讲</span></td>
+                    <td>意向表、约谈清单</td>
+                  </tr>
+                  <tr>
+                    <td>17:40-18:00</td>
+                    <td>总结、合影、宣布后续</td>
+                    <td>形成闭环、强化仪式感、留下传播素材</td>
+                    <td><span class="owner">主持人</span></td>
+                    <td>合影、发后续资料说明</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" id="roles">
+          <div class="section-heading">
+            <div class="section-number">05</div>
+            <div>
+              <h3>组织架构与分工</h3>
+              <p>
+                10 人小班看起来不大，但如果要做到真跟练、真出活，支持密度必须足够。
+                最低配是 4 人支持组，推荐 5 人支持组。
+              </p>
+            </div>
+          </div>
+
+          <div class="dual-panel">
+            <article class="card role-card">
+              <div class="role">
+                <strong>总协调 / 主持人</strong>
+                <span class="ribbon">现场总控</span>
+              </div>
+              <p>负责活动节奏、开场、转场、控时、需求收口和关键风险判断。</p>
+              <ul class="list">
+                <li>提前一天完成最终彩排。</li>
+                <li>当天对所有环节拥有最后拍板权。</li>
+                <li>重点盯“是否有人掉队”“是否偏离节奏”“是否收集到转化信息”。</li>
+              </ul>
+            </article>
+
+            <article class="card role-card">
+              <div class="role">
+                <strong>主讲教练</strong>
+                <span class="ribbon">内容主责</span>
+              </div>
+              <p>负责上午方法课、样板演示、下午关键节点点评与路演反馈。</p>
+              <ul class="list">
+                <li>不能讲太多概念，必须讲体育真实案例。</li>
+                <li>演示必须全程可复现、可拆解。</li>
+                <li>点评要始终围绕“有用、可做、可继续”。</li>
+              </ul>
+            </article>
+
+            <article class="card role-card">
+              <div class="role">
+                <strong>技术演示负责人</strong>
+                <span class="ribbon">环境主责</span>
+              </div>
+              <p>负责样板应用、设备环境、账号登录、演示备用方案与现场故障排查。</p>
+              <ul class="list">
+                <li>每台电脑提前完成环境检查。</li>
+                <li>准备热点、备用账号、录屏版样板演示。</li>
+                <li>所有模板、素材、案例放入统一文件夹。</li>
+              </ul>
+            </article>
+
+            <article class="card role-card">
+              <div class="role">
+                <strong>助教 A / 助教 B</strong>
+                <span class="ribbon">组内支持</span>
+              </div>
+              <p>重点不是解释概念，而是帮助小组把真实问题变成原型，把原型变成能展示的成果。</p>
+              <ul class="list">
+                <li>助教 A 更偏老师组，帮助业务抽象。</li>
+                <li>助教 B 更偏学生组，帮助操作、测试和路演。</li>
+                <li>两位助教都要记录每组的高价值需求。</li>
+              </ul>
+            </article>
+          </div>
+
+          <article class="card">
+            <p class="mini-title">推荐分组法</p>
+            <div class="three-up">
+              <div class="mini-card">
+                <h5>A 组：教学科研</h5>
+                <p class="muted">1 位老师 + 2-3 位学生，产出教学/科研助手原型。</p>
+              </div>
+              <div class="mini-card">
+                <h5>B 组：训练管理</h5>
+                <p class="muted">1 位老师或教练角色 + 2-3 位学生，产出训练计划助手原型。</p>
+              </div>
+              <div class="mini-card">
+                <h5>C 组：赛事传播与交流</h5>
+                <p class="muted">1 位组织或交流相关老师 + 2-3 位学生，产出赛事传播助手原型。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card table-card">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>环节</th>
+                    <th>主持人</th>
+                    <th>主讲</th>
+                    <th>技术负责人</th>
+                    <th>助教</th>
+                    <th>后勤</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>签到与设备就位</td>
+                    <td>总控</td>
+                    <td>备用</td>
+                    <td>主责</td>
+                    <td>辅助</td>
+                    <td>主责</td>
+                  </tr>
+                  <tr>
+                    <td>开场与目标说明</td>
+                    <td>主责</td>
+                    <td>辅助</td>
+                    <td>备用</td>
+                    <td>观察</td>
+                    <td>辅助</td>
+                  </tr>
+                  <tr>
+                    <td>样板演示</td>
+                    <td>转场</td>
+                    <td>主责</td>
+                    <td>主责</td>
+                    <td>观察问题</td>
+                    <td>备用</td>
+                  </tr>
+                  <tr>
+                    <td>小组 Sprint</td>
+                    <td>控时</td>
+                    <td>巡回答疑</td>
+                    <td>故障排查</td>
+                    <td>主责</td>
+                    <td>茶歇与场务</td>
+                  </tr>
+                  <tr>
+                    <td>路演与结营</td>
+                    <td>主责</td>
+                    <td>主责点评</td>
+                    <td>投屏支持</td>
+                    <td>收意向表</td>
+                    <td>摄影与茶歇</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" id="prework">
+          <div class="section-heading">
+            <div class="section-number">06</div>
+            <div>
+              <h3>会前准备与时间线</h3>
+              <p>
+                这场营的成败基本在会前已经决定。会前如果样板没做好、报名没筛、电脑没配、任务卡没出，
+                现场再强的控场也只能救局，不能造结果。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-point">D-10<span>锁主题</span></div>
+              <div>
+                <h4>确认主题、对象、人员结构</h4>
+                <ul class="list">
+                  <li>最终确认 3 个主场景，不再加题。</li>
+                  <li>定向邀请老师与学生，发报名收集表。</li>
+                  <li>确认场地、电脑数量、网络条件、投屏方案。</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-point">D-7<span>做样板</span></div>
+              <div>
+                <h4>完成 3 个样板应用第一版</h4>
+                <ul class="list">
+                  <li>每个样板都要有场景定义、输入模板、知识材料、输出模板、演示脚本。</li>
+                  <li>开始制作路演评分表、任务卡、场景设计卡、意向表。</li>
+                  <li>报名表开始筛选，初步确定老师和学生比例。</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-point">D-3<span>彩排</span></div>
+              <div>
+                <h4>做一次完整走台</h4>
+                <ul class="list">
+                  <li>样板应用进行全流程演示，计时并修正卡点。</li>
+                  <li>逐台电脑完成登录、模板分发、网络与投屏检查。</li>
+                  <li>完成报名确认和候补通知，形成分组草案。</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-point">D-1<span>封板</span></div>
+              <div>
+                <h4>冻结所有现场用内容</h4>
+                <ul class="list">
+                  <li>不再临时改讲稿、不再新增功能、不再换路径。</li>
+                  <li>打印签到表、名牌、议程单页、任务卡、评分表、反馈表。</li>
+                  <li>准备茶点、矿泉水、插线板、指示牌、合影点位。</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-point">T Day<span>执行</span></div>
+              <div>
+                <h4>现场严格按节奏跑，不扩讲</h4>
+                <ul class="list">
+                  <li>上午控制讲授密度，午饭前必须完成一次小练习。</li>
+                  <li>下午两轮 Sprint 中，助教聚焦“帮他们做出来”。</li>
+                  <li>结营前必须回收意向表、反馈表、合作线索。</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-point">T+1 / T+3 / T+7<span>转化</span></div>
+              <div>
+                <h4>三轮跟进，不能断线</h4>
+                <ul class="list">
+                  <li>T+1：发送照片、资料包、成果汇总、反馈表。</li>
+                  <li>T+3：约重点老师做 15-30 分钟访谈，确认需求类型。</li>
+                  <li>T+7：发出后续方案，包括进阶营、专题工作坊、项目共创三种路径。</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="sop">
+          <div class="section-heading">
+            <div class="section-number">07</div>
+            <div>
+              <h3>现场执行 SOP</h3>
+              <p>
+                每个环节都要有“目标、动作、观察点、触发条件”。现场控制不是靠经验，而是靠明确 SOP 和及时纠偏。
+              </p>
+            </div>
+          </div>
+
+          <div class="grid cols-2">
+            <article class="card">
+              <p class="mini-title">签到阶段</p>
+              <h4>09:00-09:30</h4>
+              <ul class="list">
+                <li>签到时同步完成前测问卷，问题不超过 5 个。</li>
+                <li>每位学员在座位上直接打开统一文件夹和工具界面。</li>
+                <li>技术负责人检查 3 件事：网络、投屏、账号可用。</li>
+                <li>主持人观察谁是高活跃、低活跃、技术薄弱、带明确需求的人。</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <p class="mini-title">开场阶段</p>
+              <h4>09:30-09:50</h4>
+              <ul class="list">
+                <li>第一句话就讲清“今天不是来听懂 AI，是来做出一个应用雏形”。</li>
+                <li>明确成果标准：每组都要完成一句话场景定义、原型、路演和反馈。</li>
+                <li>强调边界：不做医学诊断，不做高风险判断，不用真实敏感数据。</li>
+                <li>宣布评价标准：有用性、结构清晰度、场景贴合度、继续推进可能性。</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <p class="mini-title">样板演示阶段</p>
+              <h4>10:30-11:15</h4>
+              <ul class="list">
+                <li>每个样板 10-12 分钟，必须“演示 + 拆解”同步进行。</li>
+                <li>样板里要明确说明用户是谁、输入是什么、输出长什么样。</li>
+                <li>不要讲太多技术原理，只讲为什么这样设计、为什么有用。</li>
+                <li>助教记录谁对哪个赛道反应强烈，午饭前用于分组。</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <p class="mini-title">小组 Sprint 阶段</p>
+              <h4>14:00-16:30</h4>
+              <ul class="list">
+                <li>先做 V1，再做 V2。不要一开始就抠细节和美化。</li>
+                <li>助教每 20 分钟检查一次：题目是否跑偏、是否有产出、是否有人掉队。</li>
+                <li>如果一组 20 分钟仍无进展，立即回退到预制样板进行套用。</li>
+                <li>15:35 开始第二轮时，所有组必须已经有“可演示”的第一版。</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <p class="mini-title">路演阶段</p>
+              <h4>16:30-17:15</h4>
+              <ul class="list">
+                <li>每组 5-7 分钟，统一结构：问题、用户、怎么做、输出什么、为什么值得继续。</li>
+                <li>点评优先讲“这个方向的真实价值”和“下一步最该补什么”。</li>
+                <li>不要把点评变成长篇教学，保持节奏和成就感。</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <p class="mini-title">收口阶段</p>
+              <h4>17:15-18:00</h4>
+              <ul class="list">
+                <li>现场回收反馈表、意向表、需求表，不能会后再说。</li>
+                <li>主持人引导老师回答“如果继续做，最想在哪个环节深入”。</li>
+                <li>主办方按 A/B/C 线索分类，标记优先跟进对象。</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="scripts">
+          <div class="section-heading">
+            <div class="section-number">08</div>
+            <div>
+              <h3>主持词与转场话术</h3>
+              <p>
+                主持词不需要华丽，但必须稳定、清晰、推动行动。下面给出的是可直接照着说的简版话术。
+              </p>
+            </div>
+          </div>
+
+          <article class="card">
+            <div class="script-block">
+              <div class="script-line">
+                <strong>开场 1：定调</strong>
+                <span>
+                  今天这场活动，我们不把它做成泛泛的 AI 分享，而是做成一次小规模、强互动的样板训练营。
+                  我们的目标很明确：让各位老师和同学在今天结束前，能真正做出一个体育场景里的 AI 应用雏形。
+                </span>
+              </div>
+
+              <div class="script-line">
+                <strong>开场 2：建立预期</strong>
+                <span>
+                  所以今天不是来“听懂”就结束，而是来“上手做”。上午我们先统一认知、看样板，下午大家分组做出原型、现场路演。
+                </span>
+              </div>
+
+              <div class="script-line">
+                <strong>转入样板演示</strong>
+                <span>
+                  接下来我们不先讲复杂技术，而是直接看三个已经跑通的体育场景样板。
+                  请大家边看边想：哪个方向最接近你的真实工作和研究问题。
+                </span>
+              </div>
+
+              <div class="script-line">
+                <strong>午后分组前说明</strong>
+                <span>
+                  下午每一组都要完成一件具体的事：把一个真实问题转成一个有输入、有输出、有展示逻辑的应用原型。
+                  不求完美，但一定求可用、可讲、可继续。
+                </span>
+              </div>
+
+              <div class="script-line">
+                <strong>路演前说明</strong>
+                <span>
+                  路演不是比谁更懂技术，而是比谁更清楚地回答三个问题：你在解决谁的问题，这个原型为什么有用，它下一步值不值得继续做。
+                </span>
+              </div>
+
+              <div class="script-line">
+                <strong>结营收口</strong>
+                <span>
+                  今天这场训练营如果只停留在体验，是不够的。我们更关心的是，哪些方向值得继续做成进阶培训，哪些问题值得继续做成项目合作。
+                  所以最后这份反馈和意向表，请大家务必认真填写。
+                </span>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" id="ops">
+          <div class="section-heading">
+            <div class="section-number">09</div>
+            <div>
+              <h3>物料、场地与设备</h3>
+              <p>
+                这部分最容易被低估，但它直接影响体验。既然研究院提供电脑和茶点，就要把“专业、舒服、被照顾到”的感受做出来。
+              </p>
+            </div>
+          </div>
+
+          <div class="dual-panel">
+            <article class="card">
+              <p class="mini-title">场地布置</p>
+              <div class="layout-plan">
+                <div class="layout-zone">
+                  <strong>前区：主讲 + 大屏 + 主持位</strong>
+                  <span class="muted">用于开场、演示、路演与点评，必须保证全场可视。</span>
+                </div>
+                <div class="three-up">
+                  <div class="layout-zone">
+                    <strong>A 组岛台</strong>
+                    <span class="muted">教学科研方向</span>
+                  </div>
+                  <div class="layout-zone">
+                    <strong>B 组岛台</strong>
+                    <span class="muted">训练管理方向</span>
+                  </div>
+                  <div class="layout-zone">
+                    <strong>C 组岛台</strong>
+                    <span class="muted">赛事传播与交流方向</span>
+                  </div>
+                </div>
+                <div class="layout-zone">
+                  <strong>后区：茶歇区 + 资料区</strong>
+                  <span class="muted">让交流自然发生，也给支持人员留出调度空间。</span>
+                </div>
+                <div class="layout-zone">
+                  <strong>侧边：技术支持位 + 备用电脑位</strong>
+                  <span class="muted">故障处理不要打断主讲和小组节奏。</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <p class="mini-title">设备与环境准备</p>
+              <ul class="list">
+                <li>10 台训练电脑全部提前开机，统一放好电源与鼠标。</li>
+                <li>每台电脑桌面只有一个主入口：`训练营资料包` 文件夹。</li>
+                <li>资料包内放：议程、任务卡、模板、样板资料、测试案例、反馈表二维码。</li>
+                <li>提前完成浏览器登录与环境检查，避免现场临时注册账号。</li>
+                <li>准备 1-2 台备用电脑、备用热点、备用电源、备用投屏线。</li>
+                <li>样板演示必须有录屏备份，防止网络问题中断现场节奏。</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="check-grid">
+            <article class="check-card">
+              <strong>物料清单</strong>
+              <ul>
+                <li>签到表、名牌、议程单页</li>
+                <li>场景设计卡、任务卡、评分表</li>
+                <li>反馈表、意向表、需求收集表</li>
+                <li>合影指示牌、座位贴、分组贴</li>
+                <li>矿泉水、纸巾、便签、笔、插线板</li>
+                <li>摄影设备或备用手机支架</li>
+              </ul>
+            </article>
+
+            <article class="check-card">
+              <strong>体验细节</strong>
+              <ul>
+                <li>茶点不要太杂，保持整洁、方便拿取。</li>
+                <li>开场前 10 分钟背景屏就绪，现场氛围稳定。</li>
+                <li>每组桌上有明确组牌和任务标题。</li>
+                <li>投屏切换提前演练，路演时不能反复找文件。</li>
+                <li>现场必须有人负责照片和关键片段记录。</li>
+                <li>结束前提醒大家当场扫码领取资料包。</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="evaluation">
+          <div class="section-heading">
+            <div class="section-number">10</div>
+            <div>
+              <h3>成果评估与转化</h3>
+              <p>
+                活动效果不能只靠“大家觉得不错”来判断，必须有明确成果标准和转化动作。第一期的核心是看有没有真实需求和可持续方向。
+              </p>
+            </div>
+          </div>
+
+          <div class="score-grid">
+            <div class="score-box">
+              <strong>90%</strong>
+              <span>到场率目标不低于 90%</span>
+            </div>
+            <div class="score-box">
+              <strong>8/10</strong>
+              <span>至少 8 位参与者完成原型</span>
+            </div>
+            <div class="score-box">
+              <strong>6+</strong>
+              <span>至少 6 位表示愿意参加下一步</span>
+            </div>
+            <div class="score-box">
+              <strong>2-3</strong>
+              <span>至少 2-3 位老师提出合作需求</span>
+            </div>
+          </div>
+
+          <div class="grid cols-2">
+            <article class="card">
+              <p class="mini-title">路演评分标准</p>
+              <ul class="list">
+                <li><strong>场景贴合度：</strong> 是否真的是体育场景中的高频问题。</li>
+                <li><strong>原型清晰度：</strong> 是否说得清输入、知识、输出和结果。</li>
+                <li><strong>有用性：</strong> 老师和学生是否能判断它在真实工作中有价值。</li>
+                <li><strong>可继续性：</strong> 是否值得做进阶训练或试点项目。</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <p class="mini-title">结营必须收集</p>
+              <ul class="list">
+                <li>每人 1 份满意度反馈表。</li>
+                <li>每人 1 份后续意向表。</li>
+                <li>每组 1 份原型摘要和后续需求。</li>
+                <li>支持人员内部记录：A 类、B 类、C 类线索名单。</li>
+              </ul>
+            </article>
+          </div>
+
+          <article class="card table-card">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>线索分级</th>
+                    <th>判断标准</th>
+                    <th>后续动作</th>
+                    <th>建议产品路径</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>A 类</td>
+                    <td>有明确场景、愿意继续、能约后续沟通</td>
+                    <td>T+3 内约一对一沟通</td>
+                    <td>项目共创 / 机构内训</td>
+                  </tr>
+                  <tr>
+                    <td>B 类</td>
+                    <td>有兴趣但需求还模糊，需要继续观察</td>
+                    <td>T+7 推送专题工作坊邀请</td>
+                    <td>2 天进阶营 / 4 次工作坊</td>
+                  </tr>
+                  <tr>
+                    <td>C 类</td>
+                    <td>主要来体验，暂无明确合作意愿</td>
+                    <td>保留在社群或邮件池</td>
+                    <td>后续公开活动触达</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" id="risk">
+          <div class="section-heading">
+            <div class="section-number">11</div>
+            <div>
+              <h3>风险预案</h3>
+              <p>
+                风险不怕存在，怕的是现场第一次遇到。下面这些情况要提前想清楚，出现时直接执行预案，不临场开会。
+              </p>
+            </div>
+          </div>
+
+          <article class="card table-card">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>风险</th>
+                    <th>表现</th>
+                    <th>预案</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>参与者水平差异大</td>
+                    <td>老师觉得太浅，学生觉得太难，或个别人掉队</td>
+                    <td>报名时摸底；老师和学生混编；统一模板；助教重点照看低熟练度学员。</td>
+                  </tr>
+                  <tr>
+                    <td>技术环境不稳定</td>
+                    <td>网络慢、账号异常、投屏失败、工具打不开</td>
+                    <td>提前统一环境；准备热点、备用账号、备用电脑和录屏演示。</td>
+                  </tr>
+                  <tr>
+                    <td>题目太散</td>
+                    <td>下午大家各做各的，无法集中支持</td>
+                    <td>只允许在 3 个赛道内选题；20 分钟没有进展即回退到样板改造。</td>
+                  </tr>
+                  <tr>
+                    <td>现场节奏失控</td>
+                    <td>上午讲太满，下午没时间，或者某组占用太多时间</td>
+                    <td>主持人强控时间；路演统一结构；主讲不过度延展。</td>
+                  </tr>
+                  <tr>
+                    <td>涉及敏感或高风险场景</td>
+                    <td>有人要求做医学诊断、精确伤病判断、隐私数据分析</td>
+                    <td>统一说明边界；只用脱敏或模拟数据；所有结论只作为辅助草案，不作最终判断。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" id="checklist">
+          <div class="section-heading">
+            <div class="section-number">12</div>
+            <div>
+              <h3>全量清单</h3>
+              <p>
+                下面这四张清单是给组织者真正拿来勾选的。第一期先按这个版本执行，做完一轮后再迭代为 v1.1。
+              </p>
+            </div>
+          </div>
+
+          <div class="check-grid">
+            <article class="check-card">
+              <strong>今天必须确认</strong>
+              <ul>
+                <li>主题、日期、地点、名额结构</li>
+                <li>3 个主赛道与 3 个样板应用</li>
+                <li>主持、主讲、技术、助教、后勤名单</li>
+                <li>报名表字段与筛选逻辑</li>
+                <li>活动成果标准与转化目标</li>
+              </ul>
+            </article>
+
+            <article class="check-card">
+              <strong>会前 7 天内完成</strong>
+              <ul>
+                <li>样板应用第一版可跑通</li>
+                <li>任务卡、评分表、反馈表成型</li>
+                <li>场地、电脑、网络、投屏确认</li>
+                <li>定向邀请与候补名单确认</li>
+                <li>茶点、摄影、打印安排确认</li>
+              </ul>
+            </article>
+
+            <article class="check-card">
+              <strong>活动当天执行</strong>
+              <ul>
+                <li>签到即完成前测和环境登录</li>
+                <li>午饭前完成一次小练习</li>
+                <li>下午每组都跑通 V1 和 V2</li>
+                <li>路演、点评、合影完整完成</li>
+                <li>离场前收齐反馈表与意向表</li>
+              </ul>
+            </article>
+
+            <article class="check-card">
+              <strong>活动后 7 天内</strong>
+              <ul>
+                <li>T+1 发照片、资料包、成果汇总</li>
+                <li>T+3 约谈重点老师与重点学生</li>
+                <li>T+7 输出后续产品方案</li>
+                <li>内部复盘：保留、删减、升级项</li>
+                <li>沉淀成下一次可复制执行包</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="footer-panel">
+          <h4>组织者结论</h4>
+          <p>
+            第一场不要追求“大而全”，而要追求“少而精、真上手、能转化”。只要把 3 个场景、3 个样板、
+            10 人小班和 1 天闭环真正做扎实，这场免费线下训练就能成为后续收费培训和项目合作的起点。
+          </p>
+          <a class="quick-link" href="#positioning">回到开头重新对焦</a>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
