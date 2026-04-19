@@ -39,6 +39,18 @@ http://127.0.0.1:4323
 http://127.0.0.1:4323/hackathon.html
 ```
 
+训练营对外入口地址：
+
+```text
+https://liruijian.com/ai+sports/
+```
+
+## 发布方式
+
+- 当前站点使用 GitHub Pages 托管。
+- 自定义域名为 `liruijian.com`，`www.liruijian.com` 会自动跳转到主域名。
+- Pages 已切换为 GitHub Actions 发布；只要把改动 push 到 `main`，站点会自动更新。
+
 ## 下一步最值得做的事情
 
 1. 新增 2 到 3 个真实作品详情页，让 `作品` 区不只有一个真实案例。
