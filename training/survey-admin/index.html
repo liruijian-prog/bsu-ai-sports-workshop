@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>体育+AI训练营报名后台</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <section class="login-card" id="loginCard">
+        <div class="lock-mark">🔐</div>
+        <h1>报名信息后台</h1>
+        <p>输入管理员密码查看所有提交信息。</p>
+        <label class="field">
+          <span>管理员密码</span>
+          <input id="passwordInput" type="password" placeholder="请输入管理员密码" />
+        </label>
+        <div class="error-text" id="loginError"></div>
+        <button type="button" class="primary-button" id="loginButton">进入后台</button>
+      </section>
+
+      <section class="dashboard" id="dashboard" hidden>
+        <header class="dashboard-head">
+          <div>
+            <h1>体育+AI训练营报名后台</h1>
+            <p>查看报名信息、需求结构和后续合作线索。</p>
+          </div>
+          <div class="head-actions">
+            <button type="button" class="ghost-button" id="refreshButton">刷新</button>
+            <button type="button" class="primary-button" id="exportButton">导出 CSV</button>
+          </div>
+        </header>
+
+        <section class="stats-grid">
+          <article class="stat-card">
+            <span>总提交数</span>
+            <strong id="totalCount">0</strong>
+          </article>
+          <article class="stat-card stat-card-violet">
+            <span>有明确项目</span>
+            <strong id="withProjectCount">0</strong>
+          </article>
+          <article class="stat-card stat-card-orange">
+            <span>有后续意向</span>
+            <strong id="followupCount">0</strong>
+          </article>
+        </section>
+
+        <section class="table-card">
+          <div class="table-meta">
+            <h2>报名信息列表</h2>
+            <p id="tableHint">点击任意一行查看完整详情。</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>姓名</th>
+                  <th>身份 / 部门</th>
+                  <th>最大痛点</th>
+                  <th>优先场景</th>
+                  <th>预期成果</th>
+                  <th>提交时间</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div class="modal" id="detailModal" hidden>
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <article class="modal-card">
+        <div class="modal-head">
+          <h2 id="detailTitle">报名详情</h2>
+          <button type="button" class="close-button" id="closeModalButton">×</button>
+        </div>
+        <div class="detail-list" id="detailList"></div>
+      </article>
+    </div>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

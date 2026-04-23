@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>体育+AI训练营需求评估表</title>
+    <meta
+      name="description"
+      content="体育+AI训练营需求评估表，用于梳理参训者的真实问题、应用场景和预期成果。"
+    />
+    <meta name="theme-color" content="#102a5c" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-track hero-track-a"></div>
+        <div class="hero-track hero-track-b"></div>
+        <div class="hero-field hero-field-a"></div>
+        <div class="hero-field hero-field-b"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+          <div class="hero-kicker">需求评估 <span>Sports × AI</span></div>
+          <h1>体育+AI训练营需求评估表</h1>
+          <p class="hero-lead">
+            用于梳理参训者的真实问题、应用场景和预期成果，帮助训练营更精准地匹配内容、案例与辅导方式。
+          </p>
+        </div>
+        <aside class="hero-poster" aria-hidden="true">
+          <div class="poster-dot"></div>
+          <div class="poster-title-cn">体育 × AI</div>
+          <div class="poster-title-en">TRAIN</div>
+          <div class="poster-title-en">CAMP</div>
+          <div class="poster-focus">Focus</div>
+          <div class="poster-copy">真实场景 · 动手搭建 · 需求评估</div>
+          <div class="poster-icons">🏃 🏟️ 🤖</div>
+        </aside>
+      </header>
+
+      <main class="content">
+        <div class="alert alert-error" id="errorBanner" hidden></div>
+        <section class="success-card" id="successCard" hidden>
+          <div class="success-mark">✓</div>
+          <h2>报名信息已提交</h2>
+          <p>组织方将根据提交信息进行需求分析、课程匹配与后续联系。</p>
+          <div class="success-summary" id="successSummary"></div>
+          <button type="button" class="primary-button" id="resetButton">再填一份</button>
+        </section>
+
+        <form class="survey-form" id="surveyForm" novalidate>
+          <section class="form-card">
+            <div class="section-head">
+              <div class="section-icon">🏃</div>
+              <div>
+                <h2>A. 基本信息与身份判断</h2>
+                <p>了解参训者背景、角色定位和体育方向</p>
+              </div>
+            </div>
+
+            <div class="grid-two">
+              <label class="field">
+                <span>姓名 <strong>*</strong></span>
+                <input id="name" name="name" type="text" placeholder="请输入姓名" />
+              </label>
+              <label class="field">
+                <span>手机 <strong>*</strong></span>
+                <input id="phone" name="phone" type="text" placeholder="用于通知" />
+              </label>
+              <label class="field">
+                <span>微信</span>
+                <input id="wechat" name="wechat" type="text" placeholder="便于联系" />
+              </label>
+              <label class="field">
+                <span>院系 / 部门</span>
+                <input id="department" name="department" type="text" placeholder="例如：运动训练学院 / 科研处" />
+              </label>
+              <label class="field">
+                <span>职称 / 年级</span>
+                <input id="title_or_grade" name="title_or_grade" type="text" placeholder="例如：副教授 / 研二 / 大三" />
+              </label>
+              <label class="field">
+                <span>身份</span>
+                <input id="identity" name="identity" type="text" placeholder="例如：教师 / 研究生 / 本科生 / 管理人员" />
+              </label>
+              <label class="field">
+                <span>主要体育角色</span>
+                <input id="sports_role" name="sports_role" type="text" placeholder="例如：教练、教师、科研人员、赛事组织者" />
+              </label>
+              <label class="field">
+                <span>专项 / 研究方向</span>
+                <input id="sports_specialty" name="sports_specialty" type="text" placeholder="例如：田径、体能、体育教育、体育产业" />
+              </label>
+            </div>
+
+            <div class="field">
+              <span class="field-label">从事相关工作的时间</span>
+              <div class="choice-grid choice-grid-4" data-name="experience_years">
+                <label class="choice-card"><input type="radio" name="experience_years" value="1年以内" /><span>1年以内</span></label>
+                <label class="choice-card"><input type="radio" name="experience_years" value="1-3年" /><span>1-3年</span></label>
+                <label class="choice-card"><input type="radio" name="experience_years" value="3-5年" /><span>3-5年</span></label>
+                <label class="choice-card"><input type="radio" name="experience_years" value="5年以上" /><span>5年以上</span></label>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-card">
+            <div class="section-head">
+              <div class="section-icon section-icon-green">🤖</div>
+              <div>
+                <h2>B. AI 使用现状</h2>
+                <p>评估工具熟悉度、实际使用方式和当前障碍</p>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">平时常用哪些 AI 工具</span>
+              <div class="pill-wrap">
+                <label class="pill"><input type="checkbox" name="ai_tools" value="ChatGPT" /><span>ChatGPT</span></label>
+                <label class="pill"><input type="checkbox" name="ai_tools" value="Claude" /><span>Claude</span></label>
+                <label class="pill"><input type="checkbox" name="ai_tools" value="豆包" /><span>豆包</span></label>
+                <label class="pill"><input type="checkbox" name="ai_tools" value="Kimi" /><span>Kimi</span></label>
+                <label class="pill"><input type="checkbox" name="ai_tools" value="文心一言" /><span>文心一言</span></label>
+                <label class="pill"><input type="checkbox" name="ai_tools" value="通义" /><span>通义</span></label>
+                <label class="pill"><input type="checkbox" name="ai_tools" value="Midjourney" /><span>Midjourney</span></label>
+                <label class="pill"><input type="checkbox" name="ai_tools" value="Cursor" /><span>Cursor</span></label>
+                <label class="pill"><input type="checkbox" name="ai_tools" value="其他" /><span>其他</span></label>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">使用频率</span>
+              <div class="choice-grid">
+                <label class="choice-card"><input type="radio" name="ai_frequency" value="几乎每天" /><span>几乎每天</span></label>
+                <label class="choice-card"><input type="radio" name="ai_frequency" value="每周 2-3 次" /><span>每周 2-3 次</span></label>
+                <label class="choice-card"><input type="radio" name="ai_frequency" value="偶尔使用" /><span>偶尔使用</span></label>
+                <label class="choice-card"><input type="radio" name="ai_frequency" value="几乎不用" /><span>几乎不用</span></label>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">自评熟练度</span>
+              <div class="choice-grid">
+                <label class="choice-card"><input type="radio" name="ai_confidence" value="只会问答" /><span>只会问答</span></label>
+                <label class="choice-card"><input type="radio" name="ai_confidence" value="会写提示词" /><span>会写提示词</span></label>
+                <label class="choice-card"><input type="radio" name="ai_confidence" value="会做简单应用" /><span>会做简单应用</span></label>
+                <label class="choice-card"><input type="radio" name="ai_confidence" value="能独立完成原型" /><span>能独立完成原型</span></label>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">你目前主要怎么用 AI</span>
+              <div class="pill-wrap">
+                <label class="pill"><input type="checkbox" name="ai_use_cases" value="写材料" /><span>写材料</span></label>
+                <label class="pill"><input type="checkbox" name="ai_use_cases" value="查资料" /><span>查资料</span></label>
+                <label class="pill"><input type="checkbox" name="ai_use_cases" value="做PPT" /><span>做PPT</span></label>
+                <label class="pill"><input type="checkbox" name="ai_use_cases" value="写代码" /><span>写代码</span></label>
+                <label class="pill"><input type="checkbox" name="ai_use_cases" value="做数据分析" /><span>做数据分析</span></label>
+                <label class="pill"><input type="checkbox" name="ai_use_cases" value="写训练计划" /><span>写训练计划</span></label>
+                <label class="pill"><input type="checkbox" name="ai_use_cases" value="写教案" /><span>写教案</span></label>
+                <label class="pill"><input type="checkbox" name="ai_use_cases" value="几乎没实际用过" /><span>几乎没实际用过</span></label>
+              </div>
+            </div>
+
+            <label class="field">
+              <span>你现在用 AI 最大的问题是什么</span>
+              <textarea
+                id="ai_biggest_problem"
+                name="ai_biggest_problem"
+                rows="4"
+                placeholder="例如：不知道做什么、不会拆需求、结果不稳定、不会落地成应用"
+              ></textarea>
+            </label>
+          </section>
+
+          <section class="form-card">
+            <div class="section-head">
+              <div class="section-icon section-icon-orange">🏟️</div>
+              <div>
+                <h2>C. 体育场景与真实需求</h2>
+                <p>聚焦真实问题、目标对象、优先场景与成果预期</p>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">你主要在哪些场景工作</span>
+              <div class="pill-wrap">
+                <label class="pill"><input type="checkbox" name="work_scenes" value="教学" /><span>教学</span></label>
+                <label class="pill"><input type="checkbox" name="work_scenes" value="训练" /><span>训练</span></label>
+                <label class="pill"><input type="checkbox" name="work_scenes" value="竞赛" /><span>竞赛</span></label>
+                <label class="pill"><input type="checkbox" name="work_scenes" value="科研" /><span>科研</span></label>
+                <label class="pill"><input type="checkbox" name="work_scenes" value="管理" /><span>管理</span></label>
+                <label class="pill"><input type="checkbox" name="work_scenes" value="创业" /><span>创业</span></label>
+                <label class="pill"><input type="checkbox" name="work_scenes" value="国际交流" /><span>国际交流</span></label>
+                <label class="pill"><input type="checkbox" name="work_scenes" value="学生工作" /><span>学生工作</span></label>
+              </div>
+            </div>
+
+            <label class="field">
+              <span>当前最真实、最耗时、最希望解决的一件事 <strong>*</strong></span>
+              <textarea
+                id="biggest_pain"
+                name="biggest_pain"
+                rows="5"
+                placeholder="请尽量写具体。"
+              ></textarea>
+            </label>
+
+            <label class="field">
+              <span>你现在是如何处理这件事的</span>
+              <textarea
+                id="current_solution"
+                name="current_solution"
+                rows="4"
+                placeholder="例如：Excel + 微信 + 手工整理"
+              ></textarea>
+            </label>
+
+            <div class="grid-two">
+              <label class="field">
+                <span>这个应用主要服务谁</span>
+                <input
+                  id="target_audience"
+                  name="target_audience"
+                  type="text"
+                  placeholder="学生、运动员、教练、老师、赛事组织者等"
+                />
+              </label>
+              <div class="field">
+                <span class="field-label">你更想进入哪个赛道</span>
+                <div class="choice-grid choice-grid-2">
+                  <label class="choice-card"><input type="radio" name="preferred_track" value="管理流程型" /><span>管理流程型</span></label>
+                  <label class="choice-card"><input type="radio" name="preferred_track" value="知识科研型" /><span>知识科研型</span></label>
+                  <label class="choice-card"><input type="radio" name="preferred_track" value="训练反馈型" /><span>训练反馈型</span></label>
+                  <label class="choice-card"><input type="radio" name="preferred_track" value="还不确定" /><span>还不确定</span></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">从场景中，先选出 3 个最感兴趣的</span>
+              <div class="pill-wrap">
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="校运会报名与赛程管理助手" /><span>校运会报名与赛程管理助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="田径成绩录入与排名查看台" /><span>田径成绩录入与排名查看台</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="校队训练计划与周报助手" /><span>校队训练计划与周报助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="体测数据分析与个性化建议工具" /><span>体测数据分析与个性化建议工具</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="体育课教案与课堂互动助手" /><span>体育课教案与课堂互动助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="学生运动员请假与补课协调台" /><span>学生运动员请假与补课协调台</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="体育社团/俱乐部会员管理系统" /><span>体育社团/俱乐部会员管理系统</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="场地预约与器材借用管理台" /><span>场地预约与器材借用管理台</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="招生咨询与营地报名助手" /><span>招生咨询与营地报名助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="教练课程预约与私教跟进助手" /><span>教练课程预约与私教跟进助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="科研选题与文献综述助手" /><span>科研选题与文献综述助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="研究设计与论文框架生成器" /><span>研究设计与论文框架生成器</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="问卷/访谈数据整理助手" /><span>问卷/访谈数据整理助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="体育赛事新闻稿与公众号助手" /><span>体育赛事新闻稿与公众号助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="国际体育交流双语物料助手" /><span>国际体育交流双语物料助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="大创/挑战杯体育项目申报助手" /><span>大创/挑战杯体育项目申报助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="体育创业BP与路演助手" /><span>体育创业BP与路演助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="校队招募与试训评估系统" /><span>校队招募与试训评估系统</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="康复训练打卡与家校沟通助手" /><span>康复训练打卡与家校沟通助手</span></label>
+                <label class="pill"><input type="checkbox" name="scenario_choices" value="其他自定义场景" /><span>其他自定义场景</span></label>
+              </div>
+            </div>
+
+            <label class="field">
+              <span>优先想做哪个场景 <strong>*</strong></span>
+              <input
+                id="primary_scenario"
+                name="primary_scenario"
+                type="text"
+                placeholder="填写一个优先场景，也可以直接写自己的题目"
+              />
+            </label>
+
+            <label class="field">
+              <span>如果想做自定义场景，请写在这里</span>
+              <textarea
+                id="custom_scenario"
+                name="custom_scenario"
+                rows="4"
+                placeholder="请尽量描述业务背景、使用者和预期效果"
+              ></textarea>
+            </label>
+
+            <label class="field">
+              <span>你希望当天做出的成果 <strong>*</strong></span>
+              <textarea
+                id="want_to_build"
+                name="want_to_build"
+                rows="4"
+                placeholder="例如：一个报名管理页面、一个训练周报原型"
+              ></textarea>
+            </label>
+          </section>
+
+          <section class="form-card">
+            <div class="section-head">
+              <div class="section-icon section-icon-violet">🎯</div>
+              <div>
+                <h2>D. 参与意愿与后续潜力</h2>
+                <p>判断现场参与方式、项目成熟度和后续推进可能</p>
+              </div>
+            </div>
+
+            <label class="field">
+              <span>训练营结束后，你最希望自己能做到什么</span>
+              <textarea
+                id="goal_after_camp"
+                name="goal_after_camp"
+                rows="4"
+                placeholder="例如：自己能继续把这个工具做下去"
+              ></textarea>
+            </label>
+
+            <div class="field">
+              <span class="field-label">你现在是否已经有明确项目</span>
+              <div class="choice-grid">
+                <label class="choice-card"><input type="radio" name="has_project" value="有明确项目" /><span>有明确项目</span></label>
+                <label class="choice-card"><input type="radio" name="has_project" value="有方向但还模糊" /><span>有方向但还模糊</span></label>
+                <label class="choice-card"><input type="radio" name="has_project" value="先体验再说" /><span>先体验再说</span></label>
+              </div>
+            </div>
+
+            <label class="field">
+              <span>项目或需求描述</span>
+              <textarea
+                id="project_description"
+                name="project_description"
+                rows="4"
+                placeholder="如果已有项目，请写出目标、对象和希望的推进方式"
+              ></textarea>
+            </label>
+
+            <div class="grid-two">
+              <div class="field">
+                <span class="field-label">是否愿意在现场展示</span>
+                <div class="choice-grid choice-grid-2">
+                  <label class="choice-card"><input type="radio" name="showcase_willingness" value="愿意公开展示" /><span>愿意公开展示</span></label>
+                  <label class="choice-card"><input type="radio" name="showcase_willingness" value="视完成情况而定" /><span>视完成情况而定</span></label>
+                  <label class="choice-card"><input type="radio" name="showcase_willingness" value="更希望低调完成" /><span>更希望低调完成</span></label>
+                </div>
+              </div>
+              <div class="field">
+                <span class="field-label">对后续培训/合作的态度</span>
+                <div class="choice-grid choice-grid-2">
+                  <label class="choice-card"><input type="radio" name="followup_interest" value="希望继续进阶" /><span>希望继续进阶</span></label>
+                  <label class="choice-card"><input type="radio" name="followup_interest" value="希望聊项目合作" /><span>希望聊项目合作</span></label>
+                  <label class="choice-card"><input type="radio" name="followup_interest" value="先参加本次体验营" /><span>先参加本次体验营</span></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-two">
+              <div class="field">
+                <span class="field-label">你在团队中的推动权限</span>
+                <div class="choice-grid choice-grid-2">
+                  <label class="choice-card"><input type="radio" name="decision_power" value="能自己推动试点" /><span>能自己推动试点</span></label>
+                  <label class="choice-card"><input type="radio" name="decision_power" value="能影响决策" /><span>能影响决策</span></label>
+                  <label class="choice-card"><input type="radio" name="decision_power" value="主要是执行/学习角色" /><span>主要是执行/学习角色</span></label>
+                </div>
+              </div>
+              <div class="field">
+                <span class="field-label">活动后每周愿意投入的时间</span>
+                <div class="choice-grid choice-grid-2">
+                  <label class="choice-card"><input type="radio" name="weekly_hours" value="1小时以内" /><span>1小时以内</span></label>
+                  <label class="choice-card"><input type="radio" name="weekly_hours" value="1-3小时" /><span>1-3小时</span></label>
+                  <label class="choice-card"><input type="radio" name="weekly_hours" value="3-5小时" /><span>3-5小时</span></label>
+                  <label class="choice-card"><input type="radio" name="weekly_hours" value="5小时以上" /><span>5小时以上</span></label>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-card submit-card">
+            <p class="submit-note">
+              请尽量填写真实需求和联系方式，便于组织方了解你的情况并做后续安排。
+            </p>
+            <button type="submit" class="primary-button" id="submitButton">提交报名信息</button>
+          </section>
+        </form>
+
+        <footer class="footnotes">
+          <div class="footnote">
+            隐私说明：本页所填写信息仅用于训练营需求评估、课程匹配与联系沟通，不用于与本次活动无关的用途。
+          </div>
+          <div class="footnote">
+            合规说明：本训练营围绕人工智能赋能教育、科研与实践场景设计，响应教育数字化与“人工智能+教育”应用探索方向；国内高校已开展相关先行实践，本次内容聚焦规范、适度、场景化使用。
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
