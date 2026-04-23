@@ -43,17 +43,14 @@
 
 ### Railway 配置
 
-Root Directory:
+现在不依赖 `Root Directory`。
 
-- `training/survey-api`
+原因：
 
-启动命令：
+- 仓库根目录已经添加了 `Dockerfile`
+- 这个 `Dockerfile` 会自动把 `training/survey-api/` 作为后端代码构建并启动
 
-- `uvicorn main:app --host 0.0.0.0 --port $PORT`
-
-Health Check Path:
-
-- `/api/health`
+因此即使 Railway 直接从仓库根目录部署，也会跑正确的 FastAPI 服务。
 
 ### 环境变量
 
